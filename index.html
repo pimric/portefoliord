@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richard Dufaur - Portefolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #2c2c2c;
+      background-color: #faf9f7;
+    }
+
+    /* Header avec améliorations minimalistes */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Animation fade-in douce */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      animation: fadeInUp 0.8s ease-out;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      display: inline-block;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .description {
+      font-size: 1.15rem;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.95;
+      line-height: 1.9;
+      font-weight: 300;
+      text-align: justify;
+      text-align-last: center;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Highlight des mots-clés */
+    .highlight {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    /* Actualité - Top Right */
+    .actualite-banner {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 300px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .actualite-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .actualite-description {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .actualite-link {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: all 0.3s ease;
+    }
+
+    .actualite-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.8);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      padding: 5rem 0;
+    }
+
+    /* Featured Projects Section */
+    .featured-section {
+      background: #faf9f7;
+      padding: 5rem 0;
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 2px;
+    }
+
+    .storytelling {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      color: #4a4a4a;
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7a7a7a;
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 400;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-description {
+      font-size: 0.9rem;
+      color: #6a6a6a;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Project Link */
+    .project-link {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: transparent;
+      color: #2c2c2c;
+      text-decoration: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      background: #2c2c2c;
+      color: white;
+      border-color: #2c2c2c;
+    }
+
+    /* Formation Section */
+    .formation-section {
+      background: #f5f5f3;
+      padding: 3rem 0;
+    }
+
+    .formation-section .section-title {
+      color: #2c2c2c;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .formation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .formation-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .formation-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .formation-image {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7a7a7a;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 400;
+      overflow: hidden;
+    }
+
+    .formation-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .formation-content {
+      padding: 1.5rem;
+    }
+
+    .formation-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .formation-link {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c2c2c;
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span,
+    .contact-info a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 300;
+    }
+
+    .contact-info a:hover {
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .actualite-banner {
+        position: static;
+        margin: 2rem auto 0;
+        max-width: 100%;
+      }
+
+      header {
+        padding: 3rem 0 4rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.5rem;
+      }
+
+      .description {
+        font-size: 1.05rem;
+        padding: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .formation-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .storytelling {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .description {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header amélioré avec mise en valeur minimaliste -->
+  <header>
+    <div class="container">
+      <h1>Dufaur Richard - Portefolio</h1>
+      <p class="subtitle">Data Analyst Junior | Pédagogue | Analyse de données et visualisation</p>
+      <p class="description">
+        Après 8 ans en médiation culturelle, je me suis formé à l'analyse de données. 
+        11 projets professionnels réalisés : SQL, Python, Power BI, Tableau. 
+        Mon profil combine sens du relationnel, pédagogie et capacités d'analyses techniques.
+      </p>
+    </div>
+    
+    
+  </header>
+
+  <main>
+    
+    <!-- Articles & Analyses -->
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Actualités</h2>
+        </div>
+        
+        <div class="storytelling">
+          Ici, une section avec tous les projets data fraichement réalisés.
+        </div>
+
+        <div class="projects-grid" style="max-width: 860px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/phone1.png" alt="SalonTrack Application">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">SalonTrack : Suivi Clientèle</h3>
+              <p class="project-description">
+                Développement d'une application web pour analyser le comportement des visiteurs d'un musée et optimiser l'expérience client.
+              </p>
+              <a href="actualite.html" class="project-link">Lire l'article</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/image_CSV_Propre.png" alt="Nettoyage de Données">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Nettoyage de Données de Ventes</h3>
+              <p class="project-description">
+                Comment transformer 4 ans de données de caisse inutilisables en un dataset propre et exploitable avec des scripts Python.
+              </p>
+              <a href="salondethe_1.html" class="project-link">Lire l'article</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets Préférés -->
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Mes Projets Préférés</h2>
+        </div>
+        
+        <div class="storytelling">
+          Ces quatre projets révèlent ma polyvalence : maîtrise technique avec SQL, conscience éthique avec le RGPD, 
+          créativité avec l'analyse musicale, et vision business avec l'étude de marché. Ma formation en médiation 
+          culturelle me permet d'adapter mon analyse à chaque contexte et de rendre accessibles des insights complexes.
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p3.png" alt="Base immobilière SQL">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Base immobilière SQL</h3>
+              <p class="project-description">
+                Conception et création de bases de données relationnelles avec requêtes SQL complexes sur 50 000 biens immobiliers. 
+                Maîtrise des jointures multiples et analyse métier approfondie.
+              </p>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/3b486b64-70df-4cd8-ad87-5d4e842c0949" target="_blank" class="project-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p8.png" alt="Indicateurs égalité RGPD">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Indicateurs égalité RGPD</h3>
+              <p class="project-description">
+                Analyse des indicateurs de l'égalité femmes/hommes en respectant le RGPD. 
+                Intégration de données RH multi-sources et calcul d'indicateurs réglementaires complexes.
+              </p>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/f57007e1-72cc-4215-852c-977ace53bd12" target="_blank" class="project-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p10.png" alt="Dashboard Spotify">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Dashboard Spotify</h3>
+              <p class="project-description">
+                Création d'un tableau de bord sur l'évolution de la musique avec storytelling. 
+                Analyse des propriétés techniques musicales et visualisation créative.
+              </p>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/221586fc-212c-4e55-be3b-519828d55f78" target="_blank" class="project-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p11.png" alt="Étude de marché">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Étude de marché</h3>
+              <p class="project-description">
+                Analyse de données multidimensionnelles avec ACP et visualisation statistique avancée. 
+                Intelligence commerciale et synthèse stratégique.
+              </p>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/9482ddd3-dd6d-4ff2-a5be-8adb0774c929" target="_blank" class="project-link">Voir les livrables</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formation Data Analyst -->
+    <section class="formation-section">
+      <div class="container">
+        <h2 class="section-title">Formation Data Analyst</h2>
+        
+        <div class="formation-grid">
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p2.png" alt="Analyse ventes e-commerce">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 2 : Analyse e-commerce</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/75fcc331-5509-4384-b5ed-2cc15a3a80f2" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p3.png" alt="Requêtes SQL base de données">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 3 : SQL Database</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/a7224962-5ce7-47ab-81e4-a24054e95624" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p4.png" alt="Étude santé publique R Markdown">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 4 : Santé publique</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/7f1c6ceb-4980-43a1-82ef-e0a622c96262" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p6.png" alt="Gestion boutique optimisation">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 6 : Gestion boutique</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/609c1cee-9bf5-4621-9956-2f7ad681bfcf" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/P7.png" alt="Tableau Power BI dynamique">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 7 : Power BI Dashboard</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/2b21805e-5146-4d73-a496-d92bc441c97e" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/P9.png" alt="Corrélation séries temporelles">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 9 : Corrélation & séries</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/681d76cd-7938-455f-8bdc-8ad1352824d5" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p10.png" alt="Dashboard Spotify évolution musicale">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 10 : Dashboard Spotify</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/221586fc-212c-4e55-be3b-519828d55f78" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/p11.png" alt="ACP étude marché multi-dimensionnelle">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 11 : Étude de marché</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/9482ddd3-dd6d-4ff2-a5be-8adb0774c929" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-image">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/P12.png" alt="Machine Learning détection fraude">
+            </div>
+            <div class="formation-content">
+              <h3 class="formation-title">Projet 12 : Détection fraude</h3>
+              <a href="https://kdrive.infomaniak.com/app/share/1273994/1e03580c-1a71-41f1-8668-f72528c21248" target="_blank" class="project-link formation-link">Voir les livrables</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="contact-info">
+        <span>richard.dufaur@gmail.com</span> 
+        <a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank">LinkedIn</a>
+      </div>
+      <p>&copy; 2025 Richard Dufaur - Portfolio Data Analyst</p>
+    </div>
+  </footer>
+</body>
+</html>

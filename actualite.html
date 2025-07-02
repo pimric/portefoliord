@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalonTrack - Projet Data Analytics | Richard Dufaur</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #2c2c2c;
+      background-color: #faf9f7;
+    }
+
+    /* Header avec navigation retour */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Bouton retour */
+    .back-button {
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-button:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .back-button svg {
+      margin-right: 0.5rem;
+      width: 20px;
+      height: 20px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.95;
+      line-height: 1.8;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    /* Main Content */
+    main {
+      padding: 6rem 0;
+    }
+
+    .article-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Meta informations avec style amélioré */
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #6a6a6a;
+      font-weight: 400;
+    }
+
+    .meta-icon {
+      width: 18px;
+      height: 18px;
+      opacity: 0.7;
+    }
+
+    .meta-category {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* Sections de contenu avec design amélioré */
+    .content-section {
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 2px;
+    }
+
+    .content-text {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #4a4a4a;
+      margin-bottom: 3rem;
+      text-align: justify;
+      font-weight: 300;
+    }
+
+    .content-text p {
+      margin-bottom: 2rem;
+    }
+
+    .content-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Images avec design modernisé */
+    .image-section {
+      margin: 5rem 0;
+    }
+
+    .image-grid {
+      display: grid;
+      gap: 3rem;
+      margin: 4rem 0;
+    }
+
+    .image-grid.grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .image-grid.grid-1 {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 4rem auto;
+    }
+
+    .image-container {
+      position: relative;
+      group: hover;
+    }
+
+    .image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      background: white;
+      padding: 1rem;
+    }
+
+    .image-wrapper:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .image-wrapper:hover .image-caption {
+      opacity: 1;
+    }
+
+    /* Stats cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #667eea;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #6a6a6a;
+      font-weight: 400;
+    }
+
+    /* Section highlight modernisée */
+    .highlight-section {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+      padding: 4rem;
+      border-radius: 24px;
+      margin: 5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(102,126,234,0.1)"/></svg>');
+      opacity: 0.5;
+    }
+
+    .highlight-title {
+      font-size: 2rem;
+      color: #2c2c2c;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight-text {
+      font-size: 1.2rem;
+      color: #4a4a4a;
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Bouton d'action modernisé */
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 3rem;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .action-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    .action-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .process-step {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 auto 1rem;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 0.8rem;
+    }
+
+    .step-description {
+      font-size: 0.85rem;
+      color: #6a6a6a;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c2c2c;
+      color: white;
+      text-align: center;
+      padding: 4rem 0 3rem;
+      margin-top: 6rem;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span,
+    .contact-info a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #667eea;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Application des animations */
+    .back-button {
+      animation: fadeInLeft 0.8s ease-out;
+    }
+
+    h1 {
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .subtitle {
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .project-badge {
+      animation: scaleIn 0.8s ease-out 0.6s both;
+    }
+
+    .description {
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    .article-meta {
+      animation: fadeInUp 0.8s ease-out 1s both;
+    }
+
+    .content-section:nth-of-type(1) {
+      animation: fadeInUp 0.8s ease-out 1.2s both;
+    }
+
+    .image-section:nth-of-type(1) {
+      animation: scaleIn 0.8s ease-out 1.4s both;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 0 3rem;
+      }
+
+      .back-button {
+        position: static;
+        margin-bottom: 2rem;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .image-grid.grid-2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .article-content {
+        padding: 0 1.5rem;
+      }
+
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .highlight-section {
+        padding: 2.5rem 2rem;
+        margin: 3rem 0;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .content-text {
+        font-size: 1rem;
+      }
+
+      .highlight-title {
+        font-size: 1.6rem;
+      }
+
+      .highlight-text {
+        font-size: 1.1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .process-step {
+        padding: 1.5rem 1rem;
+      }
+
+      .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+
+      .step-title {
+        font-size: 0.95rem;
+      }
+
+      .step-description {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="back-button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Retour au portfolio
+      </a>
+      
+      <h1>SalonTrack</h1>
+      <p class="subtitle">Application de suivi clientèle pour le Musée Colette</p>
+      <div class="project-badge">Projet Data Analytics • Application Web</div>
+      <p class="description">
+        Développement d'une solution complète de collecte et d'analyse de données visiteurs, 
+        transformant les observations terrain en insights stratégiques pour optimiser l'expérience culturelle et les offres du salon de thé.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <article class="article-content">
+      
+      <!-- Meta informations -->
+      <div class="article-meta">
+        <div class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Juin 2025
+        </div>
+        <div class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="m22 21-3-3m-9-1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/>
+          </svg>
+          Richard Dufaur
+        </div>
+        <a href="#" class="meta-category">Data Analytics</a>
+        <div class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+          2 semaines de développement
+        </div>
+      </div>
+
+      <!-- Section Context & Challenge -->
+      <section class="content-section">
+        <div class="content-text">
+          <p>Lors de ma prise de poste au Musée Colette en tant que guide, j'avais envie de mettre en pratique ce que j'avais appris pendant ma formation. Je me suis donc intéressé aux différents moyens d'optimiser la gestion du public et développer le côté data du musée. Le seul suivi des visiteurs se limitait à la vente de billets, ne permettant pas d'analyser les profils, comportements et préférences de la clientèle.</p>
+          
+          <p>L'absence de gestion numérisée des clients, faute d'ordinateur ou de logiciels de caisse, m'a poussé vers la réalisation d'une application web. L'idée était de permettre aux salariés de l'accueil (c'est-à-dire moi-même) de saisir manuellement, à chaque nouvelle entrée dans le musée, les caractéristiques des visiteurs présents. Pour protéger l'accés à l'application et aux données, des comptes privés avec identifiants ont été créés.</p>
+          
+          <p>J'avais le champ libre pour réaliser plusieurs tests et voir quelle valeur ajoutée on pouvait développer. J'ai lancé l'application sur un temps de 2 mois.</p>
+        </div>
+      </section>
+
+      <!-- Process Steps -->
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-title">Analyse des besoins</div>
+          <div class="step-description">Identification des données manquantes et des contraintes terrain</div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-title">Design UX/UI</div>
+          <div class="step-description">Interface intuitive adaptée à un usage rapide par le personnel de l'accueil</div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-title">Développement</div>
+          <div class="step-description">Application web responsive avec base de données intégrée (Firebase)</div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-title">Analytics</div>
+          <div class="step-description">Dashboard et rapports d'analyse personnalisés</div>
+        </div>
+      </div>
+
+      <!-- Section Solution -->
+      <section class="content-section">
+        <div class="content-text">
+          <p>J'ai conçu SalonTrack, une application web qui permet de saisir rapidement les caractéristiques des visiteurs en 4 étapes simples. Le processus capture l'essentiel : heure d'arrivée, type de client, nombre de personnes, présence d'enfants, tranche d'âge dominant, contexte de visite. Le but principal était de pouvoir rapidement gérer à la fois l'entrée des visiteurs et la gestion de la billetterie.</p>
+        </div>
+      </section>
+
+      <!-- Images du processus de saisie -->
+      <div class="image-section">
+        <div class="image-grid grid-2">
+          <div class="image-container">
+            <div class="image-wrapper">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/phone4.png" alt="Interface de saisie - Étape 1">
+              <div class="image-caption">
+                Choix du moment de visite avec créneaux prédéfinis - Design optimisé pour un usage mobile
+              </div>
+            </div>
+          </div>
+          <div class="image-container">
+            <div class="image-wrapper">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/phone3.png" alt="Interface de saisie - Étape 2">
+              <div class="image-caption">
+                Sélection du type de client et nombre de personnes - Interface intuitive avec boutons larges pour une saisie rapide
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Résultats -->
+      <section class="content-section">
+        
+        <div class="content-text">
+          <p>En quelques semaines d'utilisation, l'application a permis de collecter des données précieuses sur la fréquentation du musée et j'ai commencé à analyser l'ensemble. Ici, vous verrez des données de démonstration.</p>
+        </div>
+      </section>
+
+      <!-- Stats principales -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">211</span>
+          <div class="stat-label">Visites analysées</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">557</span>
+          <div class="stat-label">Personnes recensées</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">47</span>
+          <div class="stat-label">Enfants accompagnants</div>
+        </div>
+      </div>
+
+      <!-- Dashboard principal -->
+      <div class="image-section">
+        <div class="image-grid grid-1">
+          <div class="image-container">
+            <div class="image-wrapper">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/phone2.png" alt="Dashboard avec métriques clés">
+              <div class="image-caption">
+                Dashboard principal affichant les métriques clés et le type de clientèle dominant
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Insights -->
+      <div class="highlight-section">
+        <h2 class="highlight-title">Insights Clés Découverts</h2>
+        <p class="highlight-text">
+          L'analyse révèle une clientèle majoritairement composée de couples (type dominant), 
+          avec une forte concentration sur les tranches d'âge 36-60 ans et 60+ ans. 
+          Les patterns de fréquentation montrent des variations significatives selon les moments de la journée, 
+          ouvrant de nouvelles perspectives pour l'optimisation des ressources, la personnalisation de l'accueil ou encore de nouvelles offres adaptées aux différents types de visiteurs.
+        </p>
+      </div>
+
+      <!-- Visualisations détaillées -->
+      <div class="image-section">
+        <div class="image-grid grid-2">
+          <div class="image-container">
+            <div class="image-wrapper">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/phone6.png" alt="Évolution journalière et répartition par âge">
+              <div class="image-caption">
+                Évolution temporelle et analyse démographique révélant les tendances de fréquentation
+              </div>
+            </div>
+          </div>
+          <div class="image-container">
+            <div class="image-wrapper">
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/phone1.png" alt="Répartition par moment et types de clients">
+              <div class="image-caption">
+                Graphiques de répartition par moment de visite et types de clients avec légendes interactives
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Conclusion -->
+      <section class="content-section">
+    
+        <div class="content-text">
+          <p>Ce projet illustre parfaitement ma démarche : partir d'un besoin terrain concret, développer une solution technique adaptée, puis transformer les données collectées en insights actionnables.</p>
+          
+          <p>Je suis très content de la mise en place de cette application web. J'ai pu me créer une expérience réelle de terrain et gagner en confiance dans mes compétences professionnelles. Vous trouverez <a href="salondethe_1.html">ici</a> une démonstration du travail que j'ai réalisé cette fois-ci sur les données du salon de thé du musée.</p>
+        </div>
+        
+        <div style="text-align: center;">
+          <a href="index.html" class="action-button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <!-- Mallette principale -->
+  <rect x="3" y="8" width="18" height="12" rx="2" ry="2"/>
+  <!-- Poignée -->
+  <path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+  <!-- Documents qui dépassent -->
+  <rect x="6" y="6" width="3" height="4" fill="none"/>
+  <rect x="15" y="6" width="3" height="4" fill="none"/>
+  <!-- Lignes de fermeture -->
+  <line x1="3" y1="14" x2="21" y2="14"/>
+</svg>
+            Allez au portfolio
+          </a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="contact-info">
+        <span>richard.dufaur@gmail.com</span> 
+        <a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank">LinkedIn</a>
+        <span>Data Analyst • Médiateur Culturel</span>
+      </div>
+      <p>&copy; 2025 Richard Dufaur - Portfolio Data Analyst</p>
+    </div>
+  </footer>
+
+  <script>
+    // Gestion du clic sur les images pour un effet lightbox simple
+    document.querySelectorAll('.image-wrapper').forEach(wrapper => {
+      wrapper.addEventListener('click', function() {
+        // Ici vous pourrez ajouter une lightbox ou un zoom
+        const img = this.querySelector('img');
+        console.log('Image cliquée:', img.alt);
+      });
+    });
+
+    // Animation au scroll pour les éléments
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Ajout d'une animation spéciale pour les cartes statistiques
+          if (entry.target.classList.contains('stat-card')) {
+            setTimeout(() => {
+              animateNumber(entry.target);
+            }, 200);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Animation des nombres dans les cartes statistiques
+    function animateNumber(card) {
+      const numberElement = card.querySelector('.stat-number');
+      const finalNumber = parseInt(numberElement.textContent);
+      let currentNumber = 0;
+      const increment = finalNumber / 30; // 30 frames d'animation
+      
+      const timer = setInterval(() => {
+        currentNumber += increment;
+        if (currentNumber >= finalNumber) {
+          currentNumber = finalNumber;
+          clearInterval(timer);
+        }
+        numberElement.textContent = Math.floor(currentNumber);
+      }, 50);
+    }
+
+    // Parallax effect pour le header
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const header = document.querySelector('header');
+      const headerHeight = header.offsetHeight;
+      
+      if (scrolled < headerHeight) {
+        const parallaxSpeed = scrolled * 0.5;
+        header.style.transform = `translateY(${parallaxSpeed}px)`;
+      }
+    });
+
+    // Smooth scroll pour les liens internes
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Observer les éléments pour les animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.stat-card, .process-step, .image-container, .highlight-section');
+      animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(el);
+      });
+    });
+
+    // Ajout de la classe visible pour déclencher les animations
+    const style = document.createElement('style');
+    style.textContent = `
+      .visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      
+      .stat-card.visible {
+        transition-delay: var(--delay, 0s);
+      }
+      
+      .process-step.visible {
+        transition-delay: var(--delay, 0s);
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Ajout de délais échelonnés pour les cartes
+    document.querySelectorAll('.stat-card').forEach((card, index) => {
+      card.style.setProperty('--delay', `${index * 0.1}s`);
+    });
+
+    document.querySelectorAll('.process-step').forEach((step, index) => {
+      step.style.setProperty('--delay', `${index * 0.15}s`);
+    });
+
+    // Gestion du thème sombre (optionnel)
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    if (prefersDark.matches) {
+      document.body.classList.add('dark-theme');
+    }
+
+    // Lazy loading pour les images
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+              imageObserver.unobserve(img);
+            }
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // Gestion des erreurs d'images
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('error', function() {
+        this.style.background = 'linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)';
+        this.style.display = 'flex';
+        this.style.alignItems = 'center';
+        this.style.justifyContent = 'center';
+        this.style.color = '#999';
+        this.style.fontSize = '0.9rem';
+        this.alt = 'Image en cours de chargement...';
+      });
+    });
+
+    // Performance: Debounce pour le scroll
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Application du debounce au parallax
+    const debouncedParallax = debounce(() => {
+      const scrolled = window.pageYOffset;
+      const header = document.querySelector('header');
+      const headerHeight = header.offsetHeight;
+      
+      if (scrolled < headerHeight) {
+        const parallaxSpeed = scrolled * 0.5;
+        header.style.transform = `translateY(${parallaxSpeed}px)`;
+      }
+    }, 10);
+
+    window.addEventListener('scroll', debouncedParallax);
+  </script>
+</body>
+</html>

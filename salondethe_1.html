@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nettoyage de Données - Salon de Thé | Richard Dufaur</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #2c2c2c;
+      background-color: #faf9f7;
+    }
+
+    /* Header avec navigation retour */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Bouton retour */
+    .back-button {
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-button:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .back-button svg {
+      margin-right: 0.5rem;
+      width: 20px;
+      height: 20px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.95;
+      line-height: 1.8;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    /* Main Content */
+    main {
+      padding: 6rem 0;
+    }
+
+    .article-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Meta informations avec style amélioré */
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #6a6a6a;
+      font-weight: 400;
+    }
+
+    .meta-icon {
+      width: 18px;
+      height: 18px;
+      opacity: 0.7;
+    }
+
+    .meta-category {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* Sections de contenu avec design amélioré */
+    .content-section {
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 2px;
+    }
+
+    .content-text {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #4a4a4a;
+      margin-bottom: 3rem;
+      text-align: justify;
+      font-weight: 300;
+    }
+
+    .content-text p {
+      margin-bottom: 2rem;
+    }
+
+    .content-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Encarts pour captures d'écran */
+    .screenshot-placeholder {
+      margin: 4rem 0;
+      padding: 3rem;
+      border: 2px dashed #e0e0e0;
+      border-radius: 16px;
+      text-align: center;
+      background: #f8f9fa;
+      color: #6a6a6a;
+      font-size: 1rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .screenshot-placeholder:hover {
+      border-color: #667eea;
+      background: #fff;
+    }
+
+    .screenshot-placeholder::before {
+      content: '📸';
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .screenshot-dimensions {
+      background: rgba(102, 126, 234, 0.1);
+      color: #764ba2;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    /* Images avec design modernisé */
+    .image-section {
+      margin: 5rem 0;
+    }
+
+    .image-grid {
+      display: grid;
+      gap: 3rem;
+      margin: 4rem 0;
+    }
+
+    .image-grid.grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .image-grid.grid-1 {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 4rem auto;
+    }
+
+    /* Stats cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #667eea;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #6a6a6a;
+      font-weight: 400;
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .process-step {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 auto 1rem;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 0.8rem;
+    }
+
+    .step-description {
+      font-size: 0.85rem;
+      color: #6a6a6a;
+      line-height: 1.5;
+    }
+
+    /* Section highlight modernisée */
+    .highlight-section {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+      padding: 4rem;
+      border-radius: 24px;
+      margin: 5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(102,126,234,0.1)"/></svg>');
+      opacity: 0.5;
+    }
+
+    .highlight-title {
+      font-size: 2rem;
+      color: #2c2c2c;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight-text {
+      font-size: 1.2rem;
+      color: #4a4a4a;
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Bouton d'action modernisé */
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 3rem;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .action-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    .action-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Code blocks */
+    .code-section {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 3rem 0;
+      border-left: 4px solid #667eea;
+      position: relative;
+    }
+
+    .code-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .code-title::before {
+      content: '🐍';
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c2c2c;
+      color: white;
+      text-align: center;
+      padding: 4rem 0 3rem;
+      margin-top: 6rem;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info span,
+    .contact-info a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #667eea;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Application des animations */
+    .back-button {
+      animation: fadeInLeft 0.8s ease-out;
+    }
+
+    h1 {
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .subtitle {
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .project-badge {
+      animation: scaleIn 0.8s ease-out 0.6s both;
+    }
+
+    .description {
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 0 3rem;
+      }
+
+      .back-button {
+        position: static;
+        margin-bottom: 2rem;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .article-content {
+        padding: 0 1.5rem;
+      }
+
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .highlight-section {
+        padding: 2.5rem 2rem;
+        margin: 3rem 0;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .content-text {
+        font-size: 1rem;
+      }
+
+      .highlight-title {
+        font-size: 1.6rem;
+      }
+
+      .highlight-text {
+        font-size: 1.1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="back-button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Retour au portfolio
+      </a>
+      
+      <h1>Nettoyage de Données</h1>
+      <p class="subtitle">Transformation des données de vente du salon de thé</p>
+      <div class="project-badge">Data Engineering • Python • Pandas</div>
+      <p class="description">
+        Projet de nettoyage et standardisation de 4 années de données de ventes issues du salon de thé du musée Colette.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <article class="article-content">
+      
+      <!-- Meta informations -->
+      <div class="article-meta">
+        <div class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Juin 2025
+        </div>
+        <div class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+          </svg>
+          Richard Dufaur
+        </div>
+        <a href="#" class="meta-category">Data Engineering</a>
+        <div class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+          2 semaines de développement
+        </div>
+      </div>
+
+      <!-- Section Context & Challenge -->
+      <section class="content-section">
+        <div class="content-text">
+          <p>Quand j'ai commencé à travailler en parallèle sur SalonTrack et que j'ai commencé à regarder les différents fichiers de caisses que j'avais extrait, je me suis vite rendu compte qu'il y avait un problème. Les 4 ans de données de ventes (2021-2024) directement de la caisse sur clé USB, en format XLSX étaient complètement inutilisables en l'état.</p>
+          
+          <p>Le système de caisse utilisait un format d'export désuet avec une structure de données super bizarre : les informations étaient éparpillées dans des cellules spécifiques (F2 pour la date, E31 pour les codes produits, G31 pour les noms, T31 pour les quantités, X31 pour le chiffre d'affaires), sans aucune logique de tableau structuré.</p>
+          
+          <p>Avec 26 documents à traiter, impossible de faire ça à la main. Il fallait que je développe une solution automatisée pour nettoyer et standardiser l'ensemble de ces données. Let's code it.</p>
+        </div>
+      </section>
+
+      <!-- Stats du projet -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">26</span>
+          <div class="stat-label">Fichiers XLSX traités</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">4</span>
+          <div class="stat-label">Années de données</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <div class="stat-label">Scripts Python développés</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <div class="stat-label">Taux de réussite</div>
+        </div>
+      </div>
+
+      <!-- Screenshot du fichier original -->
+      <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/xlxs_flou.png" alt="Structure du fichier XLSX original" style="width: 100%; max-width: 800px; height: auto; margin: 4rem auto; display: block; border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);">
+
+      <!-- Process Steps -->
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-title">Conversion XLSX → CSV</div>
+          <div class="step-description">Script principal pour extraire les données des cellules spécifiques et les restructurer</div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-title">Nettoyage des données</div>
+          <div class="step-description">Suppression des caractères spéciaux et gestion des valeurs manquantes</div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-title">Correction des formats</div>
+          <div class="step-description">Standardisation des noms de mois et des formats de dates</div>
+        </div>
+      </div>
+
+      <!-- Section Solution technique -->
+      <section class="content-section">
+        <div class="content-text">
+          <p>J'ai développé trois scripts Python complémentaires pour automatiser complètement ce processus de nettoyage. Le premier script (xlsx-csv.py) s'occupait de la conversion en extrayant les données des cellules spécifiques et en les restructurant dans un format CSV propre avec les colonnes : Code, Produit, Quantité, CA, Année, Mois.</p>
+          
+          <p>Le deuxième script (correction.py) était conçu pour nettoyer les données en supprimant tous les caractères spéciaux problématiques (comme les symboles euro mal encodés) et en gérant les valeurs manquantes avec une stratégie de forward fill.</p>
+          
+          <p>Enfin, le troisième script (aout.py) corrigeait un problème récurrent : le nom du mois d'août qui était parfois encodé comme "aot" ou "Aout" à cause de problèmes d'encodage. Un détail qui paraît anodin mais qui pouvait complètement fausser les analyses temporelles !</p>
+        </div>
+      </section>
+
+      <!-- Screenshot du code Python -->
+      <div class="code-section">
+        <div class="code-title">Script principal de conversion (xlsx-csv.py)</div>
+        <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/xlsx-csv.png" alt="Code Python du script de conversion" style="width: 100%; max-width: 1000px; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin: 1rem 0;">
+        <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px;">
+          <p style="margin: 0; color: #6a6a6a; font-size: 0.9rem;">Logique d'extraction des cellules spécifiques (F2, E31, G31, T31, X31) et restructuration en format CSV standard</p>
+        </div>
+      </div>
+
+      <div class="code-section">
+        <div class="code-title">Script de nettoyage (correction.py)</div>
+        <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/correction.png" alt="Code Python du script de nettoyage" style="width: 100%; max-width: 1000px; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin: 1rem 0;">
+        <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: rgba(102, 126, 234, 0.05); border-radius: 12px;">
+          <p style="margin: 0; color: #6a6a6a; font-size: 0.9rem;">Fonctions de nettoyage avec regex pour supprimer les caractères spéciaux et gestion des valeurs manquantes</p>
+        </div>
+      </div>
+
+      <!-- Avant/Après -->
+      <div class="image-section">
+        <div class="image-grid grid-2">
+          <div style="text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/xlxs_flou.png" alt="AVANT : Données brutes" style="width: 100%; max-width: 500px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1.5rem; background: #f8f9fa; border-radius: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+              <strong style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 0.8rem;">AVANT : Données brutes</strong>
+              <p style="margin: 0; color: #6a6a6a; font-size: 0.95rem; line-height: 1.5;">Exemple de fichier XLSX avec structure désuète et données non structurées</p>
+            </div>
+          </div>
+          <div style="text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/image_CSV_Propre.png" alt="APRÈS : CSV propre" style="width: 100%; max-width: 500px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1.5rem; background: #f8f9fa; border-radius: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+              <strong style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 0.8rem;">APRÈS : CSV propre</strong>
+              <p style="margin: 0; color: #6a6a6a; font-size: 0.95rem; line-height: 1.5;">Même données transformées en CSV structuré avec colonnes clairement définies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Résultats -->
+      <div class="highlight-section">
+        <h2 class="highlight-title">Résultats du Nettoyage</h2>
+        <p class="highlight-text">
+          Les trois scripts ont permis de traiter automatiquement l'ensemble des 26 fichiers sans aucune intervention manuelle. 
+          Toutes les données sont maintenant dans un format standardisé et exploitable, prêtes pour l'analyse. 
+          Le taux de réussite a été de 100% - aucun fichier n'a été perdu ou corrompu pendant le processus.
+        </p>
+      </div>
+
+      <!-- Screenshot des résultats -->
+      <img src="/Users/riclamalice/kDrive2/Linkedin/portefolio/imageprojet/dossier_csv_propre.png" alt="Dossier final avec tous les CSV nettoyés" style="width: 100%; max-width: 500px; height: auto; margin: 4rem auto; display: block; border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);">
+      
+
+      <!-- Section Conclusion -->
+      <section class="content-section">
+        <div class="content-text">
+          <p>Ce projet de nettoyage était indispensable pour pouvoir faire des analyses sérieuses sur les données historiques du salon de thé. Sans cette étape de data engineering, impossible d'exploiter ces 4 années d'informations.</p>
+          
+          <p>J'ai développé les scripts en parallèle de SalonTrack, les deux projets se complétant parfaitement : d'un côté la collecte de nouvelles données propres lié au profil des visiteurs du musée, de l'autre la récupération et le nettoyage de l'historique des ventes du salon de thé. C'était exactement le genre de défi technique que j'adore : transformer des données "impossibles" en datasets exploitables avec du code Python bien pensé.</p>
+          
+          <p>Maintenant que j'ai des données propres et structurées, je peux passer à la phase d'analyse. Ça, ce sera le sujet d'un prochain article !</p>
+        </div>
+        
+        <div style="text-align: center;">
+          <a href="index.html" class="action-button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="8" width="18" height="12" rx="2" ry="2"/>
+              <path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              <rect x="6" y="6" width="3" height="4" fill="none"/>
+              <rect x="15" y="6" width="3" height="4" fill="none"/>
+              <line x1="3" y1="14" x2="21" y2="14"/>
+            </svg>
+            Retour au portfolio
+          </a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="contact-info">
+        <span>richard.dufaur@gmail.com</span> 
+        <a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank">LinkedIn</a>
+        <span>Data Analyst • Médiateur Culturel</span>
+      </div>
+      <p>&copy; 2025 Richard Dufaur - Portfolio Data Analyst</p>
+    </div>
+  </footer>
+
+  <script>
+    // Animation au scroll pour les éléments
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Ajout d'une animation spéciale pour les cartes statistiques
+          if (entry.target.classList.contains('stat-card')) {
+            setTimeout(() => {
+              animateNumber(entry.target);
+            }, 200);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Animation des nombres dans les cartes statistiques
+    function animateNumber(card) {
+      const numberElement = card.querySelector('.stat-number');
+      const finalNumber = parseInt(numberElement.textContent.replace('%', ''));
+      let currentNumber = 0;
+      const increment = finalNumber / 30; // 30 frames d'animation
+      
+      const timer = setInterval(() => {
+        currentNumber += increment;
+        if (currentNumber >= finalNumber) {
+          currentNumber = finalNumber;
+          clearInterval(timer);
+        }
+        const displayNumber = Math.floor(currentNumber);
+        numberElement.textContent = numberElement.textContent.includes('%') ? displayNumber + '%' : displayNumber;
+      }, 50);
+    }
+
+    // Parallax effect pour le header
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const header = document.querySelector('header');
+      const headerHeight = header.offsetHeight;
+      
+      if (scrolled < headerHeight) {
+        const parallaxSpeed = scrolled * 0.5;
+        header.style.transform = `translateY(${parallaxSpeed}px)`;
+      }
+    });
+
+    // Observer les éléments pour les animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.stat-card, .process-step, .screenshot-placeholder, .highlight-section');
+      animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(el);
+      });
+    });
+
+    // Ajout de la classe visible pour déclencher les animations
+    const style = document.createElement('style');
+    style.textContent = `
+      .visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      
+      .stat-card.visible {
+        transition-delay: var(--delay, 0s);
+      }
+      
+      .process-step.visible {
+        transition-delay: var(--delay, 0s);
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Ajout de délais échelonnés pour les cartes
+    document.querySelectorAll('.stat-card').forEach((card, index) => {
+      card.style.setProperty('--delay', `${index * 0.1}s`);
+    });
+
+    document.querySelectorAll('.process-step').forEach((step, index) => {
+      step.style.setProperty('--delay', `${index * 0.15}s`);
+    });
+
+    // Performance: Debounce pour le scroll
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Application du debounce au parallax
+    const debouncedParallax = debounce(() => {
+      const scrolled = window.pageYOffset;
+      const header = document.querySelector('header');
+      const headerHeight = header.offsetHeight;
+      
+      if (scrolled < headerHeight) {
+        const parallaxSpeed = scrolled * 0.5;
+        header.style.transform = `translateY(${parallaxSpeed}px)`;
+      }
+    }, 10);
+
+    window.addEventListener('scroll', debouncedParallax);
+  </script>
+</body>
+</html>
