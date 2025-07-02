@@ -653,7 +653,7 @@
       <!-- Section Context & Challenge -->
       <section class="content-section">
         <div class="content-text">
-          <p>Quand j'ai commencé à travailler en parallèle sur SalonTrack et que j'ai commencé à regarder les différents fichiers de caisses que j'avais extrait, je me suis vite rendu compte qu'il y avait un problème. Les 4 ans de données de ventes (2021-2024) directement de la caisse sur clé USB, en format XLSX étaient complètement inutilisables en l'état.</p>
+          <p>Lorsque j'ai commencé à travailler sur SalonTrack, j'ai commencé à regarder les différents fichiers de vente du salon de thé. Je me suis vite rendu compte qu'il y avait un problème. Les 4 ans de données de ventes (2021-2024) directement de la caisse sur clé USB, en format XLSX étaient complètement inutilisables en l'état.</p>
           
           <p>Le système de caisse utilisait un format d'export désuet avec une structure de données super bizarre : les informations étaient éparpillées dans des cellules spécifiques (F2 pour la date, E31 pour les codes produits, G31 pour les noms, T31 pour les quantités, X31 pour le chiffre d'affaires), sans aucune logique de tableau structuré.</p>
           
@@ -706,11 +706,11 @@
       <!-- Section Solution technique -->
       <section class="content-section">
         <div class="content-text">
-          <p>J'ai développé trois scripts Python complémentaires pour automatiser complètement ce processus de nettoyage. Le premier script (xlsx-csv.py) s'occupait de la conversion en extrayant les données des cellules spécifiques et en les restructurant dans un format CSV propre avec les colonnes : Code, Produit, Quantité, CA, Année, Mois.</p>
+          <p>J'ai développé trois scripts Python complémentaires pour automatiser le nettoyage. Le premier script (xlsx-csv.py) s'occupait de la conversion en extrayant les données des cellules spécifiques et en les restructurant dans un format CSV propre avec les colonnes : Code, Produit, Quantité, CA, Année, Mois.</p>
           
           <p>Le deuxième script (correction.py) était conçu pour nettoyer les données en supprimant tous les caractères spéciaux problématiques (comme les symboles euro mal encodés) et en gérant les valeurs manquantes avec une stratégie de forward fill.</p>
           
-          <p>Enfin, le troisième script (aout.py) corrigeait un problème récurrent : le nom du mois d'août qui était parfois encodé comme "aot" ou "Aout" à cause de problèmes d'encodage. Un détail qui paraît anodin mais qui pouvait complètement fausser les analyses temporelles !</p>
+          <p>Enfin, le troisième script (aout.py) corrigeait un problème récurrent : le nom du mois d'août qui était parfois encodé comme "aot" ou "Aout" à cause de problèmes d'encodage.</p>
         </div>
       </section>
 
