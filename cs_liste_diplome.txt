@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title></title>
+    <!-- Application Properties -->
+    <meta http-equiv="X-UA-Compatible" content="chrome=1;IE=EDGE"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, 
+maximum-scale=2.0">
+
+    <link rel="canonical" 
+href="https://eiffage.wd3.myworkdayjobs.com/fr-FR/Eiffage_Careers/job/Data-Analyst-pour-un-fournisseur-d-lectricit-verte-F-H_JR2025-3182" 
+/>
+
+    <!-- OpenGraph Tags -->
+    <meta name="title" property="og:title" content="Data Analyst pour un 
+fournisseur d&#39;électricité verte F/H">
+    <meta name="description" property="og:description" content="Le 
+savoir-faire d’Eiffage Concessions consiste à regrouper toutes les 
+expertises du Groupe pour proposer aux acteurs publics une offre globale. 
+Avec nos partenaires, nous partageons une ambition commune : apporter 
+confort et satisfaction aux utilisateurs finaux. Energéticien vert et 
+acteur pionnier du solaire photovoltaïque en France, le groupe SUN’R avec 
+ses cinq filiales (Sun’Agri, Sun’R Power, Sun’R International, Sun’Hydro 
+et Volterres) développe, finance, construit et exploite depuis plus de 10 
+ans des centrales photovoltaïques en France. Notre équipe de plus de 200 
+collaborateurs œuvre au quotidien pour contribuer à l’émergence 
+d’innovations dédiées à l’accélération des transitions énergétique et 
+agricole. L’annonce fin 2022 de son rapprochement avec Eiffage consolide 
+les ambitions du groupe Sun’R sur tous ses métiers, en France et à 
+l’international. Volterres, filiale à 100% du groupe Sun’R, propose depuis 
+avril 2019 une offre de fourniture verte et locale à destination des 
+entreprises et collectivités locales, grâce à un système de traçabilité 
+innovant. Au service des territoires et de partenaires producteurs 
+indépendants d’électricité souhaitant valoriser en circuit court leur 
+production renouvelable, Volterres propose à ses clients et partenaires 
+des services et une offre de fourniture d’électricité à la fois 
+compétitive et qualitative, sans équivalent sur le marché. Dans le cadre 
+de la transformation digitale de notre entreprise, nous recherchons un(e) 
+Data Analyst en CDI pour rejoindre notre équipe des opérations. Ce poste a 
+un impact important sur l&#39;ensemble de l&#39;entreprise, contribuant à 
+l&#39;amélioration de la performance et de l&#39;efficacité de toutes nos 
+équipes. Vous jouerez un rôle clé dans l&#39;exploitation, 
+l&#39;amélioration et l&#39;automatisation du suivi des données de 
+consommation, de production et de facturation. Rattaché(e) au Responsable 
+Data, vous aurez pour principales missions : Analyser, interpréter et 
+automatiser le suivi des données de consommation, de production et de 
+facturation pour identifier les opportunités d&#39;amélioration et 
+minimiser les erreurs. Améliorer le processus global du système de 
+facturation et de suivi des clients. Créer et maintenir des tableaux de 
+bord sur Power BI pour suivre et améliorer la performance opérationnelle. 
+Utiliser SQL pour interagir avec les bases de données et extraire les 
+informations pertinentes. Améliorer et automatiser les outils existants de 
+suivi des données et développer de nouvelles solutions pour optimiser les 
+opérations. Collaborer avec toutes les équipes pour comprendre leurs 
+besoins en matière de données et aider à résoudre les problèmes liés aux 
+données. Participer à la mise en place de systèmes de gestion des données 
+et de processus d&#39;amélioration continue. Compétences en programmation, 
+notamment en SQL. Familiarité avec Power BI ou autre outil pour la 
+création de tableaux de bord. Fortes compétences en analyse et résolution 
+de problèmes, avec un souci du détail. Excellentes compétences en 
+communication et en travail d&#39;équipe. Une expérience préalable ou une 
+connaissance du domaine de l&#39;énergie serait un plus. Connaissance de 
+Java serait appréciée. Avec des chantiers en France et à l’international, 
+Eiffage est l’un des leaders européens du BTP et des concessions. Les 76 
+000 collaborateurs de notre Groupe exercent leur activité à travers les 
+métiers de la construction, de l’immobilier, de l&#39;aménagement, du 
+génie civil, du métal, de la route, de l’énergie systèmes et des 
+concessions. Dans un contexte où le dérèglement climatique est devenu une 
+réalité, où la ville et les infrastructures durables et résilientes sont 
+recherchées partout dans le monde, Eiffage met en œuvre la construction 
+bas carbone à grande échelle et se saisit de toutes les opportunités 
+d’innovation dans ce domaine pour faire la différence au service d’un 
+développement durable partagé. Notre ambition est de construire un avenir 
+à taille humaine en faisant émerger la ville durable, en reliant les 
+territoires et en mettant en œuvre des solutions et des services toujours 
+plus innovants pour répondre aux besoins des populations, au plus près des 
+territoires. CV Catcher Importez votre CV et découvrez en 1 clic toutes 
+les annonces qui vous correspondent Matchez votre CV Culture et valeurs 
+Développez votre carrière Alternances, stages et V.I.E Visionner la vidéo 
+Vous ne trouvez pas l&#39;emploi de vos rêves ? Déposez votre CV en 
+cliquant sur le lien ci-dessous Candidatez">
+    <meta name="image" property="og:image" 
+content="https://eiffage.wd3.myworkdayjobs.com/fr-FR/Eiffage_Careers/assets/logo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" 
+content="https://eiffage.wd3.myworkdayjobs.com/fr-FR/Eiffage_Careers/job/Lyon/Data-Analyst-pour-un-fournisseur-d-lectricit-verte-F-H_JR2025-3182/apply">
+
+
+    <!-- SEO Tags -->
+    
+
+    <script type="application/ld+json">
+        {
+  "jobLocation" : {
+    "@type" : "Place",
+    "address" : {
+      "@type" : "PostalAddress",
+      "addressCountry" : "France",
+      "addressLocality" : "FR - HO - VOLTERRES LYON - 78974076800039"
+    }
+  },
+  "hiringOrganization" : {
+    "name" : "FR_2942 VOLTERRES",
+    "@type" : "Organization",
+    "sameAs" : ""
+  },
+  "identifier" : {
+    "name" : "Data Analyst pour un fournisseur d'électricité verte F/H",
+    "@type" : "PropertyValue",
+    "value" : "JR2025-3182"
+  },
+  "datePosted" : "2025-06-17",
+  "validThrough" : "2025-07-17",
+  "employmentType" : "OTHER",
+  "title" : "Data Analyst pour un fournisseur d'électricité verte F/H",
+  "description" : "Le savoir-faire d’Eiffage Concessions consiste à 
+regrouper toutes les expertises du Groupe pour proposer aux acteurs 
+publics une offre globale. Avec nos partenaires, nous partageons une 
+ambition commune : apporter confort et satisfaction aux utilisateurs 
+finaux. Energéticien vert et acteur pionnier du solaire photovoltaïque en 
+France, le groupe SUN’R avec ses cinq filiales (Sun’Agri, Sun’R Power, 
+Sun’R International, Sun’Hydro et Volterres) développe, finance, construit 
+et exploite depuis plus de 10 ans des centrales photovoltaïques en France. 
+Notre équipe de plus de 200 collaborateurs œuvre au quotidien pour 
+contribuer à l’émergence d’innovations dédiées à l’accélération des 
+transitions énergétique et agricole. L’annonce fin 2022 de son 
+rapprochement avec Eiffage consolide les ambitions du groupe Sun’R sur 
+tous ses métiers, en France et à l’international. Volterres, filiale à 
+100% du groupe Sun’R, propose depuis avril 2019 une offre de fourniture 
+verte et locale à destination des entreprises et collectivités locales, 
+grâce à un système de traçabilité innovant. Au service des territoires et 
+de partenaires producteurs indépendants d’électricité souhaitant valoriser 
+en circuit court leur production renouvelable, Volterres propose à ses 
+clients et partenaires des services et une offre de fourniture 
+d’électricité à la fois compétitive et qualitative, sans équivalent sur le 
+marché. Dans le cadre de la transformation digitale de notre entreprise, 
+nous recherchons un(e) Data Analyst en CDI pour rejoindre notre équipe des 
+opérations. Ce poste a un impact important sur l'ensemble de l'entreprise, 
+contribuant à l'amélioration de la performance et de l'efficacité de 
+toutes nos équipes. Vous jouerez un rôle clé dans l'exploitation, 
+l'amélioration et l'automatisation du suivi des données de consommation, 
+de production et de facturation. Rattaché(e) au Responsable Data, vous 
+aurez pour principales missions : Analyser, interpréter et automatiser le 
+suivi des données de consommation, de production et de facturation pour 
+identifier les opportunités d'amélioration et minimiser les erreurs. 
+Améliorer le processus global du système de facturation et de suivi des 
+clients. Créer et maintenir des tableaux de bord sur Power BI pour suivre 
+et améliorer la performance opérationnelle. Utiliser SQL pour interagir 
+avec les bases de données et extraire les informations pertinentes. 
+Améliorer et automatiser les outils existants de suivi des données et 
+développer de nouvelles solutions pour optimiser les opérations. 
+Collaborer avec toutes les équipes pour comprendre leurs besoins en 
+matière de données et aider à résoudre les problèmes liés aux données. 
+Participer à la mise en place de systèmes de gestion des données et de 
+processus d'amélioration continue. Compétences en programmation, notamment 
+en SQL. Familiarité avec Power BI ou autre outil pour la création de 
+tableaux de bord. Fortes compétences en analyse et résolution de 
+problèmes, avec un souci du détail. Excellentes compétences en 
+communication et en travail d'équipe. Une expérience préalable ou une 
+connaissance du domaine de l'énergie serait un plus. Connaissance de Java 
+serait appréciée. Avec des chantiers en France et à l’international, 
+Eiffage est l’un des leaders européens du BTP et des concessions. Les 76 
+000 collaborateurs de notre Groupe exercent leur activité à travers les 
+métiers de la construction, de l’immobilier, de l'aménagement, du génie 
+civil, du métal, de la route, de l’énergie systèmes et des concessions. 
+Dans un contexte où le dérèglement climatique est devenu une réalité, où 
+la ville et les infrastructures durables et résilientes sont recherchées 
+partout dans le monde, Eiffage met en œuvre la construction bas carbone à 
+grande échelle et se saisit de toutes les opportunités d’innovation dans 
+ce domaine pour faire la différence au service d’un développement durable 
+partagé. Notre ambition est de construire un avenir à taille humaine en 
+faisant émerger la ville durable, en reliant les territoires et en mettant 
+en œuvre des solutions et des services toujours plus innovants pour 
+répondre aux besoins des populations, au plus près des territoires. CV 
+Catcher Importez votre CV et découvrez en 1 clic toutes les annonces qui 
+vous correspondent Matchez votre CV Culture et valeurs Développez votre 
+carrière Alternances, stages et V.I.E Visionner la vidéo Vous ne trouvez 
+pas l'emploi de vos rêves ? Déposez votre CV en cliquant sur le lien 
+ci-dessous Candidatez",
+  "@context" : "http://schema.org",
+  "@type" : "JobPosting"
+}
+    </script>
+
+    <script type="text/javascript">
+        window.workday = window.workday || {
+            tenant: "eiffage",
+            siteId: "Eiffage_Careers",
+            locale: "fr-FR",
+            requestLocale: "fr-FR",
+            supportedLocales:["en-US","fr-FR"],
+            clientOrigin: "https://wd3.myworkday.com",
+            language: null,
+            cdnEndpoint: "wd3.myworkdaycdn.com",
+            useCdn: true,
+            maintenancePageUrl: 
+"https://wd3.myworkday.com/wday/drs/outage?t=eiffage&s=Eiffage_Careers",
+            token: "dd033c20-28c9-44ea-96c1-f8d5e7085548",
+            environment: "PROD",
+            isExternal: true,
+            appName: "cxs",
+            postingAvailable: true,
+            allowedFileTypes: [],
+            blockedFileTypes: 
+["bas","bat","com","exe","js","lnk","ocx","reg","sct","sys","vb","vbe","vbs","wsc","wsf","wsh"],
+            toggles: 
+["b9739002c86510002015dea9402c0000","812c4a153c711000151c5ca11e310000","0d6ebcfdc39a10001bc8f95b3aac0000","43b4d9d7cb8e10000a703bad20420000","532bfa92863b100019ab08f4c04b0000","dac26076be8510002347bab78d5a0000","badb3f02bef210000e20c92ac0260000","e466d0b066ff10000c3605be74f10000","292c4bafc34210001a28e93bebcf0000","e42e6d1d2524100010042528c43e0000","f45271d06fcd10001b2d8737149f0000","b8ce26d67ff9100014ec4b645b840000","6edcf8e6cd7f10001b1f86c9e3ef0000","a969fb8f4cfd10000ad4ba96cd820000","466d58ad03691000185ddce1282a0000","75ecc5f3792b1000131d51fc86ab0000","bc814e895c1d10000d1fd3354f4b0000","258d1be19f40100013265e0888c90000","cdbf5f0a33931000115a15a023a40000","20ccbc6c60701000fafdc3dce74a0000","16593e8eb6ca10000935b558a50a0000","e1733537b151100014e202818e520000","db3fa9600f8810001798c5a6d2dd0000","1502396ba0ef1000103c22d48c570000","9c10810cc40b1000460d082ad8de0000","9c10810cc40b100045f3593f47b50000","86e121d8686e100037e6d4083cb50000","6658d90adc4f100014da5605f7080000","10f7a56eb11c100024a6d65b625a0000","e1fdcb592a641000290e46a2b10f0000"],
+            branding: 
+{"formFields":{"color":"#6D6F72","textColor":"#000000"},"progressBar":{"color":"#FF0000"},"button":{"primary":{"color":"#000000","borderColor":"#000000","textColor":"#FFFFFF","hover":{"color":"#FF0000","borderColor":"#FF0000","textColor":"#FFFFFF"}},"secondary":{"color":"#FFFFFF","borderColor":"#000000","textColor":"#000000","hover":{"color":"#FF0000","borderColor":"#FF0000","textColor":"#000000"}},"shape":"SQUARE"},"header":{"imageBanner":{"maintainAspectRatio":true},"banner":{"color":"#FFFFFF","textColor":"#000000","image":{"id":"ff7062379b9b1001a0fed9c4407c0001"}}},"embedded":false},
+            geoIpCountryCode: null == null ? "": null,
+
+        };
+        function createScriptTag (src) {
+            var scriptTag =  document.createElement('script');
+            scriptTag.src = src;
+            scriptTag.setAttribute('defer', 'true');
+            scriptTag.setAttribute('crossorigin', 'anonymous');
+            return scriptTag;
+        }
+        var isIE = typeof Symbol === 'undefined';
+        var sharedAssetPath = '/wday/asset/uic-shared-vendors';
+        var sharedVendorLoaderAsset = sharedAssetPath + 
+'/shared-vendors.min.js';
+        var cdnOrigin = 'https://' + "wd3.myworkdaycdn.com";
+        var sharedVendorsLoaderUrlOrigin = workday.clientOrigin !== '' ? 
+workday.clientOrigin : cdnOrigin;
+        var sharedVendorsLoaderScript = 
+createScriptTag(sharedVendorsLoaderUrlOrigin + sharedVendorLoaderAsset);
+        sharedVendorsLoaderScript.onload = function () {
+            var jobsScriptSrcFilename = isIE
+                ? 'cx-jobs-ie.min.js'
+                : 'cx-jobs.min.js';
+            var cxJobsAsset = '/wday/asset/candidate-experience-jobs/' + 
+jobsScriptSrcFilename;
+            var jobsScript = createScriptTag(cdnOrigin + cxJobsAsset);
+            jobsScript.onerror = function () {
+                window.workday.useCdn = false;
+                var jobsScriptFromClientOrigin = 
+createScriptTag(workday.clientOrigin + cxJobsAsset);
+                document.head.removeChild(jobsScript);
+                document.head.appendChild(jobsScriptFromClientOrigin);
+            }
+            document.head.appendChild(jobsScript);
+        };
+        document.head.appendChild(sharedVendorsLoaderScript);
+
+        var uxInsightsAssetPath = '/wday/asset/client-analytics';
+        var uxInsightsAsset = uxInsightsAssetPath + 
+"/uxInsights.min.js?plate=BMT216A"
+        var uxInsightsUrlOrigin = workday.clientOrigin !== '' ? 
+workday.clientOrigin : cdnOrigin;
+        var uxInsightsScript = createScriptTag(uxInsightsUrlOrigin + 
+uxInsightsAsset);
+        document.head.appendChild(uxInsightsScript);
+    </script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>

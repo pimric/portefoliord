@@ -1,0 +1,37 @@
+Objet : Candidature au poste de Data Analyst – Mettre la donnée au service de la transition énergétique
+
+Madame, Monsieur,
+
+Actuellement en reconversion professionnelle vers le métier de Data Analyst après une carrière de 8 ans dans la médiation culturelle, je suis particulièrement intéressé par votre offre d’emploi chez Volterres. Votre engagement dans la transition énergétique et la valorisation des circuits courts résonne avec ma volonté de donner du sens à mon travail. Mon parcours, alliant une forte capacité de communication et des compétences techniques solides en analyse de données, me semble en parfaite adéquation avec les missions que vous proposez.
+
+Mon expérience la plus significative, le projet "SalonTrack", illustre ma capacité à mener un projet data de A à Z, de la définition du besoin à la création de valeur.
+
+**Analyse, interprétation et automatisation du suivi des données**
+
+Face à une absence totale de suivi client au Musée Colette, j'ai développé "SalonTrack", une application web de collecte et d'analyse des données visiteurs. Cet outil, que j'ai conçu et développé, a permis de transformer des observations terrain en insights stratégiques. J'ai ainsi pu analyser les profils des visiteurs, leurs comportements et leurs préférences, afin d'optimiser l'offre culturelle et commerciale. Cette expérience m'a permis de développer une approche complète :
+
+*   **Analyser et interpréter :** En partant de zéro, j'ai identifié les données clés à collecter, mis en place le processus de collecte et analysé les résultats pour en extraire des tendances et des opportunités d'amélioration.
+*   **Automatiser :** Confronté à 4 ans de données de ventes inexploitables (26 fichiers XLSX au format non standard), j'ai développé une série de scripts Python pour automatiser entièrement le processus de nettoyage et de structuration. Cette initiative a permis de rendre ces données enfin exploitables pour l'analyse, démontrant ma capacité à solutionner des problèmes de qualité de données à la source.
+
+**Amélioration des processus et création de tableaux de bord**
+
+Mon travail ne s'est pas limité à la collecte. J'ai également à cœur de rendre les données accessibles et actionnables pour les équipes.
+
+*   **Amélioration des processus :** Le projet de nettoyage des données de ventes du salon de thé est un exemple concret de ma capacité à améliorer un processus existant. En transformant des fichiers désuets en une base de données propre et structurée, j'ai posé les fondations d'un futur système de suivi des ventes et de facturation plus fiable et efficace.
+*   **Création de tableaux de bord :** Pour le projet "SalonTrack", j'ai conçu un tableau de bord qui permet de visualiser en temps réel les indicateurs de performance clés, comme la fréquentation, les profils des visiteurs ou les heures de pointe. Bien que ce projet ait été réalisé avec les outils du bord, je suis également compétent sur **Power BI**, comme l'attestent mes autres projets de formation, et je suis enthousiaste à l'idée de mettre cette compétence à votre service.
+
+**Compétences techniques et collaboration**
+
+Ma formation et mes projets m'ont permis d'acquérir une solide maîtrise des outils essentiels du Data Analyst :
+
+*   **SQL :** J'ai mené plusieurs projets d'analyse de bases de données relationnelles, notamment un projet d'envergure sur une base de données immobilières de plus de 50 000 biens, où j'ai mis en œuvre des requêtes complexes pour répondre à des problématiques métier.
+*   **Python :** Comme détaillé plus haut, je maîtrise Python pour l'automatisation, le nettoyage (avec des librairies comme Pandas) et l'analyse de données.
+*   **Collaboration :** Mon expérience en médiation culturelle m'a appris à écouter, comprendre les besoins et communiquer des informations complexes de manière claire et pédagogique. Le projet "SalonTrack" a été mené en collaboration étroite avec les équipes du musée pour s'assurer que l'outil répondait parfaitement à leurs contraintes et besoins.
+
+Je suis convaincu que ma double compétence, à la fois technique et relationnelle, ainsi que ma capacité à m'adapter et à monter en compétences sur de nouveaux sujets, comme le secteur de l'énergie, seront des atouts pour votre équipe.
+
+Je serais ravi de vous présenter plus en détail mes projets et ma motivation lors d'un entretien.
+
+Dans cette attente, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+Richard Dufaur
