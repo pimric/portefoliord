@@ -546,7 +546,7 @@
           
           <div style="max-width: 900px; margin: 0 auto; text-align: left;">
             <p style="font-size: 1.1rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 1.5rem;">
-              Ce simulateur propose une approche complémentaire à l'expertise artistique des programmateurs SMAC. 
+              Ce simulateur propose une approche complémentaire à l'expertise artistique des programmateurs. 
               En intégrant des variables économiques, temporelles et contextuelles, il offre un éclairage quantitatif 
               pour enrichir les décisions créatives et artistiques.
             </p>
@@ -1055,7 +1055,7 @@
       
       // Création du contenu du rapport
       const reportContent = `
-RAPPORT DE SIMULATION SMAC
+RAPPORT DE SIMULATION
 ========================
 
 PARAMÈTRES DE SIMULATION :
@@ -1085,7 +1085,7 @@ Date de génération : ${new Date().toLocaleDateString('fr-FR')}
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `rapport_simulation_smac_${new Date().toISOString().slice(0, 10)}.txt`;
+      a.download = `rapport_simulation_${new Date().toISOString().slice(0, 10)}.txt`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
