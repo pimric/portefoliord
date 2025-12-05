@@ -427,6 +427,11 @@
         flex-direction: column;
         gap: 1rem;
       }
+
+      /* Responsive for soft skills section */
+      [style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
     }
 
     @media (max-width: 480px) {
@@ -460,40 +465,77 @@
   <header>
     <div class="container">
       <h1>Dufaur Richard - Portfolio</h1>
-      <p class="subtitle">Data Analyst Junior | Pédagogue | Analyse de données et visualisation</p>
+      <p class="subtitle">Médiateur Culturel × Data Analyst | Profil Hybride</p>
       <p class="description">
-        Après 8 ans en médiation culturelle, je me suis formé à l'analyse de données. 
-        11 projets professionnels réalisés : SQL, Python, Power BI, Tableau. 
-        Mon profil combine sens du relationnel, pédagogie et capacités d'analyses techniques.
+        8 ans en médiation culturelle, puis formation en analyse de données.
+        J'utilise les données pour aider les structures culturelles à mieux comprendre leurs publics et améliorer leurs projets. J'ai réalisé
+        11 projets professionnels durant ma formation mêlant SQL, Python, Power BI.
       </p>
-      <a href="assets/CV_DUFAUR_RICHARD.pdf" download class="actualite-link" style="margin-top: 2rem; backdrop-filter: blur(10px);">Télécharger mon CV</a>
+      <a href="assets/CV_DUFAUR_RICHARD_Ge.pdf" download class="actualite-link" style="margin-top: 2rem; backdrop-filter: blur(10px);">Télécharger mon CV</a>
     </div>
     
     
   </header>
 
   <main>
-    
-    <!-- Articles & Analyses -->
+
+    <!-- Section Profil Hybride -->
+    <section class="featured-section" style="background: white; padding: 3rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Mon Profil Hybride</h2>
+        </div>
+
+        <div class="storytelling" style="max-width: 900px; margin: 0 auto 2rem; text-align: center;">
+          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+            Ma connaissance du monde culturel et mes compétences en analyse de donnée me permettent d'adapter mes analyses aux vraies questions du terrain.
+          L'objectif est que toutes les équipes puissent utiliser ce que je produis.</p>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <p style="font-size: 1.1rem; color: #667eea; font-weight: 500;">
+            💼 Ouvert aux opportunités en CDI et Freelance
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets Hybrides Culture × Data -->
     <section class="featured-section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Actualités</h2>
+          <h2 class="section-title">Projets Hybrides Culture × Data</h2>
         </div>
-        
+
         <div class="storytelling">
-          Ici, une section avec tous les projets data fraichement réalisés.
+          Ces trois projets montrent comment j'utilise l'analyse de données sur des problématiques culturelles.
         </div>
 
         <div class="projects-grid" style="display: flex; justify-content: center; gap: 2rem;">
           <div class="project-card" style="width: 30%;">
             <div class="project-image">
+              <img src="assets/simulateur.png" alt="Simulateur Programmation">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Simulateur Programmation Artistique</h3>
+              <p class="project-description">
+                Un outil pour aider les programmateurs de salles de concert à tester différents scénarios de saison.
+                Je connais les contraintes du métier, ici j'ai crée un simulateur généraliste et personnalisable que j'adapterai aux réalités métiers.
+              </p>
+              <a href="smac_simulator_complete.html" class="project-link">Voir le simulateur</a>
+            </div>
+          </div>
+
+          <div class="project-card" style="width: 30%;">
+            <div class="project-image">
               <img src="imageprojet/phone1.png" alt="SalonTrack Application">
             </div>
             <div class="project-content">
-              <h3 class="project-title">SalonTrack : Suivi Clientèle</h3>
+              <h3 class="project-title">SalonTrack : Analyse Comportementale Musée</h3>
               <p class="project-description">
-                Développement d'une application web pour analyser le comportement des visiteurs d'un musée et optimiser l'expérience client.
+                Une application web pour suivre les parcours des visiteurs dans un musée.
+                L'objectif : identifier ce qui fonctionne et ce qui pourrait être amélioré dans l'expérience de visite.
               </p>
               <a href="actualite.html" class="project-link">Lire l'article</a>
             </div>
@@ -504,26 +546,89 @@
               <img src="imageprojet/image_CSV_Propre.png" alt="Nettoyage de Données">
             </div>
             <div class="project-content">
-              <h3 class="project-title">Nettoyage de Données de Ventes</h3>
+              <h3 class="project-title">☕ Pipeline Données Salon de Thé</h3>
               <p class="project-description">
-                Comment transformer 4 ans de données de caisse inutilisables en un dataset propre et exploitable avec des scripts Python.
+                4 ans de données de caisse inutilisables numériquement. J'ai écrit des scripts Python pour tout nettoyer et rendre ça exploitable.
+                Maintenant le Musée peut analyser en profondeur les ventes de son salon de thé et ainsi prendre de meilleures décisions.
               </p>
               <a href="salondethe_1.html" class="project-link">Lire l'article</a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="project-card" style="width: 30%;">
-            <div class="project-image">
-              <img src="assets/simulateur.png" alt="Simulateur Programmation">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Simulateur Programmation Artistique</h3>
-              <p class="project-description">
-                Un outil d'aide à la décision pour les programmateurs de musique.
-              </p>
-              <a href="smac_simulator_complete.html" class="project-link">Voir le simulateur</a>
-            </div>
+    <!-- Section Soft Skills -->
+    <section class="featured-section" style="background: #f9fafb; padding: 3rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Compétences Transversales</h2>
+        </div>
+
+        <div class="storytelling" style="margin-bottom: 3rem;">
+          8 ans en médiation culturelle, voici ce que j'apporte au-delà des compétences techniques.
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+          <!-- Pédagogie -->
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
+            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Pédagogie</h3>
+            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
+              Patient et pédagogue, mes expériences auprès de publics variés m'ont appris à adapter mon discours.
+            </p>
           </div>
+
+          <!-- Communication -->
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
+            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Communication</h3>
+            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
+              Habitué à parler en public et à animer des groupes. Je sais ajuster mon discours selon
+              à qui je parle et faciliter les échanges entre équipes.
+            </p>
+          </div>
+
+          <!-- Gestion de projet -->
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Gestion de Projet</h3>
+            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
+              8 ans à coordonner des projets avec plusieurs intervenants. Je sais organiser, prioriser
+              et tenir les délais même quand cela devient complexe.
+            </p>
+          </div>
+
+          <!-- Écoute et analyse des besoins -->
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">👂</div>
+            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Écoute Active</h3>
+            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
+              Je prends le temps de comprendre ce dont les gens ont vraiment besoin avant de me lancer. Les informations que l'on se reçoit en amont d'un projet et de sa compréhension sont cruciaux.
+            </p>
+          </div>
+
+          <!-- Adaptabilité -->
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🔄</div>
+            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Adaptabilité</h3>
+            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
+              J'ai changé de métier à 30 ans. Ça m'a appris à apprendre vite et à être à l'aise
+              dans des environnements différents.
+            </p>
+          </div>
+
+          <!-- Créativité -->
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
+            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Créativité</h3>
+            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
+              J'aime trouver des façons originales de présenter les données et chercher des angles
+              d'analyse auxquels on ne pense pas forcément au premier abord.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -536,9 +641,9 @@
         </div>
         
         <div class="storytelling">
-          Ces quatre projets révèlent ma polyvalence : maîtrise technique avec SQL, conscience éthique avec le RGPD, 
-          créativité avec l'analyse musicale, et vision business avec l'étude de marché. Ma formation en médiation 
-          culturelle me permet d'adapter mon analyse à chaque contexte et de rendre accessibles des insights complexes.
+          Mes quatre projets préférés de la formation OpenClassrooms. Ils montrent mes compétences techniques :
+          SQL, Python, Power BI, Machine Learning. Mon expérience en médiation culturelle m'aide à présenter
+          les résultats de façon claire et compréhensible.
         </div>
 
         <div class="projects-grid">
