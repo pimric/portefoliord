@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur Programmation - Portfolio Retro</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="stylesheet" href="system.css">
+</head>
+<body>
+
+  <!-- Header Window -->
+  <div class="window">
+    <div class="title-bar">
+      <button aria-label="Close" class="close"></button>
+      <h1 class="title">Simulateur de Programmation Artistique</h1>
+      <button aria-label="Resize" class="resize"></button>
+    </div>
+    <div class="separator"></div>
+    <div class="window-pane center">
+      <h2 style="font-size: 18px; margin-bottom: 20px;">Outil de simulation pour salles de concert</h2>
+      <p style="max-width: 700px; margin: 20px auto; line-height: 1.9; font-size: 15px;">
+        Un outil interactif pour aider les programmateurs de salles de concert (SMAC) à tester
+        différents scénarios de saison. Cet outil permet de simuler une programmation complète avec
+        des contraintes budgétaires et artistiques réalistes.
+      </p>
+      <a href="index.html" class="btn">← Retour au portfolio</a>
+    </div>
+  </div>
+
+  <!-- About Simulator -->
+  <div class="standard-dialog">
+    <h2 style="font-size: 16px; font-weight: bold; text-align: center; margin-bottom: 20px;">À propos du Simulateur</h2>
+    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 15px;">
+      Ce simulateur a été créé pour répondre à un besoin concret du milieu culturel : permettre aux
+      programmateurs de SMAC (Scènes de Musiques ACtuelles) de tester différentes configurations de saison
+      avant de s'engager dans des contrats avec des artistes.
+    </p>
+    <p style="font-size: 14px; line-height: 1.8;">
+      L'outil prend en compte les contraintes budgétaires, les jauges de salle, les cachets artistiques,
+      et permet de visualiser en temps réel l'impact de chaque décision sur la rentabilité de la saison.
+    </p>
+  </div>
+
+  <!-- Features Section -->
+  <div class="window">
+    <div class="title-bar">
+      <button aria-label="Close" class="close"></button>
+      <h1 class="title">Fonctionnalités</h1>
+      <button aria-label="Resize" class="resize"></button>
+    </div>
+    <div class="separator"></div>
+    <div class="window-pane">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+
+        <div style="border: 2px solid #000; padding: 15px; background: #fff;">
+          <h3 style="margin: 10px 0; font-size: 13px;">🎭 Gestion des concerts</h3>
+          <p style="font-size: 12px; line-height: 1.6;">Ajout, modification et suppression de concerts avec cachets variables</p>
+        </div>
+
+        <div style="border: 2px solid #000; padding: 15px; background: #fff;">
+          <h3 style="margin: 10px 0; font-size: 13px;">💰 Budget en temps réel</h3>
+          <p style="font-size: 12px; line-height: 1.6;">Suivi instantané du budget restant et des revenus prévus</p>
+        </div>
+
+        <div style="border: 2px solid #000; padding: 15px; background: #fff;">
+          <h3 style="margin: 10px 0; font-size: 13px;">📊 Visualisations</h3>
+          <p style="font-size: 12px; line-height: 1.6;">Graphiques de répartition et tableaux de synthèse</p>
+        </div>
+
+        <div style="border: 2px solid #000; padding: 15px; background: #fff;">
+          <h3 style="margin: 10px 0; font-size: 13px;">⚙️ Personnalisable</h3>
+          <p style="font-size: 12px; line-height: 1.6;">Paramètres ajustables selon les réalités de chaque structure</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Technical Details -->
+  <div class="container">
+    <div class="center" style="margin: 40px 0 30px 0;">
+      <h2 class="section-title">Détails Techniques</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+
+      <div style="border: 2px solid #000; padding: 20px; background: #fff;">
+        <h3 style="margin: 10px 0; font-size: 14px; font-weight: bold;">Technologies utilisées</h3>
+        <ul style="margin: 15px 0; padding-left: 20px; font-size: 13px; line-height: 1.8;">
+          <li>HTML/CSS/JavaScript pur</li>
+          <li>Chart.js pour les graphiques</li>
+          <li>Stockage local des données</li>
+          <li>Interface responsive</li>
+        </ul>
+      </div>
+
+      <div style="border: 2px solid #000; padding: 20px; background: #fff;">
+        <h3 style="margin: 10px 0; font-size: 14px; font-weight: bold;">Fonctionnalités clés</h3>
+        <ul style="margin: 15px 0; padding-left: 20px; font-size: 13px; line-height: 1.8;">
+          <li>Calculs automatiques</li>
+          <li>Export des données</li>
+          <li>Simulations multiples</li>
+          <li>Validation des contraintes</li>
+        </ul>
+      </div>
+
+      <div style="border: 2px solid #000; padding: 20px; background: #fff;">
+        <h3 style="margin: 10px 0; font-size: 14px; font-weight: bold;">Points forts</h3>
+        <ul style="margin: 15px 0; padding-left: 20px; font-size: 13px; line-height: 1.8;">
+          <li>Outil métier adapté</li>
+          <li>Interface intuitive</li>
+          <li>Aide à la décision</li>
+          <li>Gain de temps</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Screenshot -->
+  <div class="container">
+    <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 30px auto;">
+      <div class="project-card">
+        <div class="project-image" style="height: 400px;">
+          <img src="../assets/simulateur.png" alt="Interface du simulateur">
+        </div>
+        <div class="separator"></div>
+        <div class="project-content">
+          <h3 class="project-title">Interface du Simulateur</h3>
+          <p class="project-description">
+            Aperçu de l'interface avec gestion des concerts, budget et visualisations en temps réel
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Use Case -->
+  <div class="standard-dialog">
+    <h2 style="font-size: 16px; font-weight: bold; text-align: center; margin-bottom: 20px;">Cas d'usage</h2>
+    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 15px;">
+      <strong>Exemple concret :</strong> Une SMAC avec un budget de 150 000€ souhaite programmer une
+      saison de 30 concerts. Le simulateur permet de tester différentes combinaisons d'artistes
+      (têtes d'affiche, artistes émergents, résidences) pour optimiser à la fois l'attractivité
+      artistique et la viabilité économique.
+    </p>
+    <p style="font-size: 14px; line-height: 1.8;">
+      L'outil calcule automatiquement les revenus potentiels en fonction des taux de remplissage prévus,
+      alerte sur les dépassements budgétaires, et permet d'ajuster la programmation en temps réel.
+    </p>
+  </div>
+
+  <!-- Access Simulator -->
+  <div class="window">
+    <div class="title-bar">
+      <button aria-label="Close" class="close"></button>
+      <h1 class="title">Accéder au Simulateur</h1>
+      <button aria-label="Resize" class="resize"></button>
+    </div>
+    <div class="separator"></div>
+    <div class="window-pane center">
+      <p style="font-size: 14px; line-height: 1.8; margin-bottom: 20px;">
+        Le simulateur est une application web interactive complète. Pour une meilleure expérience,
+        il est disponible dans sa version originale avec toutes les fonctionnalités.
+      </p>
+
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="../smac_simulator_complete.html" target="_blank" class="btn btn-default">Ouvrir le Simulateur</a>
+        <a href="index.html" class="btn">Retour au portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context Section -->
+  <div class="window">
+    <div class="title-bar">
+      <button aria-label="Close" class="close"></button>
+      <h1 class="title">Contexte du Projet</h1>
+      <button aria-label="Resize" class="resize"></button>
+    </div>
+    <div class="separator"></div>
+    <div class="window-pane">
+      <p style="font-size: 14px; line-height: 1.8; margin-bottom: 15px;">
+        Ce projet est né de mon expérience de 8 ans dans le milieu culturel. J'ai vu de nombreux
+        programmateurs jongler avec des tableurs Excel complexes pour gérer leur saison, sans outils
+        adaptés à leurs besoins spécifiques.
+      </p>
+
+      <p style="font-size: 14px; line-height: 1.8; margin-bottom: 15px;">
+        J'ai voulu créer un outil qui combine ma connaissance du terrain (contraintes métier,
+        vocabulaire du secteur) avec mes nouvelles compétences en data analyse et développement web.
+      </p>
+
+      <p style="font-size: 14px; line-height: 1.8;">
+        Le simulateur est encore en développement, mais représente parfaitement mon profil hybride :
+        un outil technique pensé pour résoudre un vrai problème métier du secteur culturel.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-weight: bold; margin-bottom: 10px;">Contact</p>
+      <div class="contact-info">
+        <p>📧 richard.dufaur@gmail.com</p>
+        <p>🔗 <a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank">LinkedIn</a></p>
+      </div>
+      <p style="margin-top: 20px;">© 2025 Richard Dufaur - Portfolio Data Analyst</p>
+      <p style="font-size: 10px; margin-top: 10px;">Designed with System.css inspiration</p>
+    </div>
+  </footer>
+
+</body>
+</html>

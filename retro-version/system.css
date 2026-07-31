@@ -1,0 +1,455 @@
+/* System.css - Retro Mac System 6 inspired CSS */
+
+@font-face {
+  font-family: "Chicago";
+  src: url("https://system.css/fonts/chicago.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Chicago", "Geneva", -apple-system, BlinkMacSystemFont, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #000;
+  background: #fff;
+  margin: 0;
+  padding: 20px;
+  background: repeating-linear-gradient(
+    45deg,
+    #fff,
+    #fff 10px,
+    #f8f8f8 10px,
+    #f8f8f8 20px
+  );
+}
+
+/* Window styles */
+.window {
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.title-bar {
+  background: #fff;
+  border-bottom: 2px solid #000;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: repeating-linear-gradient(
+    90deg,
+    #000 0px,
+    #000 1px,
+    #fff 1px,
+    #fff 2px
+  );
+}
+
+.title {
+  font-family: "Chicago", monospace;
+  font-size: 12px;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #000;
+}
+
+.close {
+  width: 13px;
+  height: 13px;
+  border: 2px solid #000;
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.close:before,
+.close:after {
+  content: "";
+  position: absolute;
+  background: #000;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.resize {
+  width: 13px;
+  height: 13px;
+  border: 2px solid #000;
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.window-pane {
+  padding: 20px;
+  background: #fff;
+  min-height: 200px;
+}
+
+.separator {
+  height: 2px;
+  background: #000;
+}
+
+/* Button styles */
+.btn {
+  font-family: "Chicago", monospace;
+  font-size: 12px;
+  padding: 4px 20px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  min-width: 59px;
+  min-height: 20px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 4px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background: #f0f0f0;
+}
+
+.btn:active,
+.btn.active {
+  background: #000;
+  color: #fff;
+}
+
+.btn-default {
+  border-width: 4px;
+  padding: 2px 18px;
+}
+
+.btn:disabled {
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* Project cards */
+.project-card {
+  background: #fff;
+  border: 2px solid #000;
+  margin: 20px 0;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.project-card:hover {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+  transform: translate(-2px, -2px);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  border-bottom: 2px solid #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 20px;
+}
+
+.project-title {
+  font-family: "Chicago", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.project-description {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* Dialog styles */
+.standard-dialog {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 30px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.dialog-text {
+  font-family: "Chicago", monospace;
+  font-size: 12px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Menu bar */
+ul[role="menu-bar"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: 2px solid #000;
+  display: flex;
+}
+
+ul[role="menu-bar"] > li {
+  padding: 4px 16px;
+  cursor: pointer;
+  position: relative;
+  border-right: 1px solid #000;
+}
+
+ul[role="menu-bar"] > li:hover {
+  background: #000;
+  color: #fff;
+}
+
+ul[role="menu-bar"] > li:last-child {
+  border-right: none;
+}
+
+/* Text and typography */
+h1, h2, h3 {
+  font-family: "Chicago", monospace;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 16px 0;
+}
+
+h3 {
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: #000;
+  text-decoration: underline;
+}
+
+a:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Section styles */
+.section-title {
+  font-family: "Chicago", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 30px 0 20px 0;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #000;
+  display: inline-block;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.center {
+  text-align: center;
+}
+
+/* Grid layouts */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 30px 0;
+}
+
+/* Footer */
+footer {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.contact-info {
+  margin: 10px 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .window {
+    margin: 10px auto;
+    border-width: 1px;
+  }
+
+  .title-bar {
+    padding: 3px 6px;
+  }
+
+  .title {
+    font-size: 11px;
+    padding: 3px;
+  }
+
+  .window-pane {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  h3 {
+    font-size: 13px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    border-width: 1px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .project-content {
+    padding: 15px;
+  }
+
+  .project-image {
+    height: 180px;
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 4px 15px;
+    min-width: 50px;
+    min-height: 18px;
+  }
+
+  .btn-default {
+    border-width: 3px;
+    padding: 2px 13px;
+  }
+
+  .standard-dialog {
+    padding: 20px;
+    border-width: 1px;
+    margin: 20px auto;
+  }
+
+  .section-title {
+    font-size: 14px;
+    padding: 8px;
+    border-width: 1px;
+  }
+
+  /* Soft skills grid responsive */
+  .window-pane > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  footer {
+    padding: 15px;
+    border-width: 1px;
+    margin-top: 20px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .window-pane {
+    padding: 10px;
+  }
+
+  .project-content {
+    padding: 10px;
+  }
+
+  .project-image {
+    height: 150px;
+  }
+
+  .btn {
+    font-size: 10px;
+    padding: 3px 12px;
+  }
+
+  .standard-dialog {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+}

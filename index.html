@@ -1,806 +1,609 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Richard Dufaur — Data systems for K-pop industry intelligence</title>
+  <meta name="description" content="Richard Dufaur builds the data pipeline behind flow. — a weekly newsletter on the business of the Korean music industry, sourced from primary Korean press and market data.">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
   <link rel="manifest" href="assets/site.webmanifest">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --ink: #16151a;
+      --ink-soft: #55535e;
+      --ink-faint: #8a8792;
+      --paper: #faf9f7;
+      --surface: #ffffff;
+      --line: #e7e4de;
+      --line-strong: #d8d4cc;
+      --accent: #2f5fe0;
+      --accent-ink: #1f47b8;
+      --radius: 14px;
+      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.6;
-      color: #2c2c2c;
-      background-color: #faf9f7;
+      font-family: var(--sans);
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    /* Header avec améliorations minimalistes */
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 2.5rem 0;
-      text-align: center;
-      position: relative;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-ink); }
 
-    .container {
-      max-width: 1200px;
+    .wrap {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
-    /* Animation fade-in douce */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .kicker {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 200;
-      letter-spacing: -0.02em;
-      animation: fadeInUp 0.8s ease-out;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    /* flow. wordmark */
+    .flow { font-weight: 600; letter-spacing: -0.02em; }
+    .flow .dot { color: var(--accent); }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      padding: 5.5rem 0 4rem;
+      border-bottom: 1px solid var(--line);
     }
 
-    .subtitle {
-      font-size: 1.3rem;
-      opacity: 0.95;
-      margin-bottom: 2rem;
-      font-weight: 400;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
-      display: inline-block;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    .hero h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3rem);
+      line-height: 1.12;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin: 1.1rem 0 1.25rem;
+      max-width: 20ch;
     }
 
-    .description {
+    .hero .lede {
       font-size: 1.15rem;
-      max-width: 900px;
-      margin: 0 auto;
-      opacity: 0.95;
-      line-height: 1.9;
-      font-weight: 300;
-      text-align: justify;
-      text-align-last: center;
-      animation: fadeInUp 0.8s ease-out 0.4s both;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 12px;
-      backdrop-filter: blur(5px);
-    }
-
-    /* Highlight des mots-clés */
-    .highlight {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
+      color: var(--ink-soft);
+      max-width: 54ch;
       font-weight: 400;
-      white-space: nowrap;
     }
 
-    /* Actualité - Top Right */
-    .actualite-banner {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 12px;
-      padding: 1.5rem;
-      max-width: 300px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      animation: fadeInUp 0.8s ease-out 0.6s both;
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
     }
 
-    .actualite-title {
-      font-size: 1.1rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 0.92rem;
       font-weight: 500;
-      margin-bottom: 0.5rem;
-      color: white;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+    .btn:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); }
+    .btn.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .btn.primary:hover { background: #000; color: #fff; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 4.25rem 0; border-bottom: 1px solid var(--line); }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
     }
 
-    .actualite-description {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      opacity: 0.9;
-      font-weight: 300;
-    }
-
-    .actualite-link {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: transparent;
-      color: white;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 400;
-      transition: all 0.3s ease;
-    }
-
-    .actualite-link:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.8);
-      transform: translateY(-2px);
-    }
-
-    /* Main Content */
-    main {
-      padding: 3rem 0;
-    }
-
-    /* Featured Projects Section */
-    .featured-section {
-      background: #faf9f7;
-      padding: 3rem 0;
-      margin-bottom: 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-      font-weight: 300;
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
       letter-spacing: -0.02em;
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 2px;
-    }
-
-    .storytelling {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      color: #4a4a4a;
-      text-align: center;
-      font-size: 1.2rem;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    /* Project Cards */
-    .project-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .project-image {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #7a7a7a;
-      font-size: 0.9rem;
-      text-align: center;
-      font-weight: 400;
-      overflow: hidden;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .project-content {
-      padding: 1.5rem;
-    }
-
-    .project-title {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #2c2c2c;
+      line-height: 1.2;
       margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
       letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
     }
 
-    .project-description {
-      font-size: 0.9rem;
-      color: #6a6a6a;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      font-weight: 300;
+    p.section-lede {
+      color: var(--ink-soft);
+      font-size: 1.08rem;
+      max-width: 60ch;
     }
 
-    /* Project Link */
-    .project-link {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: transparent;
-      color: #2c2c2c;
-      text-decoration: none;
-      border: 1px solid #e0e0e0;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 400;
-      transition: all 0.3s ease;
-    }
-
-    .project-link:hover {
-      background: #2c2c2c;
-      color: white;
-      border-color: #2c2c2c;
-    }
-
-    /* Formation Section */
-    .formation-section {
-      background: #f5f5f3;
-      padding: 2rem 0;
-    }
-
-    .formation-section .section-title {
-      color: #2c2c2c;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .formation-grid {
+    /* ---------- flow. flagship ---------- */
+    .flagship-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-top: 2rem;
     }
 
-    .formation-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .flagship-body h2 { display: flex; align-items: baseline; gap: 0.5rem; }
+    .flagship-body h2 .flow { font-size: 1em; }
 
-    .formation-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    }
+    .flagship-body p { color: var(--ink-soft); margin-bottom: 1rem; max-width: 46ch; }
+    .flagship-body p strong { color: var(--ink); font-weight: 600; }
 
-    .formation-image {
-      width: 100%;
-      height: 160px;
-      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    .stats {
       display: flex;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+      margin: 1.75rem 0;
+    }
+    .stat .num {
+      font-family: var(--mono);
+      font-size: 1.65rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Screenshot slot */
+    .shot {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: 0 8px 30px rgba(20, 18, 26, 0.06);
+    }
+    .shot img { width: 100%; height: auto; display: block; }
+    .shot .placeholder {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #7a7a7a;
+      gap: 0.5rem;
+      color: var(--ink-faint);
+      font-family: var(--mono);
       font-size: 0.85rem;
       text-align: center;
-      font-weight: 400;
-      overflow: hidden;
-    }
-
-    .formation-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .formation-content {
       padding: 1.5rem;
+      background:
+        linear-gradient(135deg, #f6f5f2 0%, #eeece7 100%);
+    }
+    .shot figcaption {
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      padding: 0.7rem 1rem;
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
     }
 
-    .formation-title {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .formation-link {
-      padding: 0.6rem 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    /* Footer */
-    footer {
-      background: #2c2c2c;
-      color: white;
-      text-align: center;
-      padding: 2rem 0;
-    }
-
-    .contact-info {
+    /* ---------- Pipeline diagram ---------- */
+    .pipeline {
       display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-bottom: 2rem;
+      align-items: stretch;
+      gap: 0;
+      margin: 2.25rem 0 0.5rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .stage {
+      flex: 1 1 0;
+      min-width: 130px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 0.9rem;
+      text-align: center;
+    }
+    .stage .n {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .stage .t { font-weight: 600; font-size: 0.95rem; margin-top: 0.2rem; }
+    .stage .d { font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.25rem; }
+    .arrow {
+      flex: 0 0 auto;
+      align-self: center;
+      color: var(--line-strong);
+      font-size: 1.1rem;
+      padding: 0 0.35rem;
+    }
+
+    /* ---------- Capability blocks ---------- */
+    .blocks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+      margin-top: 2.5rem;
+    }
+    .block {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+    .block .eyebrow { margin-bottom: 0.6rem; }
+    .block p { color: var(--ink-soft); font-size: 0.95rem; }
+    .block .tags {
+      display: flex;
       flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      padding: 0.22rem 0.55rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      color: var(--ink-soft);
+      background: var(--paper);
+    }
+    .alias {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.5rem 0.7rem;
+      margin-top: 0.9rem;
+      display: inline-block;
+    }
+    .alias b { color: var(--accent); font-weight: 600; }
+
+    /* ---------- Rigor ---------- */
+    .rigor {
+      background: var(--ink);
+      color: #f4f3f0;
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      margin-top: 1rem;
+    }
+    .rigor .eyebrow { color: #8fb0ff; }
+    .rigor h2 { color: #fff; }
+    .rigor p { color: #c9c7cf; max-width: 62ch; }
+    .rigor ul { list-style: none; margin-top: 1.25rem; display: grid; gap: 0.7rem; }
+    .rigor li {
+      padding-left: 1.4rem;
+      position: relative;
+      color: #d9d7df;
+      font-size: 0.98rem;
+    }
+    .rigor li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #8fb0ff;
+    }
+    .rigor li b { color: #fff; font-weight: 600; }
+
+    /* ---------- Early projects accordion ---------- */
+    details.early {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      margin-top: 2rem;
+    }
+    details.early summary {
+      cursor: pointer;
+      padding: 1.15rem 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+    }
+    details.early summary::-webkit-details-marker { display: none; }
+    details.early summary .hint {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      font-weight: 400;
+    }
+    details.early[open] summary { border-bottom: 1px solid var(--line); }
+    .early-inner { padding: 1.2rem 1.4rem 1.5rem; }
+    .early-inner > p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1rem; max-width: 60ch; }
+    .early-list { display: grid; gap: 0.15rem; }
+    .early-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.55rem 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+    .early-item .idx { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-faint); min-width: 2.5rem; }
+    .early-item .name { flex: 1; color: var(--ink); }
+    .early-item a { font-size: 0.85rem; white-space: nowrap; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 3.5rem 0 4rem;
+      border-bottom: none;
+    }
+    footer .links { margin-top: 0.5rem; }
+    footer .colophon {
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      font-family: var(--mono);
     }
 
-    .contact-info span,
-    .contact-info a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-weight: 300;
-    }
-
-    .contact-info a:hover {
-      color: white;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .actualite-banner {
-        position: static;
-        margin: 2rem auto 0;
-        max-width: 100%;
-      }
-
-      header {
-        padding: 3rem 0 4rem;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      .subtitle {
-        font-size: 1.1rem;
-        padding: 0.6rem 1.5rem;
-      }
-
-      .description {
-        font-size: 1.05rem;
-        padding: 1.5rem;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .formation-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      }
-
-      .container {
-        padding: 0 1.5rem;
-      }
-
-      .contact-info {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      /* Responsive for soft skills section */
-      [style*="grid-template-columns: repeat(3, 1fr)"] {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .storytelling {
-        font-size: 1.1rem;
-        padding: 0 1rem;
-      }
-
-      .project-content {
-        padding: 1.5rem;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-      }
-
-      .description {
-        padding: 1rem;
-        font-size: 1rem;
-      }
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .flagship-grid { grid-template-columns: 1fr; }
+      .blocks { grid-template-columns: 1fr; }
+      .pipeline { flex-direction: column; }
+      .arrow { transform: rotate(90deg); padding: 0.15rem 0; }
+      .stage { min-width: 0; }
+      header.hero { padding: 3.5rem 0 2.75rem; }
+      section { padding: 3rem 0; }
+      .rigor { padding: 1.6rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Header amélioré avec mise en valeur minimaliste -->
-  <header>
-    <div class="container">
-      <h1>Dufaur Richard - Portfolio</h1>
-      <p class="subtitle">Médiateur Culturel × Data Analyst | Profil Hybride</p>
-      <p class="description">
-        8 ans en médiation culturelle, puis formation en analyse de données.
-        J'utilise les données pour aider les structures culturelles à mieux comprendre leurs publics et améliorer leurs projets. J'ai réalisé
-        11 projets professionnels durant ma formation mêlant SQL, Python, Power BI.
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">Richard Dufaur</p>
+      <h1>I direct an AI-assisted data system that turns the Korean music industry into structured, verifiable intelligence.</h1>
+      <p class="lede">
+        The system behind <span class="flow">flow<span class="dot">.</span></span> — a weekly, data-driven read
+        on the business of K-pop. I own the editorial doctrine and the final call; the AI does the collection
+        and the first pass.
       </p>
-      <a href="assets/CV_DUFAUR_RICHARD_Ge.pdf" download class="actualite-link" style="margin-top: 2rem; backdrop-filter: blur(10px);">Télécharger mon CV</a>
+      <nav class="links">
+        <a class="btn primary" href="https://x.com/flowric_" target="_blank" rel="noopener">Follow flow. on X</a>
+        <a class="btn" href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:richard.dufaur@gmail.com">Email</a>
+      </nav>
     </div>
-    
-    
   </header>
 
-  <main>
-
-    <!-- Section Profil Hybride -->
-    <section class="featured-section" style="background: white; padding: 3rem 0;">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Mon Profil Hybride</h2>
-        </div>
-
-        <div class="storytelling" style="max-width: 900px; margin: 0 auto 2rem; text-align: center;">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Ma connaissance du monde culturel et mes compétences en analyse de donnée me permettent d'adapter mes analyses aux vraies questions du terrain.
-          L'objectif est que toutes les équipes puissent utiliser ce que je produis.</p>
-
-        </div>
-
-        <div style="text-align: center; margin-top: 2rem;">
-          <p style="font-size: 1.1rem; color: #667eea; font-weight: 500;">
-            💼 Ouvert aux opportunités en CDI et Freelance
+  <!-- ============ FLAGSHIP: flow. ============ -->
+  <section id="flow">
+    <div class="wrap">
+      <p class="eyebrow">Flagship project</p>
+      <div class="flagship-grid">
+        <div class="flagship-body">
+          <h2><span class="flow">flow<span class="dot">.</span></span></h2>
+          <p>
+            A <strong>weekly English newsletter on the K-pop industry</strong>, written from a business and
+            data angle — not fan content. It reads the Korean music market the way you'd read any other
+            sector: revenue, filings, charts, exports.
           </p>
+          <p>
+            Every issue runs on a <strong>production data pipeline with AI in the loop</strong>: primary
+            Korean press and regulatory filings collected, resolved, and cross-checked before a single
+            figure is published.
+          </p>
+          <p>
+            <strong>I run it end to end</strong> — I set the editorial doctrine, direct the AI-assisted
+            collection and analysis, and decide what ships. The authority comes from access to the data and
+            the primary Korean-language press, not borrowed encyclopedic fandom.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="num">23</div>
+              <div class="label">Weekly issues</div>
+            </div>
+            <div class="stat">
+              <div class="num">~56</div>
+              <div class="label">Database tables</div>
+            </div>
+            <div class="stat">
+              <div class="num">~2,400</div>
+              <div class="label">Indexed documents</div>
+            </div>
+          </div>
+
+          <nav class="links">
+            <a class="btn primary" href="https://x.com/flowric_" target="_blank" rel="noopener">@flowric_ on X</a>
+          </nav>
+        </div>
+
+        <!-- NOTE Richard: replace this placeholder with a real screenshot of an issue
+             or a chart produced by the pipeline. Save it as imageprojet/flow-issue.png,
+             then swap the <div class="placeholder"> below for:
+             <img src="imageprojet/flow-issue.png" alt="A flow. issue: chart built from the pipeline's structured facts">
+             (No AI-generated images of idols — project rule.) -->
+        <figure class="shot">
+          <div class="placeholder">
+            <span>[ issue screenshot / pipeline chart ]</span>
+            <span>drop imageprojet/flow-issue.png here</span>
+          </div>
+          <figcaption>a weekly issue of flow.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section id="architecture">
+    <div class="wrap">
+      <p class="eyebrow">Architecture</p>
+      <h2>How the pipeline works</h2>
+      <p class="section-lede">
+        Raw sources become structured, sourced facts before they reach a reader. Five stages, fully automated.
+      </p>
+
+      <div class="pipeline">
+        <div class="stage">
+          <div class="n">01</div>
+          <div class="t">Sources</div>
+          <div class="d">KR press, filings, markets</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="stage">
+          <div class="n">02</div>
+          <div class="t">Collection</div>
+          <div class="d">Crons, healthchecks</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="stage">
+          <div class="n">03</div>
+          <div class="t">Database</div>
+          <div class="d">SQLite (WAL), ~56 tables</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="stage">
+          <div class="n">04</div>
+          <div class="t">Analysis</div>
+          <div class="d">Facts, time series, tests</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="stage">
+          <div class="n">05</div>
+          <div class="t">Publication</div>
+          <div class="d">flow. weekly</div>
         </div>
       </div>
-    </section>
 
-    <!-- Projets Hybrides Culture × Data -->
-    <section class="featured-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Projets Hybrides Culture × Data</h2>
-        </div>
-
-        <div class="storytelling">
-          Ces deux projets montrent comment j'utilise l'analyse de données sur des problématiques culturelles réelles.
-        </div>
-
-        <div class="projects-grid" style="display: flex; justify-content: center; gap: 3rem;">
-          <div class="project-card" style="width: 40%; max-width: 450px;">
-            <div class="project-image">
-              <img src="imageprojet/phone1.png" alt="SalonTrack Application">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">SalonTrack : Analyse Comportementale Musée</h3>
-              <p class="project-description">
-                Une application web pour suivre les parcours des visiteurs dans un musée.
-                L'objectif : identifier ce qui fonctionne et ce qui pourrait être amélioré dans l'expérience de visite.
-              </p>
-              <a href="actualite.html" class="project-link">Lire l'article</a>
-            </div>
-          </div>
-
-          <div class="project-card" style="width: 40%; max-width: 450px;">
-            <div class="project-image">
-              <img src="imageprojet/image_CSV_Propre.png" alt="Nettoyage de Données">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">☕ Pipeline Données Salon de Thé</h3>
-              <p class="project-description">
-                4 ans de données de caisse inutilisables numériquement. J'ai écrit des scripts Python pour tout nettoyer et rendre ça exploitable.
-                Maintenant le Musée peut analyser en profondeur les ventes de son salon de thé et ainsi prendre de meilleures décisions.
-              </p>
-              <a href="salondethe_1.html" class="project-link">Lire l'article</a>
-            </div>
+      <div class="blocks">
+        <div class="block">
+          <p class="eyebrow">Data sources</p>
+          <p>Tier-1 Korean press and international business media, plus financial and market data down to regulatory filings and customs exports.</p>
+          <div class="tags">
+            <span class="tag">Naver</span><span class="tag">Daum</span><span class="tag">Newsen</span>
+            <span class="tag">Music Business Worldwide</span><span class="tag">Billboard</span>
+            <span class="tag">Variety</span><span class="tag">Korea Herald</span>
+            <span class="tag">DART filings</span><span class="tag">KRX</span>
+            <span class="tag">Circle Chart</span><span class="tag">KOSPI / KOSDAQ</span>
+            <span class="tag">USD/KRW</span><span class="tag">Korea Customs</span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Section Soft Skills -->
-    <section class="featured-section" style="background: #f9fafb; padding: 3rem 0;">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Compétences Transversales</h2>
+        <div class="block">
+          <p class="eyebrow">Entity resolution</p>
+          <p>A de-duplicated reference of K-pop entities — groups, agencies, artists — with a multilingual alias table so names resolve across languages and spellings.</p>
+          <div class="alias">에스파 &nbsp;→&nbsp; <b>aespa</b></div>
         </div>
 
-        <div class="storytelling" style="margin-bottom: 3rem;">
-          8 ans en médiation culturelle, voici ce que j'apporte au-delà des compétences techniques.
+        <div class="block">
+          <p class="eyebrow">Structured fact store</p>
+          <p>Every published number is stored as a record — metric, value, unit, period, source, confidence — which builds cumulative time series rather than a pile of articles.</p>
+          <div class="tags">
+            <span class="tag">metric</span><span class="tag">value</span><span class="tag">unit</span>
+            <span class="tag">period</span><span class="tag">source</span><span class="tag">confidence</span>
+          </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-
-          <!-- Pédagogie -->
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
-            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Pédagogie</h3>
-            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
-              Patient et pédagogue, mes expériences auprès de publics variés m'ont appris à adapter mon discours.
-            </p>
-          </div>
-
-          <!-- Communication -->
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
-            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Communication</h3>
-            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
-              Habitué à parler en public et à animer des groupes. Je sais ajuster mon discours selon
-              à qui je parle et faciliter les échanges entre équipes.
-            </p>
-          </div>
-
-          <!-- Gestion de projet -->
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Gestion de Projet</h3>
-            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
-              8 ans à coordonner des projets avec plusieurs intervenants. Je sais organiser, prioriser
-              et tenir les délais même quand cela devient complexe.
-            </p>
-          </div>
-
-          <!-- Écoute et analyse des besoins -->
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👂</div>
-            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Écoute Active</h3>
-            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
-              Je prends le temps de comprendre ce dont les gens ont vraiment besoin avant de me lancer. Les informations que l'on se reçoit en amont d'un projet et de sa compréhension sont cruciaux.
-            </p>
-          </div>
-
-          <!-- Adaptabilité -->
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🔄</div>
-            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Adaptabilité</h3>
-            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
-              J'ai changé de métier à 30 ans. Ça m'a appris à apprendre vite et à être à l'aise
-              dans des environnements différents.
-            </p>
-          </div>
-
-          <!-- Créativité -->
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s ease;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
-            <h3 style="color: #2c2c2c; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Créativité</h3>
-            <p style="color: #6a6a6a; line-height: 1.8; font-size: 0.95rem;">
-              J'aime trouver des façons originales de présenter les données et chercher des angles
-              d'analyse auxquels on ne pense pas forcément au premier abord.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Projets Préférés -->
-    <section class="featured-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Top de mes projets openclassrooms</h2>
-        </div>
-        
-        <div class="storytelling">
-          Mes quatre projets préférés de la formation OpenClassrooms. Ils montrent mes compétences techniques :
-          SQL, Python, Power BI, Machine Learning. Mon expérience en médiation culturelle m'aide à présenter
-          les résultats de façon claire et compréhensible.
-        </div>
-
-        <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="imageprojet/p3.png" alt="Base immobilière SQL">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Base immobilière SQL</h3>
-              <p class="project-description">
-                Conception et création de bases de données relationnelles avec requêtes SQL complexes sur 50 000 biens immobiliers. 
-                Maîtrise des jointures multiples et analyse métier approfondie.
-              </p>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/3b486b64-70df-4cd8-ad87-5d4e842c0949" target="_blank" class="project-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <img src="imageprojet/p8.png" alt="Indicateurs égalité RGPD">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Indicateurs égalité RGPD</h3>
-              <p class="project-description">
-                Analyse des indicateurs de l'égalité femmes/hommes en respectant le RGPD. 
-                Intégration de données RH multi-sources et calcul d'indicateurs réglementaires complexes.
-              </p>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/f57007e1-72cc-4215-852c-977ace53bd12" target="_blank" class="project-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <img src="imageprojet/p10.png" alt="Dashboard Spotify">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Dashboard Spotify</h3>
-              <p class="project-description">
-                Création d'un tableau de bord sur l'évolution de la musique avec storytelling. 
-                Analyse des propriétés techniques musicales et visualisation créative.
-              </p>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/221586fc-212c-4e55-be3b-519828d55f78" target="_blank" class="project-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <img src="imageprojet/p11.png" alt="Étude de marché">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Étude de marché</h3>
-              <p class="project-description">
-                Analyse de données multidimensionnelles avec ACP et visualisation statistique avancée. 
-                Intelligence commerciale et synthèse stratégique.
-              </p>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/9482ddd3-dd6d-4ff2-a5be-8adb0774c929" target="_blank" class="project-link">Voir les livrables</a>
-            </div>
+        <div class="block">
+          <p class="eyebrow">AI-assisted tooling</p>
+          <p>A custom CLI drives curation and issue prep. An AI hypothesis tester takes a claim in plain language, gathers evidence across every data surface, and returns a verdict; semantic search runs over the full document store.</p>
+          <div class="tags">
+            <span class="tag">kpulse CLI</span><span class="tag">AI hypothesis testing</span>
+            <span class="tag">semantic search</span><span class="tag">collection crons</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Formation Data Analyst -->
-    <section class="formation-section">
-      <div class="container">
-        <h2 class="section-title">Formation Data Analyst</h2>
-        
-        <div class="formation-grid">
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/p2.png" alt="Analyse ventes e-commerce">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 2 : Analyse e-commerce</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/75fcc331-5509-4384-b5ed-2cc15a3a80f2" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
+  <!-- ============ RIGOR ============ -->
+  <section id="rigor">
+    <div class="wrap">
+      <div class="rigor">
+        <p class="eyebrow">Verification doctrine</p>
+        <h2>Nothing ships unsourced</h2>
+        <p>
+          The system is built around fact-checking gates. A written editorial doctrine and mechanical
+          checks stand between the data and the reader, every week.
+        </p>
+        <ul>
+          <li><b>Human in the loop.</b> The AI gathers, drafts, and flags — I own the doctrine and make the final publication call.</li>
+          <li><b>Primary source, traced.</b> Every figure links back to a primary source before it can be published.</li>
+          <li><b>Verdicts, not vibes.</b> A hypothesis returns supported, partial, contradicted, or insufficient data — never a guess.</li>
+          <li><b>Cumulative memory.</b> Facts accumulate as time series, so each issue builds on a verifiable record.</li>
+          <li><b>Automated integrity.</b> Collection crons, pipeline healthchecks, and email alerts keep the data current and catch failures.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/p3.png" alt="Requêtes SQL base de données">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 3 : SQL Database</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/a7224962-5ce7-47ab-81e4-a24054e95624" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
+  <!-- ============ EARLY PROJECTS (collapsed) ============ -->
+  <section id="early">
+    <div class="wrap">
+      <p class="eyebrow">Background</p>
+      <h2>Foundations</h2>
+      <p class="section-lede">
+        Eight years in cultural mediation, then a data-analyst training. The training projects below cover the
+        fundamentals — SQL, Python, Power BI, machine learning.
+      </p>
 
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/p4.png" alt="Étude santé publique R Markdown">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 4 : Santé publique</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/7f1c6ceb-4980-43a1-82ef-e0a622c96262" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/p6.png" alt="Gestion boutique optimisation">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 6 : Gestion boutique</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/609c1cee-9bf5-4621-9956-2f7ad681bfcf" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/P7.png" alt="Tableau Power BI dynamique">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 7 : Power BI Dashboard</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/2b21805e-5146-4d73-a496-d92bc441c97e" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/P9.png" alt="Corrélation séries temporelles">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 9 : Corrélation & séries</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/681d76cd-7938-455f-8bdc-8ad1352824d5" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/p10.png" alt="Dashboard Spotify évolution musicale">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 10 : Dashboard Spotify</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/221586fc-212c-4e55-be3b-519828d55f78" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/p11.png" alt="ACP étude marché multi-dimensionnelle">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 11 : Étude de marché</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/9482ddd3-dd6d-4ff2-a5be-8adb0774c929" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-image">
-              <img src="imageprojet/P12.png" alt="Machine Learning détection fraude">
-            </div>
-            <div class="formation-content">
-              <h3 class="formation-title">Projet 12 : Détection fraude</h3>
-              <a href="https://kdrive.infomaniak.com/app/share/1273994/1e03580c-1a71-41f1-8668-f72528c21248" target="_blank" class="project-link formation-link">Voir les livrables</a>
-            </div>
+      <details class="early">
+        <summary>
+          <span>Early projects — data-analyst training</span>
+          <span class="hint">10 projects · click to expand</span>
+        </summary>
+        <div class="early-inner">
+          <p>Coursework deliverables, kept for reference. The production system above is where the real work is now.</p>
+          <div class="early-list">
+            <div class="early-item"><span class="idx">P2</span><span class="name">E-commerce sales analysis</span><a href="https://kdrive.infomaniak.com/app/share/1273994/75fcc331-5509-4384-b5ed-2cc15a3a80f2" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P3</span><span class="name">SQL relational database</span><a href="https://kdrive.infomaniak.com/app/share/1273994/a7224962-5ce7-47ab-81e4-a24054e95624" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P4</span><span class="name">Public-health study (R)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/7f1c6ceb-4980-43a1-82ef-e0a622c96262" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P6</span><span class="name">Retail inventory optimization</span><a href="https://kdrive.infomaniak.com/app/share/1273994/609c1cee-9bf5-4621-9956-2f7ad681bfcf" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P7</span><span class="name">Power BI dashboard</span><a href="https://kdrive.infomaniak.com/app/share/1273994/2b21805e-5146-4d73-a496-d92bc441c97e" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P8</span><span class="name">Gender-equality indicators (GDPR)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/f57007e1-72cc-4215-852c-977ace53bd12" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P9</span><span class="name">Time-series correlation</span><a href="https://kdrive.infomaniak.com/app/share/1273994/681d76cd-7938-455f-8bdc-8ad1352824d5" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P10</span><span class="name">Spotify music-evolution dashboard</span><a href="https://kdrive.infomaniak.com/app/share/1273994/221586fc-212c-4e55-be3b-519828d55f78" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P11</span><span class="name">Market study (PCA)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/9482ddd3-dd6d-4ff2-a5be-8adb0774c929" target="_blank" rel="noopener">View deliverables</a></div>
+            <div class="early-item"><span class="idx">P12</span><span class="name">Fraud detection (ML)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/1e03580c-1a71-41f1-8668-f72528c21248" target="_blank" rel="noopener">View deliverables</a></div>
           </div>
         </div>
-      </div>
-    </section>
+      </details>
+    </div>
+  </section>
 
-  </main>
-
+  <!-- ============ CONTACT / FOOTER ============ -->
   <footer>
-    <div class="container">
-      <div class="contact-info">
-        <span>richard.dufaur@gmail.com</span> 
-        <a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank">LinkedIn</a>
-      </div>
-      <p>&copy; 2025 Richard Dufaur - Portfolio Data Analyst</p>
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+      <nav class="links">
+        <a class="btn" href="https://x.com/flowric_" target="_blank" rel="noopener">@flowric_</a>
+        <a class="btn" href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:richard.dufaur@gmail.com">richard.dufaur@gmail.com</a>
+      </nav>
+      <p class="colophon">© 2026 Richard Dufaur · portfolio.databyric.fr</p>
     </div>
   </footer>
+
 </body>
 </html>
