@@ -28,6 +28,8 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    section[id], header.hero, footer[id] { scroll-margin-top: 64px; }
 
     html { scroll-behavior: smooth; }
 
@@ -140,6 +142,68 @@
       max-width: 60ch;
     }
 
+    /* Justified prose */
+    .flagship-body p,
+    .block p,
+    p.section-lede {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* ---------- Sticky nav ---------- */
+    .sitenav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      height: 56px;
+      background: rgba(250, 249, 247, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      transform: translateY(-100%);
+      transition: transform 0.25s ease;
+    }
+    .sitenav.visible { transform: translateY(0); }
+    .sitenav .brand {
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .sitenav .brand .dot { color: var(--accent); }
+    .sitenav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .sitenav a.navlink {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      text-decoration: none;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .sitenav a.navlink:hover { color: var(--ink); }
+    .sitenav a.navlink.active { color: var(--accent-ink); border-color: var(--accent); }
+    @media (max-width: 640px) {
+      .sitenav .brand { display: none; }
+      .sitenav ul { gap: 1rem; }
+    }
+
     /* ---------- flow. flagship ---------- */
     .flagship-grid {
       display: grid;
@@ -206,6 +270,47 @@
       border-top: 1px solid var(--line);
       font-family: var(--mono);
     }
+    .shot img { cursor: zoom-in; }
+
+    /* ---------- Lightbox ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(20, 18, 26, 0.86);
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox .close:hover { border-color: #fff; }
 
     /* ---------- Pipeline diagram ---------- */
     .pipeline {
@@ -378,8 +483,20 @@
 </head>
 <body>
 
+  <!-- ============ STICKY NAV ============ -->
+  <nav class="sitenav" id="sitenav" aria-label="Section navigation">
+    <a class="brand" href="#top">RD<span class="dot">.</span></a>
+    <ul>
+      <li><a class="navlink" href="#flow" data-target="flow">Flow</a></li>
+      <li><a class="navlink" href="#architecture" data-target="architecture">Architecture</a></li>
+      <li><a class="navlink" href="#rigor" data-target="rigor">Doctrine</a></li>
+      <li><a class="navlink" href="#early" data-target="early">Foundations</a></li>
+      <li><a class="navlink" href="#contact" data-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <!-- ============ HERO ============ -->
-  <header class="hero">
+  <header class="hero" id="top">
     <div class="wrap">
       <p class="kicker">Richard Dufaur</p>
       <h1>I direct an AI-assisted data system that turns the Korean music industry into structured, verifiable intelligence.</h1>
@@ -441,17 +558,9 @@
           </nav>
         </div>
 
-        <!-- NOTE Richard: replace this placeholder with a real screenshot of an issue
-             or a chart produced by the pipeline. Save it as imageprojet/flow-issue.png,
-             then swap the <div class="placeholder"> below for:
-             <img src="imageprojet/flow-issue.png" alt="A flow. issue: chart built from the pipeline's structured facts">
-             (No AI-generated images of idols; project rule.) -->
         <figure class="shot">
-          <div class="placeholder">
-            <span>[ issue screenshot / pipeline chart ]</span>
-            <span>drop imageprojet/flow-issue.png here</span>
-          </div>
-          <figcaption>a weekly issue of flow.</figcaption>
+          <img src="imageprojet/flow-issue.png" alt="Share prices of HYBE, JYP, SM and YG indexed to 100 over one year — a chart built from the flow. pipeline's KRX data" data-zoomable role="button" tabindex="0" aria-label="Enlarge chart">
+          <figcaption>Built by the flow. pipeline — KRX closes, four labels indexed over one year.</figcaption>
         </figure>
       </div>
     </div>
@@ -529,7 +638,7 @@
 
         <div class="block">
           <p class="eyebrow">AI-assisted tooling</p>
-          <p>A custom CLI drives curation and issue prep. An AI hypothesis tester takes a claim in plain language, gathers evidence across every data surface, and returns a verdict; semantic search runs over the full document store.</p>
+          <p>A custom CLI drives curation and issue prep. An AI hypothesis tester takes a claim in plain language, gathers evidence across every data surface, and returns a verdict. Semantic search runs over the full document store.</p>
           <div class="tags">
             <span class="tag">kpulse CLI</span><span class="tag">AI hypothesis testing</span>
             <span class="tag">semantic search</span><span class="tag">collection crons</span>
@@ -550,7 +659,7 @@
           checks stand between the data and the reader, every week.
         </p>
         <ul>
-          <li><b>Human in the loop.</b> The AI gathers, drafts, and flags; I own the doctrine and make the final publication call.</li>
+          <li><b>Human in the loop.</b> The AI gathers, drafts, and flags. I own the doctrine and make the final publication call.</li>
           <li><b>Primary source, traced.</b> Every figure links back to a primary source before it can be published.</li>
           <li><b>Verdicts, not vibes.</b> A hypothesis returns supported, partial, contradicted, or insufficient data, never a guess.</li>
           <li><b>Cumulative memory.</b> Facts accumulate as time series, so each issue builds on a verifiable record.</li>
@@ -595,7 +704,7 @@
   </section>
 
   <!-- ============ CONTACT / FOOTER ============ -->
-  <footer>
+  <footer id="contact">
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h2>Get in touch</h2>
@@ -608,6 +717,75 @@
       <p class="colophon">© 2026 Richard Dufaur · portfolio.databyric.fr</p>
     </div>
   </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <script>
+    (function () {
+      var box = document.getElementById('lightbox');
+      var boxImg = document.getElementById('lightboxImg');
+      var closeBtn = document.getElementById('lightboxClose');
+
+      function open(src, alt) {
+        boxImg.src = src;
+        boxImg.alt = alt || '';
+        box.classList.add('open');
+        box.setAttribute('aria-hidden', 'false');
+      }
+      function close() {
+        box.classList.remove('open');
+        box.setAttribute('aria-hidden', 'true');
+        boxImg.src = '';
+      }
+
+      document.querySelectorAll('[data-zoomable]').forEach(function (img) {
+        img.addEventListener('click', function () { open(img.src, img.alt); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img.src, img.alt); }
+        });
+      });
+
+      box.addEventListener('click', function (e) {
+        if (e.target !== boxImg) close();
+      });
+      closeBtn.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && box.classList.contains('open')) close();
+      });
+    })();
+
+    (function () {
+      var nav = document.getElementById('sitenav');
+      var hero = document.getElementById('top');
+      var links = Array.prototype.slice.call(document.querySelectorAll('.navlink'));
+
+      var heroWatcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          nav.classList.toggle('visible', !entry.isIntersecting);
+        });
+      }, { rootMargin: '-56px 0px 0px 0px' });
+      heroWatcher.observe(hero);
+
+      var sections = links
+        .map(function (a) { return document.getElementById(a.dataset.target); })
+        .filter(Boolean);
+
+      var sectionWatcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var id = entry.target.id;
+          links.forEach(function (a) {
+            a.classList.toggle('active', a.dataset.target === id);
+          });
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+      sections.forEach(function (s) { sectionWatcher.observe(s); });
+    })();
+  </script>
 
 </body>
 </html>
