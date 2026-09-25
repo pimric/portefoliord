@@ -9,21 +9,43 @@
 .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin-top: 1.2rem; }
 .project-summary { margin-top: 2.4rem; }
 
-/* Bloc info technique : lignes mono, filets fins */
+/* Bloc info technique : cartes à liseré de la couleur du thème */
 .info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
-  gap: 0 2rem;
+  gap: 1px;
   margin: 3rem 0 0;
-  border-top: 1px solid var(--ink);
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
-.info div { padding: 1rem 0; border-bottom: 1px solid var(--line); }
-.info dt { margin-bottom: 0.35rem; }
-.info dd { margin: 0; font-size: 1rem; }
+.info div {
+  position: relative;
+  padding: 1.3rem 1.4rem 1.2rem;
+  background: var(--paper);
+}
+.info div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bar, var(--blue));
+}
+.info dt { margin-bottom: 0.5rem; }
+.info dd { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.45; }
 
-.tags { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; list-style: none; padding: 0; }
-.tags li { font-family: var(--mono); font-size: 0.8rem; }
-.tags li + li::before { content: "/ "; color: var(--muted); margin-left: -0.55rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; }
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--paper-deep);
+}
 
 /* Captures / médias : 1 à 3 max */
 .media { display: grid; gap: 1.5rem; margin: 3rem 0 0; }
