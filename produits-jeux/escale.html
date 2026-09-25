@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Escale · Richard Dufaur</title>
-  <meta name="description" content="Escale : un réseau social slow et privacy-first, avec des pièces isométriques et des messages différés. Accès sur invitation.">
+  <meta name="description" content="Escale : une messagerie lente et privée entre proches, où l'on s'écrit des lettres portées par des pigeons personnalisables. Accès sur invitation.">
   <meta name="theme-color" content="#faf9f5">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/base.css?v=16">
-  <link rel="stylesheet" href="../assets/css/layout.css?v=16">
-  <link rel="stylesheet" href="../assets/css/project.css?v=16">
+  <link rel="stylesheet" href="../assets/css/base.css?v=18">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=18">
+  <link rel="stylesheet" href="../assets/css/project.css?v=18">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <script defer src="../assets/js/nav.js?v=16"></script>
-  <script defer src="../assets/js/fit.js?v=16"></script>
+  <script defer src="../assets/js/nav.js?v=18"></script>
+  <script defer src="../assets/js/fit.js?v=18"></script>
 </head>
 <body>
   <header class="site-header">
@@ -40,30 +40,34 @@
         <div class="wrap">
           <p class="breadcrumb label"><a href="../index.html">Accueil</a> / <a href="index.html">Produits &amp; jeux</a></p>
           <h1 class="bar fit">Escale</h1>
-          <p class="project-meta"><span class="label">Réseau social slow</span><span class="status status-invite">Sur invitation</span></p>
-          <p class="project-summary lede">Un réseau social <em>lent et respectueux de la vie privée</em>. Chacun y aménage sa pièce isométrique, et les messages arrivent en différé, comme du courrier, dans une esthétique solarpunk-maritime.</p>
+          <p class="project-meta"><span class="label">Messagerie lente</span><span class="status status-invite">Sur invitation</span></p>
+          <p class="project-summary lede">Une messagerie <em>lente et respectueuse de la vie privée</em>, réservée à un cercle restreint. On s'y écrit des lettres plutôt que des messages, portées par un pigeon que chacun personnalise et qui patiente, « tout est calme », en attendant qu'une lettre arrive.</p>
           <dl class="info">
             <div>
               <dt class="label">Statut</dt>
-              <dd>Stage 2 · accès sur invitation</dd>
+              <dd>Test fermé · accès sur invitation</dd>
             </div>
             <div>
               <dt class="label">Principes</dt>
-              <dd><ul class="tags"><li>slow</li><li>privacy-first</li><li>messages différés</li></ul></dd>
+              <dd><ul class="tags"><li>slow</li><li>privacy-first</li><li>lettres, pas de fil</li></ul></dd>
             </div>
             <div>
               <dt class="label">Infra</dt>
               <dd>Oracle Cloud Free Tier (ARM, 2 OCPU / 12 Go)</dd>
             </div>
           </dl>
-          <div class="media count-2">
+          <div class="media count-3">
             <figure>
-              <div class="placeholder">Visuel à venir<br>assets/img/escale/interface-isometrique.webp</div>
-              <figcaption class="label">Une pièce isométrique</figcaption>
+              <img src="../assets/img/escale/connexion.webp" alt="Écran de connexion d'Escale : « Entre ton mot de passe pour déverrouiller ton pigeonnier, richard. »" loading="lazy">
+              <figcaption class="label">Le pigeonnier, verrouillé par mot de passe</figcaption>
             </figure>
             <figure>
-              <div class="placeholder">Visuel à venir<br>assets/img/escale/ambiance.webp</div>
-              <figcaption class="label">Palette solarpunk-maritime</figcaption>
+              <img src="../assets/img/escale/lettre.webp" alt="Interface d'écriture d'une lettre, avec les autres participants en onglets" loading="lazy">
+              <figcaption class="label">Écrire une lettre</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/escale/pigeonnier.webp" alt="Panneau de personnalisation du pigeon : accessoires et plumage" loading="lazy">
+              <figcaption class="label">Personnaliser son pigeon</figcaption>
             </figure>
           </div>
         </div>
@@ -72,26 +76,29 @@
       <div class="project-body">
         <div class="wrap">
           <section>
-            <h2 class="bar">Pourquoi un réseau social lent</h2>
+            <h2 class="bar">Pourquoi une messagerie lente</h2>
             <p>
-              Pas de fil infini ni de notification en temps réel. Escale mise sur le délai : un message
-              met du temps à arriver, ce qui laisse le temps de l'écrire et de le lire.
+              Pas de fil infini ni de notification en temps réel. Escale mise sur le délai : une lettre
+              met du temps à arriver, ce qui laisse le temps de l'écrire et de le lire. Tant que rien n'est
+              en vol, l'application le dit simplement : « tout est calme ».
             </p>
             <p><span class="todo">À compléter : intention, publics visés.</span></p>
           </section>
 
           <section>
-            <h2 class="bar">Des pièces plutôt que des profils</h2>
+            <h2 class="bar">Un pigeon plutôt qu'un profil</h2>
             <p>
-              Chaque membre dispose d'une pièce en vue isométrique qu'il aménage. C'est son espace
-              et sa carte de visite, loin du mur de publications.
+              Chaque membre du cercle est représenté par un pigeon, pas par une photo de profil. On le
+              personnalise avec des accessoires (béret, ruban, écharpe, haut-de-forme…) et une couleur de
+              plumage tirée au hasard. De nouveaux pigeons et de nouvelles options se débloquent à mesure
+              que le cercle de contacts s'agrandit.
             </p>
           </section>
 
           <section>
             <h2 class="bar">Accès</h2>
-            <p class="callout">Escale est en test fermé : l'accès se fait <strong>uniquement sur invitation</strong>.
-            Pour en savoir plus, <a href="../about.html#contact">écrivez-moi</a>.</p>
+            <p class="callout">Escale est en test fermé, avec un petit cercle d'utilisateurs : l'accès se fait
+            <strong>uniquement sur invitation</strong>. Pour en savoir plus, <a href="../about.html#contact">écrivez-moi</a>.</p>
           </section>
           <nav class="project-nav label" aria-label="Autres projets"><a href="donjon-dark-messiah.html">← Donjon · Dark Messiah</a><a href="islandbomber.html">Island Bomber →</a></nav>
         </div>
