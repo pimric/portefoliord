@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donjon · Dark Messiah · Richard Dufaur</title>
-  <meta name="description" content="Un donjon original construit pour Dark Messiah of Might and Magic : level design autour du combat physique du jeu. En développement.">
+  <meta name="description" content="Une tour verticale inspirée de Cube, construite pour Dark Messiah of Might and Magic : à chaque carrefour, un choix irréversible. Level design en développement.">
   <meta name="theme-color" content="#faf9f5">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/base.css?v=9">
-  <link rel="stylesheet" href="../assets/css/layout.css?v=9">
-  <link rel="stylesheet" href="../assets/css/project.css?v=9">
+  <link rel="stylesheet" href="../assets/css/base.css?v=11">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=11">
+  <link rel="stylesheet" href="../assets/css/project.css?v=11">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <script defer src="../assets/js/nav.js?v=9"></script>
-  <script defer src="../assets/js/fit.js?v=9"></script>
+  <script defer src="../assets/js/nav.js?v=11"></script>
+  <script defer src="../assets/js/fit.js?v=11"></script>
 </head>
 <body>
   <header class="site-header">
@@ -41,7 +41,7 @@
           <p class="breadcrumb label"><a href="../index.html">Accueil</a> / <a href="index.html">Produits &amp; jeux</a></p>
           <h1 class="bar fit">Donjon · Dark Messiah</h1>
           <p class="project-meta"><span class="label">Level design · mod</span><span class="status status-dev">En développement</span></p>
-          <p class="project-summary lede">Un donjon original construit pour <em>Dark Messiah of Might and Magic</em>. Un terrain de jeu pensé pour ce qui fait la singularité du jeu : le combat au corps à corps, la physique et l'environnement comme arme.</p>
+          <p class="project-summary lede">Un donjon vertical inspiré du film <em>Cube</em>, construit pour <em>Dark Messiah of Might and Magic</em>. À chaque salle gagnée, un carrefour s'ouvre sur plusieurs issues : en choisir une <em>scelle irrémédiablement les autres</em>. Aucun retour en arrière, aucun parcours identique deux fois.</p>
           <dl class="info">
             <div>
               <dt class="label">Statut</dt>
@@ -53,25 +53,25 @@
             </div>
             <div>
               <dt class="label">Outils</dt>
-              <dd><span class="todo">à confirmer : Hammer / SDK Dark Messiah ?</span></dd>
+              <dd><ul class="tags"><li>Hammer / SDK Dark Messiah</li><li>Pipeline Python maison (gen_vmf.py)</li></ul></dd>
             </div>
             <div>
-              <dt class="label">Nom du donjon</dt>
-              <dd><span class="todo">à préciser</span></dd>
+              <dt class="label">Inspiration</dt>
+              <dd>Cube (1997) : choix irréversibles, tension sans dialogue</dd>
             </div>
           </dl>
           <div class="media count-3">
             <figure>
               <img src="../assets/img/donjon-dark-messiah/horde-couloir-combat.webp" alt="Une horde de goules dans un couloir étroit, vue à la première personne" loading="lazy">
-              <figcaption class="label">Une horde dans le couloir</figcaption>
+              <figcaption class="label">Le couloir avant le carrefour</figcaption>
             </figure>
             <figure>
               <img src="../assets/img/donjon-dark-messiah/passerelles-suspendues-brouillard.webp" alt="Passerelles suspendues au-dessus du vide dans le brouillard" loading="lazy">
-              <figcaption class="label">Passerelles dans le brouillard</figcaption>
+              <figcaption class="label">Branche 1 · le pont sur le vide</figcaption>
             </figure>
             <figure>
               <img src="../assets/img/donjon-dark-messiah/grotte-convergence-3-grilles.webp" alt="Grotte où convergent trois passages fermés par des grilles" loading="lazy">
-              <figcaption class="label">La grotte aux trois grilles</figcaption>
+              <figcaption class="label">Branche 3 · la salle de convergence</figcaption>
             </figure>
           </div>
         </div>
@@ -80,22 +80,29 @@
       <div class="project-body">
         <div class="wrap">
           <section>
-            <h2 class="bar">Le projet</h2>
+            <h2 class="bar">Le pitch</h2>
             <p>
-              Un donjon souterrain conçu de bout en bout, des cellules des prisonniers aux passerelles suspendues
-              au-dessus du vide, jusqu'à une grotte où convergent trois grilles. Le joueur descend, se bat et cherche
-              son chemin dans des espaces pensés pour le combat physique du jeu.
+              Le joueur grimpe une tour où chaque salle gagnée révèle un carrefour à plusieurs issues : en choisir une
+              scelle irrémédiablement les autres. Il n'y a ni retour en arrière ni parcours identique deux fois — chaque
+              traversée explore une branche différente parmi plusieurs : un pont vertigineux au-dessus du vide, un puits
+              d'acide qui monte, un donjon claustrophobique en grotte. Le joueur avance sans savoir ce qui l'attend,
+              porté par une tension construite entièrement en jeu, sans une ligne de dialogue.
             </p>
-            <p><span class="todo">À compléter : nom, intention, ce que le joueur y vit.</span></p>
+            <p><span class="todo">Nom encore à choisir — pistes à l'étude : « La Tour sans Retour », « Le Puits des Damnés », « Ascension ».</span></p>
+          </section>
+
+          <section>
+            <h2 class="bar">Structure</h2>
+            <ol class="pipeline">
+              <li><div class="t">Entrée</div><div class="d">Escalier, antichambre, mécanisme de grille à levier</div></li>
+              <li><div class="t">Salle S01</div><div class="d">Chicane de piliers, vague de gobelins</div></li>
+              <li><div class="t">Le carrefour</div><div class="d">3 herses, une seule s'ouvre, sans retour</div></li>
+              <li><div class="t">3 branches</div><div class="d">Pont sur le vide, puits d'acide, grotte close</div></li>
+            </ol>
           </section>
 
           <section>
             <h2 class="bar">Level design</h2>
-            <p>
-              Le parcours alterne verticalité et affrontements : un escalier en colimaçon, la salle des cellules à grilles,
-              des passerelles dans le brouillard où surgissent les goules, un couloir étroit tenu par une horde,
-              un puits d'acide à franchir de plateforme en plateforme, puis la grande salle.
-            </p>
             <div class="gallery">
               <figure>
                 <img src="../assets/img/donjon-dark-messiah/escalier-colimacon.webp" alt="Escalier de pierre en colimaçon" loading="lazy">
@@ -103,20 +110,34 @@
               </figure>
               <figure>
                 <img src="../assets/img/donjon-dark-messiah/puits-acide-plateformes.webp" alt="Plateformes au-dessus d'un puits d'acide verdâtre" loading="lazy">
-                <figcaption class="label">Le puits d'acide</figcaption>
+                <figcaption class="label">Branche 2 · le puits d'acide</figcaption>
               </figure>
               <figure>
                 <img src="../assets/img/donjon-dark-messiah/salle-cellules-grilles.webp" alt="Salle voûtée bordée de cellules à grilles" loading="lazy">
-                <figcaption class="label">La salle des cellules</figcaption>
+                <figcaption class="label">L'antichambre aux cellules</figcaption>
               </figure>
             </div>
+            <ul style="margin-top:1.6rem">
+              <li><strong>Verticalité comme moteur d'ambiance :</strong> le puits d'acide et le pont sur le vide exploitent
+              la hauteur du moteur Source pour jouer sur le vertige et la chute.</li>
+              <li><strong>Choix irréversibles :</strong> chaque carrefour ferme définitivement les autres issues ;
+              la rejouabilité vient de la variété entre les parties, jamais d'un retour en arrière.</li>
+              <li><strong>Rythme de combat calibré :</strong> les vagues de gobelins du pont ont été ajustées après
+              plusieurs tests en jeu pour garantir un vrai un-contre-un, sans ralentir le moteur.</li>
+              <li><strong>Narration muette :</strong> une silhouette figée récurrente, une ambiance qui se dégrade en
+              montant — tout passe par la mise en scène et le décor, sans dialogue.</li>
+              <li><strong>Fidélité aux conventions Arkane :</strong> chaque nouvelle mécanique est d'abord vérifiée dans
+              les vraies cartes du jeu avant d'être construite, pour rester cohérente avec le titre original.</li>
+            </ul>
           </section>
 
           <section>
             <h2 class="bar">Coulisses</h2>
             <p>
-              Le donjon se construit par couches : d'abord la géométrie en textures de travail, puis les matériaux,
-              la lumière et les ennemis. La caméra libre permet de vérifier les volumes et les liaisons entre les espaces.
+              Plutôt qu'un placement à la main pièce par pièce, un pipeline Python maison génère les salles, escaliers
+              et volumes en fichier <code>.vmf</code>, avec des garde-fous automatiques (sauts franchissables, absence
+              de chevauchement) qui accélèrent les itérations. Des outils annexes développés pour le projet permettent
+              d'extraire et d'encoder les assets du jeu d'origine.
             </p>
             <div class="gallery wide">
               <figure>
@@ -128,7 +149,17 @@
                 <figcaption class="label">Vue de debug en caméra libre</figcaption>
               </figure>
             </div>
-            <p><span class="todo">À compléter : ce qui est construit, prochaines étapes.</span></p>
+          </section>
+
+          <section>
+            <h2 class="bar">Où en est le projet</h2>
+            <p>
+              <strong>Construit et validé en jeu :</strong> l'entrée, la salle S01, le mécanisme du carrefour à trois
+              portes, le pont sur le vide et le puits d'acide de bout en bout, ainsi que la salle de convergence en grotte.
+              <strong>En cours :</strong> le polissage de la troisième branche. <strong>À venir :</strong> raccorder les
+              trois sorties à la suite du donjon, peupler les branches d'ennemis, passer une couche d'ambiance et
+              d'éclairage, jusqu'à un premier segment jouable de bout en bout.
+            </p>
           </section>
           <nav class="project-nav label" aria-label="Autres projets"><a href="ldvelh-clairvaugh.html">← LDVELH · Clairvaugh</a><a href="escale.html">Escale →</a></nav>
         </div>
