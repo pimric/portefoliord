@@ -123,6 +123,11 @@ a:hover { text-decoration-color: var(--ink); }
   width: 0.13em;
   background: var(--bar, var(--blue));
 }
+/* Titres pleine largeur (taille calculée par fit.js) : barre bornée pour rester dans la marge */
+h1.bar::before {
+  width: clamp(5px, 0.07em, 12px);
+  left: max(-44px, -0.3em, calc(4px - var(--gutter) - max(0px, (100vw - var(--max)) / 2)));
+}
 .bar.green { --bar: var(--green); }
 .bar.ink { --bar: var(--ink); }
 
