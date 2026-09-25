@@ -112,18 +112,8 @@ a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--
 a:hover { text-decoration-color: var(--ink); }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
 
-/* Titre à barre verticale (h1, pleine largeur, taille calculée par fit.js) :
-   la barre vit dans la marge, bornée pour ne jamais déborder de la page. */
+/* .bar : les h1 n'ont plus de trait, seuls les intertitres h2/h3 sont surlignés (plus bas). */
 .bar { position: relative; }
-h1.bar::before {
-  content: "";
-  position: absolute;
-  width: clamp(5px, 0.07em, 12px);
-  left: max(-44px, -0.3em, calc(4px - var(--gutter) - max(0px, (100vw - var(--max)) / 2)));
-  top: 0.14em;
-  bottom: 0.1em;
-  background: var(--bar, var(--blue));
-}
 .bar.green { --bar: var(--green); }
 .bar.ink { --bar: var(--ink); }
 

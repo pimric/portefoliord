@@ -68,7 +68,7 @@
 main { display: block; overflow-x: clip; }
 .section { padding: 5rem 0; border-top: 1px solid var(--line); }
 .section-head { display: grid; gap: 0.6rem; margin-bottom: 2.5rem; }
-.section-head h2 { margin: 0; }
+.section-head h2 { margin: 0; justify-self: start; }
 
 .page-hero { padding: 5.5rem 0 4.5rem; }
 .page-hero .label { margin-top: 0.9rem; display: block; }
