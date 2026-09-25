@@ -96,6 +96,12 @@ h1, h2, h3 {
 h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); margin-bottom: 1rem; }
 h3 { font-size: var(--fs-h3); margin-bottom: 0.35rem; }
+/* Tous les textes sont justifiés */
+p, li, dd, figcaption {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
 p { max-width: var(--max-text); }
 p + p { margin-top: 1em; }
 strong { font-weight: 700; }
@@ -104,12 +110,13 @@ a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--
 a:hover { text-decoration-color: var(--ink); }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
 
-/* Titre à barre verticale, comme sur les posts flow. */
-.bar { position: relative; padding-left: 0.62em; }
+/* Titre à barre verticale, comme sur les posts flow. :
+   la barre est dans la marge, le texte du titre reste aligné sur la colonne. */
+.bar { position: relative; }
 .bar::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: -0.42em;
   top: 0.14em;
   bottom: 0.1em;
   width: 0.13em;
