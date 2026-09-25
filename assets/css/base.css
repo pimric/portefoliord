@@ -45,6 +45,7 @@
   --blue: #4a6fa5;
   --green: #3d7a5c;
   --orange: #d97a0a;
+  --orange-deep: #a85e0a; /* variante foncée, contraste AA avec du texte blanc */
 
   /* Typo */
   --display: "DM Serif Display", Georgia, serif;
@@ -111,25 +112,31 @@ a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--
 a:hover { text-decoration-color: var(--ink); }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
 
-/* Titre à barre verticale, comme sur les posts flow. :
-   la barre est dans la marge, le texte du titre reste aligné sur la colonne. */
+/* Titre à barre verticale (h1, pleine largeur, taille calculée par fit.js) :
+   la barre vit dans la marge, bornée pour ne jamais déborder de la page. */
 .bar { position: relative; }
-.bar::before {
+h1.bar::before {
   content: "";
   position: absolute;
-  left: -0.42em;
-  top: 0.14em;
-  bottom: 0.1em;
-  width: 0.13em;
-  background: var(--bar, var(--blue));
-}
-/* Titres pleine largeur (taille calculée par fit.js) : barre bornée pour rester dans la marge */
-h1.bar::before {
   width: clamp(5px, 0.07em, 12px);
   left: max(-44px, -0.3em, calc(4px - var(--gutter) - max(0px, (100vw - var(--max)) / 2)));
+  top: 0.14em;
+  bottom: 0.1em;
+  background: var(--bar, var(--blue));
 }
 .bar.green { --bar: var(--green); }
 .bar.ink { --bar: var(--ink); }
+
+/* Intertitres (h2, h3) : surlignage plein à la couleur du thème, texte blanc.
+   Une catégorie = une couleur, posée une fois sur <body> (voir body.theme-*). */
+h2.bar, h3.bar {
+  display: inline-block;
+  background: var(--bar, var(--blue));
+  color: #fff;
+  padding: 0.1em 0.5em 0.16em;
+  border-radius: 3px;
+  text-wrap: balance;
+}
 
 /* Label mono en capitales */
 .label {
@@ -158,6 +165,10 @@ h1.bar::before {
 /* Wordmarks : flow• et Ric• */
 .flow, .mark { font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; white-space: nowrap; }
 .flow .dot, .mark .dot { color: var(--orange); }
+
+/* Un thème de couleur par catégorie de page */
+body.theme-green { --bar: var(--green); }
+body.theme-orange { --bar: var(--orange-deep); }
 
 /* Contenu à compléter : repérable (grep "todo") */
 .todo {
