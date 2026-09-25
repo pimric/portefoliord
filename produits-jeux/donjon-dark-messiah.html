@@ -11,12 +11,12 @@
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/base.css?v=8">
-  <link rel="stylesheet" href="../assets/css/layout.css?v=8">
-  <link rel="stylesheet" href="../assets/css/project.css?v=8">
+  <link rel="stylesheet" href="../assets/css/base.css?v=9">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=9">
+  <link rel="stylesheet" href="../assets/css/project.css?v=9">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <script defer src="../assets/js/nav.js?v=8"></script>
-  <script defer src="../assets/js/fit.js?v=8"></script>
+  <script defer src="../assets/js/nav.js?v=9"></script>
+  <script defer src="../assets/js/fit.js?v=9"></script>
 </head>
 <body>
   <header class="site-header">
@@ -60,14 +60,18 @@
               <dd><span class="todo">à préciser</span></dd>
             </div>
           </dl>
-          <div class="media count-2">
+          <div class="media count-3">
             <figure>
-              <div class="placeholder">Visuel à venir<br>assets/img/donjon-dark-messiah/capture-01.webp</div>
-              <figcaption class="label">Le donjon en cours de construction</figcaption>
+              <img src="../assets/img/donjon-dark-messiah/horde-couloir-combat.webp" alt="Une horde de goules dans un couloir étroit, vue à la première personne" loading="lazy">
+              <figcaption class="label">Une horde dans le couloir</figcaption>
             </figure>
             <figure>
-              <div class="placeholder">Visuel à venir<br>assets/img/donjon-dark-messiah/plan.webp</div>
-              <figcaption class="label">Plan ou vue d'ensemble (optionnel)</figcaption>
+              <img src="../assets/img/donjon-dark-messiah/passerelles-suspendues-brouillard.webp" alt="Passerelles suspendues au-dessus du vide dans le brouillard" loading="lazy">
+              <figcaption class="label">Passerelles dans le brouillard</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/img/donjon-dark-messiah/grotte-convergence-3-grilles.webp" alt="Grotte où convergent trois passages fermés par des grilles" loading="lazy">
+              <figcaption class="label">La grotte aux trois grilles</figcaption>
             </figure>
           </div>
         </div>
@@ -77,16 +81,53 @@
         <div class="wrap">
           <section>
             <h2 class="bar">Le projet</h2>
-            <p><span class="todo">À compléter : intention, ambiance, ce que le joueur y vit.</span></p>
+            <p>
+              Un donjon souterrain conçu de bout en bout, des cellules des prisonniers aux passerelles suspendues
+              au-dessus du vide, jusqu'à une grotte où convergent trois grilles. Le joueur descend, se bat et cherche
+              son chemin dans des espaces pensés pour le combat physique du jeu.
+            </p>
+            <p><span class="todo">À compléter : nom, intention, ce que le joueur y vit.</span></p>
           </section>
 
           <section>
             <h2 class="bar">Level design</h2>
-            <p><span class="todo">À compléter : structure du donjon, rythme, pièges, usage de la physique et des coups de pied.</span></p>
+            <p>
+              Le parcours alterne verticalité et affrontements : un escalier en colimaçon, la salle des cellules à grilles,
+              des passerelles dans le brouillard où surgissent les goules, un couloir étroit tenu par une horde,
+              un puits d'acide à franchir de plateforme en plateforme, puis la grande salle.
+            </p>
+            <div class="gallery">
+              <figure>
+                <img src="../assets/img/donjon-dark-messiah/escalier-colimacon.webp" alt="Escalier de pierre en colimaçon" loading="lazy">
+                <figcaption class="label">Escalier en colimaçon</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/img/donjon-dark-messiah/puits-acide-plateformes.webp" alt="Plateformes au-dessus d'un puits d'acide verdâtre" loading="lazy">
+                <figcaption class="label">Le puits d'acide</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/img/donjon-dark-messiah/salle-cellules-grilles.webp" alt="Salle voûtée bordée de cellules à grilles" loading="lazy">
+                <figcaption class="label">La salle des cellules</figcaption>
+              </figure>
+            </div>
           </section>
 
           <section>
-            <h2 class="bar">Où en est le projet</h2>
+            <h2 class="bar">Coulisses</h2>
+            <p>
+              Le donjon se construit par couches : d'abord la géométrie en textures de travail, puis les matériaux,
+              la lumière et les ennemis. La caméra libre permet de vérifier les volumes et les liaisons entre les espaces.
+            </p>
+            <div class="gallery wide">
+              <figure>
+                <img src="../assets/img/donjon-dark-messiah/wip-textures-dev-avant.webp" alt="Géométrie en textures de développement orange avant habillage" loading="lazy">
+                <figcaption class="label">Avant : textures de travail</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/img/donjon-dark-messiah/vue-debug-freecam-geometrie.webp" alt="Vue en caméra libre de la géométrie du niveau" loading="lazy">
+                <figcaption class="label">Vue de debug en caméra libre</figcaption>
+              </figure>
+            </div>
             <p><span class="todo">À compléter : ce qui est construit, prochaines étapes.</span></p>
           </section>
           <nav class="project-nav label" aria-label="Autres projets"><a href="ldvelh-clairvaugh.html">← LDVELH · Clairvaugh</a><a href="escale.html">Escale →</a></nav>
