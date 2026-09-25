@@ -1,0 +1,95 @@
+/* ==========================================================================
+   project.css — gabarit fiche projet
+   1. titre + statut  2. description courte  3. bloc info
+   4. captures (1 à 3)  5. contenu détaillé
+   ========================================================================== */
+
+.project-hero { padding: 4rem 0 2.5rem; }
+.project-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin-bottom: 1.1rem; }
+.project-title h1 { margin: 0; }
+.project-summary { font-size: var(--fs-lg); color: var(--ink-soft); }
+
+/* Bloc info technique */
+.info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 1.2rem 2rem;
+  margin: 2.2rem 0 0;
+  padding: 1.3rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.info dt {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.25rem;
+}
+.info dd { margin: 0; font-size: 0.97rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; padding: 0; }
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink-soft);
+}
+
+/* Captures / médias : 1 à 3 max */
+.media { display: grid; gap: 1rem; margin: 2.5rem 0 0; }
+.media.count-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.media.count-3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.media figure {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.media img { width: 100%; }
+.media .placeholder { aspect-ratio: 16 / 10; }
+.media figcaption { padding: 0.65rem 0.9rem; font-size: 0.85rem; color: var(--ink-faint); border-top: 1px solid var(--line); }
+
+/* Contenu détaillé */
+.project-body { padding: 3rem 0 1rem; }
+.project-body section + section { margin-top: 2.6rem; }
+.project-body h2 { font-size: 1.45rem; }
+.project-body ul:not([class]) { padding-left: 1.2rem; max-width: var(--max-text); }
+.project-body li + li { margin-top: 0.35rem; }
+
+/* Schéma de pipeline (étapes horizontales) */
+.pipeline { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5rem; list-style: none; padding: 0; margin-top: 1.2rem; }
+.pipeline li {
+  flex: 1 1 150px;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.pipeline .n { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); }
+.pipeline .t { font-weight: 600; }
+.pipeline .d { font-size: 0.85rem; color: var(--ink-soft); }
+
+.callout {
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-wash);
+  border-radius: 0 10px 10px 0;
+  max-width: var(--max-text);
+}
+
+.project-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.project-nav a { text-decoration: none; }

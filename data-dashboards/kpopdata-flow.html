@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KpopData.fr · pipeline flow. · Ric</title>
+  <meta name="description" content="Le pipeline de données derrière la newsletter flow. et la future plateforme KpopData.fr : collecte, traitement Python/pandas, analyse, publication.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/project.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
+  <script defer src="../assets/js/nav.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Ric<span class="dot">.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../produits-jeux/index.html">Produits &amp; jeux</a></li>
+          <li><a href="../data-dashboards/index.html" aria-current="page">Data &amp; dashboards</a></li>
+          <li><a href="../newsletter/index.html">Newsletter</a></li>
+          <li><a href="../about.html">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="project-hero">
+        <div class="wrap">
+          <p class="breadcrumb"><a href="../index.html">Accueil</a> / <a href="index.html">Data &amp; dashboards</a></p>
+          <div class="project-title">
+            <h1>KpopData.fr · pipeline <span class="flow">flow<span class="dot">.</span></span></h1>
+            <span class="badge badge-live">Actif</span>
+          </div>
+          <p class="project-summary">Le pipeline qui alimente chaque semaine la newsletter <span class="flow">flow<span class="dot">.</span></span> et pose les fondations de <strong>KpopData.fr</strong>, une plateforme de data intelligence K-pop pour les professionnels (B2B).</p>
+          <dl class="info">
+            <div>
+              <dt>Statut</dt>
+              <dd>Actif · projet principal de la feuille de route 2026-2028</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd><ul class="tags"><li>Violentmonkey</li><li>Python</li><li>pandas</li><li>CSV</li><li>Substack</li></ul></dd>
+            </div>
+            <div>
+              <dt>Débouché</dt>
+              <dd>Newsletter <a href="https://substack.com/@flowbyric" target="_blank" rel="noopener">flow.</a> · KpopData.fr (B2B)</dd>
+            </div>
+          </dl>
+          <div class="media count-2">
+            <figure>
+              <img src="../assets/img/kpopdata-flow/flow-issue.png" alt="Cours de HYBE, JYP, SM et YG indexés base 100 sur un an, graphique produit par le pipeline flow." loading="lazy">
+              <figcaption>Produit par le pipeline : quatre labels indexés base 100 sur un an (cours KRX).</figcaption>
+            </figure>
+            <figure>
+              <div class="placeholder">Visuel à venir<br>assets/img/kpopdata-flow/extrait-donnees.webp</div>
+              <figcaption>Extrait de données traitées.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </header>
+
+      <div class="project-body">
+        <div class="wrap">
+          <section>
+            <h2>Le flux de données</h2>
+            <p>Quatre étapes, de la source brute au lecteur.</p>
+            <ol class="pipeline">
+              <li><div class="n">01</div><div class="t">Collecte</div><div class="d">Scraping X/Twitter via un userscript Violentmonkey</div></li>
+              <li><div class="n">02</div><div class="t">Traitement</div><div class="d">Nettoyage et structuration en Python / pandas, export CSV</div></li>
+              <li><div class="n">03</div><div class="t">Analyse</div><div class="d">Séries, comparaisons, graphiques</div></li>
+              <li><div class="n">04</div><div class="t">Diffusion</div><div class="d">Publication hebdo sur Substack</div></li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>Détail des étapes</h2>
+            <p><span class="todo">À rédiger par Ric selon ce qu'il veut montrer publiquement : sources, volumétrie, règles de vérification, exemples.</span></p>
+          </section>
+
+          <section>
+            <h2>Vers KpopData.fr</h2>
+            <p>
+              La newsletter est la vitrine, KpopData.fr le produit : une plateforme qui met à disposition des
+              professionnels de la musique des données K-pop propres, sourcées et comparables dans le temps.
+            </p>
+          </section>
+
+          <div class="actions">
+            <a class="btn primary" href="../newsletter/index.html">Découvrir flow.</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <ul class="footer-links">
+        <li><a href="mailto:richard.dufaur@gmail.com">richard.dufaur@gmail.com</a></li>
+        <li><a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://substack.com/@flowbyric" target="_blank" rel="noopener">flow. sur Substack</a></li>
+        <li><a href="https://x.com/flowric_" target="_blank" rel="noopener">X @flowric_</a></li>
+        <li><a href="https://databyric.fr" target="_blank" rel="noopener">DataByRic</a></li>
+        <li><a href="../cv/cv-ric.pdf">CV (PDF)</a></li>
+      </ul>
+      <p class="colophon">© 2026 Richard Dufaur · DataByRic · portfolio.databyric.fr · site statique, sans cookie publicitaire</p>
+    </div>
+  </footer>
+</body>
+</html>
