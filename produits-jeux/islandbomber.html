@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IslandBomber · Richard Dufaur</title>
-  <meta name="description" content="IslandBomber, un projet de jeu de Richard Dufaur.">
+  <title>Island Bomber · Richard Dufaur</title>
+  <meta name="description" content="Island Bomber : un jeu d'arcade de bombes sur la plage, en solo contre des IA ou en ligne jusqu'à quatre joueurs.">
   <meta name="theme-color" content="#faf9f5">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/base.css?v=8">
-  <link rel="stylesheet" href="../assets/css/layout.css?v=8">
-  <link rel="stylesheet" href="../assets/css/project.css?v=8">
+  <link rel="stylesheet" href="../assets/css/base.css?v=9">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=9">
+  <link rel="stylesheet" href="../assets/css/project.css?v=9">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <script defer src="../assets/js/nav.js?v=8"></script>
-  <script defer src="../assets/js/fit.js?v=8"></script>
+  <script defer src="../assets/js/nav.js?v=9"></script>
+  <script defer src="../assets/js/fit.js?v=9"></script>
 </head>
 <body>
   <header class="site-header">
@@ -39,13 +39,17 @@
       <header class="project-hero">
         <div class="wrap">
           <p class="breadcrumb label"><a href="../index.html">Accueil</a> / <a href="index.html">Produits &amp; jeux</a></p>
-          <h1 class="bar fit">IslandBomber</h1>
-          <p class="project-meta"><span class="label">Jeu</span><span class="status status-dev">Statut à préciser</span></p>
-          <p class="project-summary lede"><span class="todo">Description courte (2-3 phrases) à fournir.</span></p>
+          <h1 class="bar fit">Island Bomber</h1>
+          <p class="project-meta"><span class="label">Jeu d'arcade multijoueur</span><span class="status status-live">Jouable</span></p>
+          <p class="project-summary lede">Des bombes, du sable chaud et des tonneaux à faire sauter. Un jeu d'arcade dans l'esprit des classiques du genre : on pose des bombes pour ouvrir un chemin entre palmiers et tonneaux, et <em>le dernier debout remporte la manche</em>.</p>
           <dl class="info">
             <div>
               <dt class="label">Statut</dt>
-              <dd><span class="todo">à préciser</span></dd>
+              <dd>Jouable · solo et multijoueur</dd>
+            </div>
+            <div>
+              <dt class="label">Joueurs</dt>
+              <dd>Solo contre 1 à 3 IA, ou jusqu'à 4 en ligne avec un code de partie</dd>
             </div>
             <div>
               <dt class="label">Stack</dt>
@@ -58,8 +62,8 @@
           </dl>
           <div class="media count-1">
             <figure>
-              <div class="placeholder">Visuel à venir<br>assets/img/islandbomber/capture-01.webp</div>
-              <figcaption class="label">Capture du jeu</figcaption>
+              <div class="placeholder">Visuel à venir<br>assets/img/islandbomber/partie.webp</div>
+              <figcaption class="label">Une manche sur la plage</figcaption>
             </figure>
           </div>
         </div>
@@ -68,8 +72,33 @@
       <div class="project-body">
         <div class="wrap">
           <section>
-            <h2 class="bar">Le projet</h2>
-            <p><span class="todo">À compléter : concept, mécanique principale, contexte.</span></p>
+            <h2 class="bar">Le jeu</h2>
+            <p>
+              Chaque joueur incarne un personnage de plage (crabe, poisson-clown, flamant rose…) sur une île quadrillée.
+              On se déplace aux flèches, on pose une bombe avec Espace, et chaque explosion fait sauter les tonneaux,
+              libère des bonus et peut piéger les adversaires. La marée monte au fil de la manche et resserre l'île :
+              il faut finir avant d'être rattrapé par l'eau.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="bar">Une partie sur mesure</h2>
+            <ul>
+              <li><strong>Modes :</strong> chacun pour soi ou équipes 2 contre 2, tirs amis activables.</li>
+              <li><strong>Cartes :</strong> Plage, Lagon, Volcan, Jungle, Ponton, Grotte, Tempête, ou aléatoire.</li>
+              <li><strong>Rythme :</strong> 1 à 5 manches gagnantes, marée après 1 min, 1 min 30 ou 2 min.</li>
+              <li><strong>Bonus :</strong> bombe, puissance, vitesse, coup de pied, détonateur, flamme perçante, noix pourrie.</li>
+              <li><strong>IA :</strong> trois niveaux, facile, normal et difficile.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="bar">Direction artistique</h2>
+            <p>
+              Une esthétique de vacances : sable, lagon turquoise, palmiers et personnages en maillot,
+              une interface en cartes crème et une typographie manuscrite pour le titre.
+            </p>
+            <p><span class="todo">À compléter : contexte et intention du projet.</span></p>
           </section>
           <nav class="project-nav label" aria-label="Autres projets"><a href="escale.html">← Escale</a><a href="strudel-reel.html">Strudel Reel →</a></nav>
         </div>
