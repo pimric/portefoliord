@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ric · Data Analyst & médiateur culturel</title>
-  <meta name="description" content="Portfolio de Ric (Richard Dufaur), Data Analyst et médiateur culturel : projets data, jeux narratifs et outils créatifs.">
-  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Portfolio de Ric (Richard Dufaur), Data Analyst et médiateur culturel : systèmes de données, visuels data, jeux narratifs.">
+  <meta name="theme-color" content="#faf9f5">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
@@ -17,13 +19,13 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-current="page">Ric<span class="dot">.</span></a>
+      <a class="brand mark" href="index.html" aria-current="page">Ric<span class="dot">.</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
         <ul>
           <li><a href="produits-jeux/index.html">Produits &amp; jeux</a></li>
-          <li><a href="data-dashboards/index.html">Data &amp; dashboards</a></li>
-          <li><a href="newsletter/index.html">Newsletter</a></li>
+          <li><a href="data-dashboards/index.html">Data</a></li>
+          <li><a href="newsletter/index.html">flow.</a></li>
           <li><a href="about.html">À propos</a></li>
         </ul>
       </nav>
@@ -33,17 +35,12 @@
   <main>
     <section class="page-hero">
       <div class="wrap">
-        <p class="eyebrow">Ric · Richard Dufaur</p>
-        <h1>Data Analyst &amp; médiateur culturel</h1>
-        <p class="lede">
-          Huit ans à transmettre des œuvres au public, puis la donnée comme second langage.
-          Je construis des pipelines d'analyse, des jeux narratifs et des outils créatifs
-          au croisement de la <strong>data</strong>, de la <strong>médiation culturelle</strong>
-          et de la <strong>création</strong>.
-        </p>
+        <h1 class="bar">Data Analyst &amp; médiateur culturel</h1>
+        <span class="label">Ric · Richard Dufaur</span>
+        <p class="lede">Huit ans à transmettre des œuvres au public, puis la donnée comme second langage. Je construis des systèmes qui <em>transforment des sources brutes en faits vérifiables</em>, des visuels qui les rendent lisibles, et des jeux qui racontent des histoires.</p>
         <div class="actions">
           <a class="btn primary" href="about.html#contact">Me contacter</a>
-          <a class="btn" href="cv/cv-ric.pdf">CV (PDF)</a>
+          <a class="btn" href="cv/cv-ric.pdf">CV</a>
           <a class="btn" href="https://databyric.fr" target="_blank" rel="noopener">DataByRic</a>
         </div>
       </div>
@@ -52,33 +49,99 @@
     <section class="section">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Projets phares</p>
-          <h2>Ce sur quoi je travaille</h2>
+          <span class="label">Visuels data · faits en HTML</span>
+          <h2 class="bar">Des chiffres qui se lisent</h2>
+        </div>
+        <div class="grid grid-2">
+          <figure class="viz">
+            <div class="post" role="img" aria-label="31 départs K-pop du 29 avril au 26 août 2026 : 29 fins de contrat, 2 départs de groupe en cours de contrat.">
+              <div>
+                <p class="post-title bar">Not his to carry</p>
+                <span class="label">flow. own count, contracts</span>
+              </div>
+              <div>
+                <ul class="waffle">
+                  <li data-tip="Départ n°1 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°2 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°3 · fin de contrat" tabindex="0"></li>
+                  <li class="out" data-tip="Départ n°4 · a quitté le groupe, contrat en cours" tabindex="0"></li>
+                  <li data-tip="Départ n°5 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°6 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°7 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°8 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°9 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°10 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°11 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°12 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°13 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°14 · fin de contrat" tabindex="0"></li>
+                  <li class="out" data-tip="Départ n°15 · a quitté le groupe, contrat en cours" tabindex="0"></li>
+                  <li data-tip="Départ n°16 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°17 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°18 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°19 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°20 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°21 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°22 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°23 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°24 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°25 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°26 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°27 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°28 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°29 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°30 · fin de contrat" tabindex="0"></li>
+                  <li data-tip="Départ n°31 · fin de contrat" tabindex="0"></li>
+                </ul>
+                <p class="label" style="margin-top:0.8em">One square per person, in order of announcement</p>
+              </div>
+              <p class="post-body">31 K-pop departures, 29 April to 26 August. <span class="hl-blue">29 were a contract ending</span>. Two were someone leaving a group while their contract ran on. <span class="hl-blue">The paper says how they left, never why</span>.</p>
+              <div class="post-foot"><span class="flow">flow<span class="dot">.</span></span><span class="label">flow. own count, Korean tier 1 press, 29 Apr to 26 Aug 2026</span></div>
+            </div>
+            <div class="legend label"><span><i></i>Fin de contrat · 29</span><span><i class="out"></i>Départ en cours de contrat · 2</span></div>
+            <figcaption class="label">Post flow. reconstruit en HTML · survolez un carré</figcaption>
+          </figure>
+          <figure class="viz">
+            <div class="post" role="img" aria-label="29 concerts K-pop annulés en quatre mois ; 9 avis nomment l'organisateur, 8 ne nomment personne.">
+              <div>
+                <p class="post-title bar green">Unavoidable circumstances</p>
+                <span class="label">flow. own count, touring</span>
+              </div>
+              <div class="hero-number"><span class="n">29</span><span class="u">SHOWS</span></div>
+              <p class="post-body">In four months, <span class="hl-green">29 K-pop shows</span> got cancelled. Nine notices named the organiser. <span class="hl-green">Eight named no one at all</span>. When nothing is named, the fan has no way to know if anyone failed, or just had bad luck.</p>
+              <div class="post-foot"><span class="flow">flow<span class="dot">.</span></span><span class="label">flow. own count, Korean press, tracked 18 May to 12 Sep 2026</span></div>
+            </div>
+            <figcaption class="label">Post flow. reconstruit en HTML</figcaption>
+          </figure>
+        </div>
+        <div class="actions"><a class="more" href="newsletter/index.html">Découvrir <span class="flow">flow<span class="dot">.</span></span></a></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="label">Projets phares</span>
+          <h2 class="bar">Ce sur quoi je travaille</h2>
         </div>
         <div class="grid grid-3">
           <article class="card">
-            <div class="card-media"><div class="placeholder">Visuel à venir<br>assets/img/ldvelh-clairvaugh/miniature.webp</div></div>
-            <div class="card-body">
-              <div class="card-meta"><span class="card-kind">Jeu narratif coopératif</span><span class="badge badge-live">Bêta live</span></div>
-              <h3><a href="produits-jeux/ldvelh-clairvaugh.html">LDVELH · Clairvaugh</a></h3>
-              <p>Un livre dont vous êtes le héros, joué à plusieurs et en asynchrone, en ASCII art et gravures façon Gustave Doré.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-media"><div class="placeholder">Visuel à venir<br>assets/img/corsaire/miniature.webp</div></div>
-            <div class="card-body">
-              <div class="card-meta"><span class="card-kind">Mod · Dark Messiah</span><span class="badge badge-dev">En développement actif</span></div>
-              <h3><a href="produits-jeux/corsaire.html">CORSAIRE</a></h3>
-              <p>Un mod pirate pour Dark Messiah of Might and Magic : abordages, combat au corps à corps et mer en toile de fond.</p>
-            </div>
-          </article>
-          <article class="card">
             <div class="card-media"><img src="assets/img/kpopdata-flow/flow-issue.png" alt="" loading="lazy"></div>
-            <div class="card-body">
-              <div class="card-meta"><span class="card-kind">Pipeline data</span><span class="badge badge-live">Actif</span></div>
-              <h3><a href="data-dashboards/kpopdata-flow.html">KpopData.fr · pipeline flow.</a></h3>
-              <p>De la collecte à la publication : le pipeline de données qui alimente la newsletter flow. et prépare KpopData.fr.</p>
-            </div>
+            <div class="card-meta"><span class="label">Pipeline data</span><span class="status status-live">En production</span></div>
+            <h3><a href="data-dashboards/kpopdata-flow.html">KpopData.fr · pipeline flow.</a></h3>
+            <p>Le système de données qui produit chaque semaine la newsletter flow. et prépare KpopData.fr.</p>
+          </article>
+          <article class="card">
+            <div class="card-media"><div class="placeholder">Visuel à venir<br>assets/img/ldvelh-clairvaugh/miniature.webp</div></div>
+            <div class="card-meta"><span class="label">Jeu narratif coopératif</span><span class="status status-live">Bêta live</span></div>
+            <h3><a href="produits-jeux/ldvelh-clairvaugh.html">LDVELH · Clairvaugh</a></h3>
+            <p>Un livre dont vous êtes le héros, joué à plusieurs et en asynchrone, en ASCII art et gravures façon Gustave Doré.</p>
+          </article>
+          <article class="card">
+            <div class="card-media"><div class="placeholder">Visuel à venir<br>assets/img/donjon-dark-messiah/miniature.webp</div></div>
+            <div class="card-meta"><span class="label">Level design · mod</span><span class="status status-dev">En développement</span></div>
+            <h3><a href="produits-jeux/donjon-dark-messiah.html">Donjon · Dark Messiah</a></h3>
+            <p>Un donjon original construit pour Dark Messiah of Might and Magic, pensé autour de son combat physique.</p>
           </article>
         </div>
       </div>
@@ -88,19 +151,22 @@
       <div class="wrap">
         <div class="grid grid-3">
           <div>
-            <p class="eyebrow">Produits &amp; jeux</p>
-            <p>Jeux narratifs, mods et petits produits web, du prototype à la bêta.</p>
-            <p><a href="produits-jeux/index.html">Voir les projets →</a></p>
+            <span class="label">Data</span>
+            <h3>Pipelines &amp; analyses</h3>
+            <p>Collecte, structuration et vérification de données, de la K-pop aux institutions culturelles.</p>
+            <p style="margin-top:1rem"><a class="more" href="data-dashboards/index.html">Projets data</a></p>
           </div>
           <div>
-            <p class="eyebrow">Data &amp; dashboards</p>
-            <p>Collecte, traitement et restitution de données, de la K-pop aux institutions culturelles.</p>
-            <p><a href="data-dashboards/index.html">Voir les projets data →</a></p>
+            <span class="label">Produits &amp; jeux</span>
+            <h3>Récits interactifs</h3>
+            <p>Jeux narratifs, level design et petits produits web, du prototype à la bêta.</p>
+            <p style="margin-top:1rem"><a class="more" href="produits-jeux/index.html">Produits &amp; jeux</a></p>
           </div>
           <div>
-            <p class="eyebrow">Newsletter</p>
-            <p><span class="flow">flow<span class="dot">.</span></span>, lecture hebdomadaire et chiffrée de l'industrie de la K-pop.</p>
-            <p><a href="newsletter/index.html">Découvrir flow. →</a></p>
+            <span class="label">Newsletter</span>
+            <h3><span class="flow">flow<span class="dot">.</span></span></h3>
+            <p>Une lecture hebdomadaire, chiffrée et sourcée de l'industrie de la K-pop.</p>
+            <p style="margin-top:1rem"><a class="more" href="newsletter/index.html">Lire flow.</a></p>
           </div>
         </div>
       </div>
@@ -109,15 +175,16 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <ul class="footer-links">
-        <li><a href="mailto:richard.dufaur@gmail.com">richard.dufaur@gmail.com</a></li>
+      <a class="mark" href="index.html">Ric<span class="dot">.</span></a>
+      <ul class="footer-links label">
+        <li><a href="mailto:richard.dufaur@gmail.com">E-mail</a></li>
         <li><a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://substack.com/@flowbyric" target="_blank" rel="noopener">flow. sur Substack</a></li>
-        <li><a href="https://x.com/flowric_" target="_blank" rel="noopener">X @flowric_</a></li>
+        <li><a href="https://substack.com/@flowbyric" target="_blank" rel="noopener">flow. / Substack</a></li>
+        <li><a href="https://x.com/flowric_" target="_blank" rel="noopener">X</a></li>
         <li><a href="https://databyric.fr" target="_blank" rel="noopener">DataByRic</a></li>
-        <li><a href="cv/cv-ric.pdf">CV (PDF)</a></li>
+        <li><a href="cv/cv-ric.pdf">CV</a></li>
       </ul>
-      <p class="colophon">© 2026 Richard Dufaur · DataByRic · portfolio.databyric.fr · site statique, sans cookie publicitaire</p>
+      <p class="colophon label">© 2026 Richard Dufaur · DataByRic · Site statique, visuels data en HTML</p>
     </div>
   </footer>
 </body>
