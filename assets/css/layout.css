@@ -109,7 +109,7 @@ main { display: block; overflow-x: clip; }
 }
 .more::after { content: " →"; }
 
-/* ---------- Statuts : carré plein / contour, comme les waffles ---------- */
+/* ---------- Statuts : carré plein ou contour ---------- */
 .status {
   display: inline-flex;
   align-items: center;
@@ -168,96 +168,6 @@ main { display: block; overflow-x: clip; }
   border-radius: var(--radius);
   word-break: break-all;
 }
-
-/* ==========================================================================
-   Visuels data en HTML — gabarit « post flow. »
-   ========================================================================== */
-.post {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  aspect-ratio: 1 / 1;
-  padding: clamp(1.25rem, 4.5%, 2.6rem);
-  background: var(--paper);
-  border: 1px solid var(--line);
-  container-type: inline-size;
-}
-.post-title { font-family: var(--display); font-size: 8.4cqi; line-height: 1; }
-.post-title + .label { margin: 0.7em 0 0 0.62em; font-size: max(0.6rem, 2.3cqi); display: block; }
-.post-body {
-  font-size: max(0.8rem, 3.9cqi);
-  font-weight: 700;
-  line-height: 1.32;
-  text-align: justify;
-  hyphens: auto;
-  max-width: none;
-}
-.post-foot {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-}
-.post-foot .flow { font-size: max(1rem, 4cqi); }
-.post-foot .label { font-size: max(0.5rem, 1.7cqi); text-align: right; }
-
-/* Chiffre héros */
-.hero-number { display: flex; align-items: flex-end; gap: 0.25em; }
-.hero-number .n { font-family: var(--display); font-size: 36cqi; line-height: 0.8; color: var(--green); }
-.hero-number .u { font-family: var(--mono); font-weight: 700; font-size: 6.4cqi; line-height: 1; padding-bottom: 0.2em; }
-
-/* Waffle : un carré par entité */
-.waffle {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 1.7cqi;
-  width: 84%;
-  list-style: none;
-  padding: 0;
-}
-.waffle li {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: 1.1cqi;
-  background: var(--blue);
-}
-.waffle li.out { background: transparent; box-shadow: inset 0 0 0 0.55cqi var(--ink); }
-.waffle + .label { font-size: max(0.55rem, 1.9cqi); }
-
-/* Info-bulle au survol / focus (sans JS) */
-[data-tip] { cursor: default; }
-[data-tip]::after {
-  content: attr(data-tip);
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 8px);
-  transform: translateX(-50%);
-  z-index: 5;
-  width: max-content;
-  max-width: 220px;
-  padding: 0.45rem 0.6rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.12s;
-}
-[data-tip]:hover::after, [data-tip]:focus-visible::after { opacity: 1; }
-.waffle li:hover { outline: 2px solid var(--ink); outline-offset: 2px; }
-
-/* Légende à carrés */
-.legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 1rem; }
-.legend span { display: inline-flex; align-items: center; gap: 0.5em; }
-.legend i { width: 0.8em; height: 0.8em; border-radius: 2px; background: var(--blue); }
-.legend i.out { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink); }
-
-figure.viz figcaption { margin-top: 0.9rem; }
 
 /* ---------- Footer ---------- */
 .site-footer { padding: 3.5rem 0 3rem; border-top: 1px solid var(--ink); margin-top: 3rem; }
