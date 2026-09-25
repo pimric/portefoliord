@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KpopData.fr · pipeline flow. · Richard Dufaur</title>
-  <meta name="description" content="Le système de données derrière la newsletter flow. et la future plateforme KpopData.fr : collecte, base structurée, vérification, publication.">
+  <meta name="description" content="Le système de données derrière la newsletter flow. et la future plateforme KpopData.fr : collecte, résolution d'entités, faits sourcés, vérification, publication.">
   <meta name="theme-color" content="#faf9f5">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/base.css?v=9">
-  <link rel="stylesheet" href="../assets/css/layout.css?v=9">
-  <link rel="stylesheet" href="../assets/css/project.css?v=9">
+  <link rel="stylesheet" href="../assets/css/base.css?v=11">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=11">
+  <link rel="stylesheet" href="../assets/css/project.css?v=11">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <script defer src="../assets/js/nav.js?v=9"></script>
-  <script defer src="../assets/js/fit.js?v=9"></script>
+  <script defer src="../assets/js/nav.js?v=11"></script>
+  <script defer src="../assets/js/fit.js?v=11"></script>
 </head>
 <body>
   <header class="site-header">
@@ -49,7 +49,7 @@
             </div>
             <div>
               <dt class="label">Stack</dt>
-              <dd><ul class="tags"><li>Python</li><li>SQLite</li><li class="todo">à confirmer</li></ul></dd>
+              <dd><ul class="tags"><li>Python</li><li>SQLite</li><li>ChromaDB</li><li>Playwright</li></ul></dd>
             </div>
             <div>
               <dt class="label">Débouchés</dt>
@@ -70,33 +70,73 @@
           <section>
             <h2 class="bar">En chiffres</h2>
             <div class="figures">
-              <div><span class="n todo">—</span><span class="label">Numéros publiés</span></div>
-              <div><span class="n todo">—</span><span class="label">Tables en base</span></div>
-              <div><span class="n todo">—</span><span class="label">Documents indexés</span></div>
-              <div><span class="n todo">—</span><span class="label">Sources suivies</span></div>
+              <div><span class="n">13 921</span><span class="label">Articles collectés</span></div>
+              <div><span class="n">17 706</span><span class="label">Faits structurés extraits</span></div>
+              <div><span class="n">9 725</span><span class="label">Entités résolues</span></div>
+              <div><span class="n">329</span><span class="label">Alias multilingues tracés</span></div>
+              <div><span class="n">31</span><span class="label">Numéros publiés</span></div>
+              <div><span class="n">40</span><span class="label">Tâches automatisées</span></div>
             </div>
+            <p class="label" style="margin-top:1rem">Mesuré le 25 septembre 2026, base de production</p>
           </section>
 
           <section>
             <h2 class="bar">De la source au lecteur</h2>
             <ol class="pipeline">
-              <li><div class="t">Sources</div><div class="d">Presse coréenne, documents réglementaires, marchés</div></li>
-              <li><div class="t">Collecte</div><div class="d">Tâches planifiées, contrôles de santé</div></li>
-              <li><div class="t">Base</div><div class="d">Entités résolues, faits structurés</div></li>
-              <li><div class="t">Analyse</div><div class="d">Séries, tests d'hypothèses</div></li>
+              <li><div class="t">Collecte</div><div class="d">21 sources coréennes et internationales, Playwright</div></li>
+              <li><div class="t">Nettoyage</div><div class="d">Déduplication sémantique, recherche vectorielle</div></li>
+              <li><div class="t">Résolution</div><div class="d">Entités liées entre langues, alias fusionnés</div></li>
+              <li><div class="t">Extraction</div><div class="d">Faits datés, sourcés, avec niveau de confiance</div></li>
+              <li><div class="t">Curation</div><div class="d">Sélection pondérée par fiabilité, gate de vérification</div></li>
               <li><div class="t">Publication</div><div class="d"><span class="flow">flow<span class="dot">.</span></span> chaque semaine</div></li>
             </ol>
-            <p style="margin-top:1.2rem"><span class="todo">Étapes à ajuster avec les infos du système (prompt de récupération).</span></p>
+          </section>
+
+          <section>
+            <h2 class="bar">Sources suivies</h2>
+            <p>
+              <strong>Presse coréenne de premier rang :</strong> Naver, Daum, Newsen, OSEN, StarNews, Dispatch, TenAsia,
+              Maeil, Korea Herald, Korea Times. <strong>Agrégateurs :</strong> Soompi, AllKpop, Billboard, Variety, K-gen.
+              <strong>Registres publics coréens :</strong> DART (dépôts financiers), KRX (cours boursiers), Circle Chart
+              (classements). <strong>Commerce extérieur :</strong> UN Comtrade, pour les exports physiques liés à la musique.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="bar">Ce qui différencie le système</h2>
+            <ul>
+              <li><strong>Un chiffre publié est un fichier, pas une estimation.</strong> Chaque unité comptée a sa ligne ;
+              les écarts sont conservés avec leur motif de rejet, jamais lissés.</li>
+              <li><strong>Résolution d'identité multilingue à l'échelle.</strong> Un artiste a un nom coréen, un nom anglais,
+              parfois plusieurs graphies occidentales : le système les relie à une seule fiche plutôt que de laisser des doublons.</li>
+              <li><strong>Traçabilité financière propre à la Corée.</strong> Lecture directe des dépôts DART, croisée aux cours KRX,
+              plutôt que reprise de chiffres déjà interprétés par la presse anglophone.</li>
+              <li><strong>Alerting sur les pannes silencieuses.</strong> Un job qui tourne et ne ramène rien est détecté et
+              remonté, pas seulement un job qui plante.</li>
+              <li><strong>Infrastructure propre, sans vendor.</strong> Serveur dédié, cron natif, base versionnée : aucune
+              plateforme low-code entre la donnée et la publication.</li>
+            </ul>
           </section>
 
           <section>
             <h2 class="bar">Rien n'est publié sans source</h2>
             <p>
-              L'IA collecte, prépare et signale ; la décision de publier reste humaine. Chaque chiffre renvoie
-              à une source primaire et est stocké comme un fait daté, pour construire des séries dans le temps
-              plutôt qu'une pile d'articles.
+              L'IA collecte, prépare et signale ; la décision de publier reste humaine. Un chiffre maison n'est publiable
+              que s'il vient d'un fichier ligne par ligne, écarts inclus. Une passe de contrôle automatique bloque tout envoi
+              tant que les sources ne sont pas tracées et les doublons écartés. Chaque pièce chiffrée passe ensuite une
+              double vérification, relecture interne et vérification factuelle externe. Quand deux sources de premier rang
+              se contredisent, seule leur intersection est publiée.
             </p>
-            <p><span class="todo">À préciser : règles de vérification, niveaux de confiance, exemples.</span></p>
+          </section>
+
+          <section>
+            <h2 class="bar">Stack</h2>
+            <p>
+              Python 3.12, SQLite en mode WAL, ChromaDB pour la déduplication sémantique, Playwright et BeautifulSoup pour
+              la collecte. Gemini pour l'ingestion, Claude pour la rédaction et la vérification. Un tableau de bord interne
+              en Streamlit, un contrôle distant en Flask, 40 tâches orchestrées par cron natif et services systemd, sur un
+              serveur dédié auto-géré.
+            </p>
           </section>
 
           <section>
