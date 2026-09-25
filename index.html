@@ -1,791 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Richard Dufaur: Data systems for K-pop industry intelligence</title>
-  <meta name="description" content="Richard Dufaur directs the AI-assisted data system behind the weekly K-pop-industry newsletter flow. Business and data angle, sourced from primary Korean press and market data.">
+  <title>Ric · Data Analyst & médiateur culturel</title>
+  <meta name="description" content="Portfolio de Ric (Richard Dufaur), Data Analyst et médiateur culturel : systèmes de données, visuels data, jeux narratifs.">
+  <meta name="theme-color" content="#faf9f5">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <style>
-    :root {
-      --ink: #16151a;
-      --ink-soft: #55535e;
-      --ink-faint: #8a8792;
-      --paper: #faf9f7;
-      --surface: #ffffff;
-      --line: #e7e4de;
-      --line-strong: #d8d4cc;
-      --accent: #2f5fe0;
-      --accent-ink: #1f47b8;
-      --radius: 14px;
-      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    section[id], header.hero, footer[id] { scroll-margin-top: 64px; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--sans);
-      line-height: 1.65;
-      color: var(--ink);
-      background: var(--paper);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-ink); }
-
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .kicker {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
-
-    /* flow. wordmark */
-    .flow { font-weight: 600; letter-spacing: -0.02em; }
-    .flow .dot { color: var(--accent); }
-
-    /* ---------- Hero ---------- */
-    header.hero {
-      padding: 5.5rem 0 4rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero h1 {
-      font-size: clamp(1.9rem, 4.6vw, 3rem);
-      line-height: 1.12;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin: 1.1rem 0 1.25rem;
-      max-width: 20ch;
-    }
-
-    .hero .lede {
-      font-size: 1.15rem;
-      color: var(--ink-soft);
-      max-width: 54ch;
-      font-weight: 400;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.6rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: var(--surface);
-      color: var(--ink);
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-    }
-    .btn:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); }
-    .btn.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
-    .btn.primary:hover { background: #000; color: #fff; }
-
-    /* ---------- Sections ---------- */
-    section { padding: 4.25rem 0; border-bottom: 1px solid var(--line); }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.9rem;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
-    }
-
-    p.section-lede {
-      color: var(--ink-soft);
-      font-size: 1.08rem;
-      max-width: 60ch;
-    }
-
-    /* Justified prose */
-    .flagship-body p,
-    .block p,
-    p.section-lede {
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    /* ---------- Sticky nav ---------- */
-    .sitenav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 500;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0 1.5rem;
-      height: 56px;
-      background: rgba(250, 249, 247, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-      transform: translateY(-100%);
-      transition: transform 0.25s ease;
-    }
-    .sitenav.visible { transform: translateY(0); }
-    .sitenav .brand {
-      font-family: var(--mono);
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--ink);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .sitenav .brand .dot { color: var(--accent); }
-    .sitenav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-    .sitenav a.navlink {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--ink-faint);
-      text-decoration: none;
-      padding: 0.3rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-    .sitenav a.navlink:hover { color: var(--ink); }
-    .sitenav a.navlink.active { color: var(--accent-ink); border-color: var(--accent); }
-    @media (max-width: 640px) {
-      .sitenav .brand { display: none; }
-      .sitenav ul { gap: 1rem; }
-    }
-
-    /* ---------- flow. flagship ---------- */
-    .flagship-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
-      margin-top: 2rem;
-    }
-
-    .flagship-body h2 { display: flex; align-items: baseline; gap: 0.5rem; }
-    .flagship-body h2 .flow { font-size: 1em; }
-
-    .flagship-body p { color: var(--ink-soft); margin-bottom: 1rem; max-width: 46ch; }
-    .flagship-body p strong { color: var(--ink); font-weight: 600; }
-
-    .stats {
-      display: flex;
-      gap: 1.75rem;
-      flex-wrap: wrap;
-      margin: 1.75rem 0;
-    }
-    .stat .num {
-      font-family: var(--mono);
-      font-size: 1.65rem;
-      font-weight: 500;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-    }
-    .stat .label {
-      font-size: 0.82rem;
-      color: var(--ink-faint);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Screenshot slot */
-    .shot {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--surface);
-      box-shadow: 0 8px 30px rgba(20, 18, 26, 0.06);
-    }
-    .shot img { width: 100%; height: auto; display: block; }
-    .shot .placeholder {
-      aspect-ratio: 4 / 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--ink-faint);
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      text-align: center;
-      padding: 1.5rem;
-      background:
-        linear-gradient(135deg, #f6f5f2 0%, #eeece7 100%);
-    }
-    .shot figcaption {
-      font-size: 0.82rem;
-      color: var(--ink-faint);
-      padding: 0.7rem 1rem;
-      border-top: 1px solid var(--line);
-      font-family: var(--mono);
-    }
-    .shot img { cursor: zoom-in; }
-
-    /* ---------- Lightbox ---------- */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: rgba(20, 18, 26, 0.86);
-      cursor: zoom-out;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      border-radius: var(--radius);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    }
-    .lightbox .close {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.5rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 50%;
-      background: transparent;
-      color: #fff;
-      font-size: 1.4rem;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox .close:hover { border-color: #fff; }
-
-    /* ---------- Pipeline diagram ---------- */
-    .pipeline {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      margin: 2.25rem 0 0.5rem;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-    }
-    .stage {
-      flex: 1 1 0;
-      min-width: 130px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 1rem 0.9rem;
-      text-align: center;
-    }
-    .stage .n {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-    }
-    .stage .t { font-weight: 600; font-size: 0.95rem; margin-top: 0.2rem; }
-    .stage .d { font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.25rem; }
-    .arrow {
-      flex: 0 0 auto;
-      align-self: center;
-      color: var(--line-strong);
-      font-size: 1.1rem;
-      padding: 0 0.35rem;
-    }
-
-    /* ---------- Capability blocks ---------- */
-    .blocks {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.1rem;
-      margin-top: 2.5rem;
-    }
-    .block {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-    }
-    .block .eyebrow { margin-bottom: 0.6rem; }
-    .block p { color: var(--ink-soft); font-size: 0.95rem; }
-    .block .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.9rem;
-    }
-    .tag {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      padding: 0.22rem 0.55rem;
-      border: 1px solid var(--line-strong);
-      border-radius: 6px;
-      color: var(--ink-soft);
-      background: var(--paper);
-    }
-    .alias {
-      font-family: var(--mono);
-      font-size: 0.9rem;
-      color: var(--ink);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 0.5rem 0.7rem;
-      margin-top: 0.9rem;
-      display: inline-block;
-    }
-    .alias b { color: var(--accent); font-weight: 600; }
-
-    /* ---------- Rigor ---------- */
-    .rigor {
-      background: var(--ink);
-      color: #f4f3f0;
-      border-radius: var(--radius);
-      padding: 2.25rem;
-      margin-top: 1rem;
-    }
-    .rigor .eyebrow { color: #8fb0ff; }
-    .rigor h2 { color: #fff; }
-    .rigor p { color: #c9c7cf; max-width: 62ch; }
-    .rigor ul { list-style: none; margin-top: 1.25rem; display: grid; gap: 0.7rem; }
-    .rigor li {
-      padding-left: 1.4rem;
-      position: relative;
-      color: #d9d7df;
-      font-size: 0.98rem;
-    }
-    .rigor li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: #8fb0ff;
-    }
-    .rigor li b { color: #fff; font-weight: 600; }
-
-    /* ---------- Early projects accordion ---------- */
-    details.early {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      margin-top: 2rem;
-    }
-    details.early summary {
-      cursor: pointer;
-      padding: 1.15rem 1.4rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      list-style: none;
-    }
-    details.early summary::-webkit-details-marker { display: none; }
-    details.early summary .hint {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--ink-faint);
-      font-weight: 400;
-    }
-    details.early[open] summary { border-bottom: 1px solid var(--line); }
-    .early-inner { padding: 1.2rem 1.4rem 1.5rem; }
-    .early-inner > p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1rem; max-width: 60ch; }
-    .early-list { display: grid; gap: 0.15rem; }
-    .early-item {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      padding: 0.55rem 0;
-      border-top: 1px solid var(--line);
-      font-size: 0.95rem;
-    }
-    .early-item .idx { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-faint); min-width: 2.5rem; }
-    .early-item .name { flex: 1; color: var(--ink); }
-    .early-item a { font-size: 0.85rem; white-space: nowrap; }
-
-    /* ---------- Footer ---------- */
-    footer {
-      padding: 3.5rem 0 4rem;
-      border-bottom: none;
-    }
-    footer .links { margin-top: 0.5rem; }
-    footer .colophon {
-      margin-top: 2rem;
-      font-size: 0.82rem;
-      color: var(--ink-faint);
-      font-family: var(--mono);
-    }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 760px) {
-      .flagship-grid { grid-template-columns: 1fr; }
-      .blocks { grid-template-columns: 1fr; }
-      .pipeline { flex-direction: column; }
-      .arrow { transform: rotate(90deg); padding: 0.15rem 0; }
-      .stage { min-width: 0; }
-      header.hero { padding: 3.5rem 0 2.75rem; }
-      section { padding: 3rem 0; }
-      .rigor { padding: 1.6rem; }
-    }
-  </style>
+  <script defer src="assets/js/nav.js"></script>
 </head>
 <body>
-
-  <!-- ============ STICKY NAV ============ -->
-  <nav class="sitenav" id="sitenav" aria-label="Section navigation">
-    <a class="brand" href="#top">RD<span class="dot">.</span></a>
-    <ul>
-      <li><a class="navlink" href="#flow" data-target="flow">Flow</a></li>
-      <li><a class="navlink" href="#architecture" data-target="architecture">Architecture</a></li>
-      <li><a class="navlink" href="#rigor" data-target="rigor">Doctrine</a></li>
-      <li><a class="navlink" href="#early" data-target="early">Foundations</a></li>
-      <li><a class="navlink" href="#contact" data-target="contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- ============ HERO ============ -->
-  <header class="hero" id="top">
+  <header class="site-header">
     <div class="wrap">
-      <p class="kicker">Richard Dufaur</p>
-      <h1>I direct an AI-assisted data system that turns the Korean music industry into structured, verifiable intelligence.</h1>
-      <p class="lede">
-        <span class="flow">flow<span class="dot">.</span></span> is a weekly, data-driven read on the business
-        of K-pop, and this is the system behind it. I own the editorial doctrine and the final call, the AI
-        does the collection and the first pass.
-      </p>
-      <nav class="links">
-        <a class="btn primary" href="https://substack.com/@flowbyric" target="_blank" rel="noopener">Read flow.</a>
-        <a class="btn" href="https://x.com/flowric_" target="_blank" rel="noopener">Follow on X</a>
-        <a class="btn" href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:richard.dufaur@gmail.com">Email</a>
+      <a class="brand mark" href="index.html" aria-current="page">Ric<span class="dot">.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="produits-jeux/index.html">Produits &amp; jeux</a></li>
+          <li><a href="data-dashboards/index.html">Data</a></li>
+          <li><a href="newsletter/index.html">flow.</a></li>
+          <li><a href="about.html">À propos</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ============ FLAGSHIP: flow. ============ -->
-  <section id="flow">
-    <div class="wrap">
-      <p class="eyebrow">Flagship project</p>
-      <div class="flagship-grid">
-        <div class="flagship-body">
-          <h2><span class="flow">flow<span class="dot">.</span></span></h2>
-          <p>
-            A <strong>weekly English newsletter on the K-pop industry</strong>, written from a business and
-            data angle, not fan content. It reads the Korean music market the way you'd read any other
-            sector: revenue, filings, charts, exports.
-          </p>
-          <p>
-            Every issue runs on a <strong>production data pipeline with AI in the loop</strong>: primary
-            Korean press and regulatory filings collected, resolved, and cross-checked before a single
-            figure is published.
-          </p>
-          <p>
-            <strong>I run it end to end.</strong> I set the editorial doctrine, direct the AI-assisted
-            collection and analysis, and decide what ships. The authority comes from access to the data and
-            the primary Korean-language press, not borrowed encyclopedic fandom.
-          </p>
-
-          <div class="stats">
-            <div class="stat">
-              <div class="num">23</div>
-              <div class="label">Weekly issues</div>
-            </div>
-            <div class="stat">
-              <div class="num">~56</div>
-              <div class="label">Database tables</div>
-            </div>
-            <div class="stat">
-              <div class="num">~2,400</div>
-              <div class="label">Indexed documents</div>
-            </div>
-          </div>
-
-          <nav class="links">
-            <a class="btn primary" href="https://substack.com/@flowbyric" target="_blank" rel="noopener">Read on Substack</a>
-            <a class="btn" href="https://x.com/flowric_" target="_blank" rel="noopener">@flowric_ on X</a>
-          </nav>
-        </div>
-
-        <figure class="shot">
-          <img src="imageprojet/flow-issue.png" alt="Share prices of HYBE, JYP, SM and YG indexed to 100 over one year — a chart built from the flow. pipeline's KRX data" data-zoomable role="button" tabindex="0" aria-label="Enlarge chart">
-          <figcaption>Built by the flow. pipeline — KRX closes, four labels indexed over one year.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ARCHITECTURE ============ -->
-  <section id="architecture">
-    <div class="wrap">
-      <p class="eyebrow">Architecture</p>
-      <h2>How the pipeline works</h2>
-      <p class="section-lede">
-        Raw sources become structured, sourced facts before they reach a reader. Five stages, fully automated.
-      </p>
-
-      <div class="pipeline">
-        <div class="stage">
-          <div class="n">01</div>
-          <div class="t">Sources</div>
-          <div class="d">KR press, filings, markets</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="stage">
-          <div class="n">02</div>
-          <div class="t">Collection</div>
-          <div class="d">Crons, healthchecks</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="stage">
-          <div class="n">03</div>
-          <div class="t">Database</div>
-          <div class="d">SQLite (WAL), ~56 tables</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="stage">
-          <div class="n">04</div>
-          <div class="t">Analysis</div>
-          <div class="d">Facts, time series, tests</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="stage">
-          <div class="n">05</div>
-          <div class="t">Publication</div>
-          <div class="d">flow. weekly</div>
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1 class="bar">Data Analyst &amp; médiateur culturel</h1>
+        <span class="label">Ric · Richard Dufaur</span>
+        <p class="lede">Huit ans à transmettre des œuvres au public, puis la donnée comme second langage. Je construis des systèmes qui <em>transforment des sources brutes en faits vérifiables</em>, des visuels qui les rendent lisibles, et des jeux qui racontent des histoires.</p>
+        <div class="actions">
+          <a class="btn primary" href="about.html#contact">Me contacter</a>
+          <a class="btn" href="cv/cv-ric.pdf">CV</a>
+          <a class="btn" href="https://databyric.fr" target="_blank" rel="noopener">DataByRic</a>
         </div>
       </div>
+    </section>
 
-      <div class="blocks">
-        <div class="block">
-          <p class="eyebrow">Data sources</p>
-          <p>Tier-1 Korean press and international business media, plus financial and market data down to regulatory filings and customs exports.</p>
-          <div class="tags">
-            <span class="tag">Naver</span><span class="tag">Daum</span><span class="tag">Newsen</span>
-            <span class="tag">Music Business Worldwide</span><span class="tag">Billboard</span>
-            <span class="tag">Variety</span><span class="tag">Korea Herald</span>
-            <span class="tag">DART filings</span><span class="tag">KRX</span>
-            <span class="tag">Circle Chart</span><span class="tag">KOSPI / KOSDAQ</span>
-            <span class="tag">USD/KRW</span><span class="tag">Korea Customs</span>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="label">Projets phares</span>
+          <h2 class="bar">Ce sur quoi je travaille</h2>
+        </div>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-media"><img src="assets/img/kpopdata-flow/flow-issue.png" alt="" loading="lazy"></div>
+            <div class="card-meta"><span class="label">Pipeline data</span><span class="status status-live">En production</span></div>
+            <h3><a href="data-dashboards/kpopdata-flow.html">KpopData.fr · pipeline flow.</a></h3>
+            <p>Le système de données qui produit chaque semaine la newsletter flow. et prépare KpopData.fr.</p>
+          </article>
+          <article class="card">
+            <div class="card-media"><div class="placeholder">Visuel à venir<br>assets/img/ldvelh-clairvaugh/miniature.webp</div></div>
+            <div class="card-meta"><span class="label">Jeu narratif coopératif</span><span class="status status-live">Bêta live</span></div>
+            <h3><a href="produits-jeux/ldvelh-clairvaugh.html">LDVELH · Clairvaugh</a></h3>
+            <p>Un livre dont vous êtes le héros, joué à plusieurs et en asynchrone, en ASCII art et gravures façon Gustave Doré.</p>
+          </article>
+          <article class="card">
+            <div class="card-media"><div class="placeholder">Visuel à venir<br>assets/img/donjon-dark-messiah/miniature.webp</div></div>
+            <div class="card-meta"><span class="label">Level design · mod</span><span class="status status-dev">En développement</span></div>
+            <h3><a href="produits-jeux/donjon-dark-messiah.html">Donjon · Dark Messiah</a></h3>
+            <p>Un donjon original construit pour Dark Messiah of Might and Magic, pensé autour de son combat physique.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="grid grid-3">
+          <div>
+            <span class="label">Data</span>
+            <h3>Pipelines &amp; analyses</h3>
+            <p>Collecte, structuration et vérification de données, de la K-pop aux institutions culturelles.</p>
+            <p style="margin-top:1rem"><a class="more" href="data-dashboards/index.html">Projets data</a></p>
           </div>
-        </div>
-
-        <div class="block">
-          <p class="eyebrow">Entity resolution</p>
-          <p>A de-duplicated reference of K-pop entities (groups, agencies, artists) with a multilingual alias table so names resolve across languages and spellings.</p>
-          <div class="alias">에스파 &nbsp;→&nbsp; <b>aespa</b></div>
-        </div>
-
-        <div class="block">
-          <p class="eyebrow">Structured fact store</p>
-          <p>Every published number is stored as a record (metric, value, unit, period, source, confidence) that builds cumulative time series rather than a pile of articles.</p>
-          <div class="tags">
-            <span class="tag">metric</span><span class="tag">value</span><span class="tag">unit</span>
-            <span class="tag">period</span><span class="tag">source</span><span class="tag">confidence</span>
+          <div>
+            <span class="label">Produits &amp; jeux</span>
+            <h3>Récits interactifs</h3>
+            <p>Jeux narratifs, level design et petits produits web, du prototype à la bêta.</p>
+            <p style="margin-top:1rem"><a class="more" href="produits-jeux/index.html">Produits &amp; jeux</a></p>
           </div>
-        </div>
-
-        <div class="block">
-          <p class="eyebrow">AI-assisted tooling</p>
-          <p>A custom CLI drives curation and issue prep. An AI hypothesis tester takes a claim in plain language, gathers evidence across every data surface, and returns a verdict. Semantic search runs over the full document store.</p>
-          <div class="tags">
-            <span class="tag">kpulse CLI</span><span class="tag">AI hypothesis testing</span>
-            <span class="tag">semantic search</span><span class="tag">collection crons</span>
+          <div>
+            <span class="label">Newsletter</span>
+            <h3><span class="flow">flow<span class="dot">.</span></span></h3>
+            <p>Une lecture hebdomadaire, chiffrée et sourcée de l'industrie de la K-pop.</p>
+            <p style="margin-top:1rem"><a class="more" href="newsletter/index.html">Lire flow.</a></p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ============ RIGOR ============ -->
-  <section id="rigor">
+  <footer class="site-footer">
     <div class="wrap">
-      <div class="rigor">
-        <p class="eyebrow">Verification doctrine</p>
-        <h2>Nothing ships unsourced</h2>
-        <p>
-          The system is built around fact-checking gates. A written editorial doctrine and mechanical
-          checks stand between the data and the reader, every week.
-        </p>
-        <ul>
-          <li><b>Human in the loop.</b> The AI gathers, drafts, and flags. I own the doctrine and make the final publication call.</li>
-          <li><b>Primary source, traced.</b> Every figure links back to a primary source before it can be published.</li>
-          <li><b>Verdicts, not vibes.</b> A hypothesis returns supported, partial, contradicted, or insufficient data, never a guess.</li>
-          <li><b>Cumulative memory.</b> Facts accumulate as time series, so each issue builds on a verifiable record.</li>
-          <li><b>Automated integrity.</b> Collection crons, pipeline healthchecks, and email alerts keep the data current and catch failures.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EARLY PROJECTS (collapsed) ============ -->
-  <section id="early">
-    <div class="wrap">
-      <p class="eyebrow">Background</p>
-      <h2>Foundations</h2>
-      <p class="section-lede">
-        Eight years in cultural mediation, then a data-analyst training. The training projects below cover the
-        fundamentals: SQL, Python, Power BI, machine learning.
-      </p>
-
-      <details class="early">
-        <summary>
-          <span>Early projects, data-analyst training</span>
-          <span class="hint">10 projects · click to expand</span>
-        </summary>
-        <div class="early-inner">
-          <p>Coursework deliverables, kept for reference. The production system above is where the real work is now.</p>
-          <div class="early-list">
-            <div class="early-item"><span class="idx">P2</span><span class="name">E-commerce sales analysis</span><a href="https://kdrive.infomaniak.com/app/share/1273994/75fcc331-5509-4384-b5ed-2cc15a3a80f2" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P3</span><span class="name">SQL relational database</span><a href="https://kdrive.infomaniak.com/app/share/1273994/a7224962-5ce7-47ab-81e4-a24054e95624" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P4</span><span class="name">Public-health study (R)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/7f1c6ceb-4980-43a1-82ef-e0a622c96262" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P6</span><span class="name">Retail inventory optimization</span><a href="https://kdrive.infomaniak.com/app/share/1273994/609c1cee-9bf5-4621-9956-2f7ad681bfcf" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P7</span><span class="name">Power BI dashboard</span><a href="https://kdrive.infomaniak.com/app/share/1273994/2b21805e-5146-4d73-a496-d92bc441c97e" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P8</span><span class="name">Gender-equality indicators (GDPR)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/f57007e1-72cc-4215-852c-977ace53bd12" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P9</span><span class="name">Time-series correlation</span><a href="https://kdrive.infomaniak.com/app/share/1273994/681d76cd-7938-455f-8bdc-8ad1352824d5" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P10</span><span class="name">Spotify music-evolution dashboard</span><a href="https://kdrive.infomaniak.com/app/share/1273994/221586fc-212c-4e55-be3b-519828d55f78" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P11</span><span class="name">Market study (PCA)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/9482ddd3-dd6d-4ff2-a5be-8adb0774c929" target="_blank" rel="noopener">View deliverables</a></div>
-            <div class="early-item"><span class="idx">P12</span><span class="name">Fraud detection (ML)</span><a href="https://kdrive.infomaniak.com/app/share/1273994/1e03580c-1a71-41f1-8668-f72528c21248" target="_blank" rel="noopener">View deliverables</a></div>
-          </div>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT / FOOTER ============ -->
-  <footer id="contact">
-    <div class="wrap">
-      <p class="eyebrow">Contact</p>
-      <h2>Get in touch</h2>
-      <nav class="links">
-        <a class="btn" href="https://substack.com/@flowbyric" target="_blank" rel="noopener">flow. on Substack</a>
-        <a class="btn" href="https://x.com/flowric_" target="_blank" rel="noopener">@flowric_</a>
-        <a class="btn" href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:richard.dufaur@gmail.com">richard.dufaur@gmail.com</a>
-      </nav>
-      <p class="colophon">© 2026 Richard Dufaur · portfolio.databyric.fr</p>
+      <a class="mark" href="index.html">Ric<span class="dot">.</span></a>
+      <ul class="footer-links label">
+        <li><a href="mailto:richard.dufaur@gmail.com">E-mail</a></li>
+        <li><a href="https://linkedin.com/in/richard-dufaur-data-analyst/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://substack.com/@flowbyric" target="_blank" rel="noopener">flow. / Substack</a></li>
+        <li><a href="https://x.com/flowric_" target="_blank" rel="noopener">X</a></li>
+        <li><a href="https://databyric.fr" target="_blank" rel="noopener">DataByRic</a></li>
+        <li><a href="cv/cv-ric.pdf">CV</a></li>
+      </ul>
+      <p class="colophon label">© 2026 Richard Dufaur · DataByRic · Site statique fait main</p>
     </div>
   </footer>
-
-  <!-- ============ LIGHTBOX ============ -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
-    <img id="lightboxImg" src="" alt="">
-  </div>
-
-  <script>
-    (function () {
-      var box = document.getElementById('lightbox');
-      var boxImg = document.getElementById('lightboxImg');
-      var closeBtn = document.getElementById('lightboxClose');
-
-      function open(src, alt) {
-        boxImg.src = src;
-        boxImg.alt = alt || '';
-        box.classList.add('open');
-        box.setAttribute('aria-hidden', 'false');
-      }
-      function close() {
-        box.classList.remove('open');
-        box.setAttribute('aria-hidden', 'true');
-        boxImg.src = '';
-      }
-
-      document.querySelectorAll('[data-zoomable]').forEach(function (img) {
-        img.addEventListener('click', function () { open(img.src, img.alt); });
-        img.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img.src, img.alt); }
-        });
-      });
-
-      box.addEventListener('click', function (e) {
-        if (e.target !== boxImg) close();
-      });
-      closeBtn.addEventListener('click', close);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && box.classList.contains('open')) close();
-      });
-    })();
-
-    (function () {
-      var nav = document.getElementById('sitenav');
-      var hero = document.getElementById('top');
-      var links = Array.prototype.slice.call(document.querySelectorAll('.navlink'));
-
-      var heroWatcher = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          nav.classList.toggle('visible', !entry.isIntersecting);
-        });
-      }, { rootMargin: '-56px 0px 0px 0px' });
-      heroWatcher.observe(hero);
-
-      var sections = links
-        .map(function (a) { return document.getElementById(a.dataset.target); })
-        .filter(Boolean);
-
-      var sectionWatcher = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var id = entry.target.id;
-          links.forEach(function (a) {
-            a.classList.toggle('active', a.dataset.target === id);
-          });
-        });
-      }, { rootMargin: '-30% 0px -60% 0px' });
-      sections.forEach(function (s) { sectionWatcher.observe(s); });
-    })();
-  </script>
-
 </body>
 </html>
