@@ -71,7 +71,7 @@ main { display: block; overflow-x: clip; }
 .section-head h2 { margin: 0; }
 
 .page-hero { padding: 5.5rem 0 4.5rem; }
-.page-hero .label { margin: 0.9rem 0 0 0.62em; display: block; }
+.page-hero .label { margin-top: 0.9rem; display: block; }
 .page-hero h1 { max-width: 16ch; }
 .page-hero .lede { margin-top: 2.6rem; }
 

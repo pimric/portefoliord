@@ -6,7 +6,7 @@
 
 .project-hero { padding: 4.5rem 0 3rem; }
 .project-hero h1 { max-width: 18ch; }
-.project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin: 1.2rem 0 0 calc(var(--fs-h1) * 0.62); }
+.project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin-top: 1.2rem; }
 .project-summary { margin-top: 2.4rem; }
 
 /* Bloc info technique : lignes mono, filets fins */
@@ -38,7 +38,6 @@
 .project-body section { max-width: 760px; }
 .project-body section + section { margin-top: 3.2rem; }
 .project-body h2 { font-size: 1.9rem; }
-.project-body p { text-align: justify; hyphens: auto; }
 .project-body ul:not([class]) { padding-left: 1.2rem; max-width: var(--max-text); }
 .project-body li + li { margin-top: 0.4rem; }
 
