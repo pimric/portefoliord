@@ -127,3 +127,7 @@
 .gallery img { width: 100%; border-radius: var(--radius); border: 1px solid var(--line); }
 .gallery figcaption { margin-top: 0.6rem; text-align: left; }
 @media (max-width: 520px) { .gallery.phones { gap: 0.6rem; } }
+
+/* Texte à énumération dense (noms propres, sigles) : justifier crée des
+   espacements irréguliers, on garde un alignement à gauche plus lisible. */
+.align-left { text-align: left; }
