@@ -45,7 +45,8 @@
   --blue: #4a6fa5;
   --green: #3d7a5c;
   --orange: #d97a0a;
-  --orange-deep: #a85e0a; /* variante foncée, contraste AA avec du texte blanc */
+  --red: #a8453f; /* même famille de ton que bleu/vert, contraste AA avec du texte blanc */
+  --purple: #6a4c85;
 
   /* Typo */
   --display: "DM Serif Display", Georgia, serif;
@@ -106,7 +107,7 @@ p, li, dd, figcaption {
 }
 p { max-width: var(--max-text); }
 p + p { margin-top: 1em; }
-strong { font-weight: 700; }
+strong { font-weight: 700; color: var(--bar, var(--blue)); }
 
 a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-strong); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
 a:hover { text-decoration-color: var(--ink); }
@@ -146,11 +147,8 @@ h2.bar, h3.bar {
   text-align: justify;
   hyphens: auto;
 }
-.lede em { font-style: normal; color: var(--blue); }
-.lede.green em { color: var(--green); }
+.lede em { font-style: normal; color: var(--bar, var(--blue)); }
 .muted { color: var(--muted); }
-.hl-blue { color: var(--blue); }
-.hl-green { color: var(--green); }
 
 /* Wordmarks : flow• et Ric• */
 .flow, .mark { font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; white-space: nowrap; }
@@ -158,7 +156,8 @@ h2.bar, h3.bar {
 
 /* Un thème de couleur par catégorie de page */
 body.theme-green { --bar: var(--green); }
-body.theme-orange { --bar: var(--orange-deep); }
+body.theme-red { --bar: var(--red); }
+body.theme-purple { --bar: var(--purple); }
 
 /* Contenu à compléter : repérable (grep "todo") */
 .todo {
