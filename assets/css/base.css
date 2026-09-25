@@ -124,7 +124,7 @@ h2.bar, h3.bar {
   background: var(--bar, var(--blue));
   color: #fff;
   padding: 0.1em 0.5em 0.16em;
-  border-radius: 3px;
+  border-radius: 6px;
   text-wrap: balance;
 }
 
