@@ -53,10 +53,10 @@
 
   --fs-label: 0.74rem;
   --fs-base: 1.125rem;
-  --fs-lede: clamp(1.2rem, 2.2vw, 1.45rem);
+  --fs-lede: clamp(1.2rem, 2.3vw, 1.7rem);
   --fs-h3: 1.45rem;
   --fs-h2: clamp(1.9rem, 3.6vw, 2.6rem);
-  --fs-h1: clamp(2.6rem, 6.4vw, 4.6rem);
+  --fs-h1: clamp(2.8rem, 9.4vw, 7.6rem);
 
   /* Espacements / formes */
   --gutter: 1.25rem;
@@ -93,7 +93,8 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
-h1 { font-size: var(--fs-h1); }
+/* Titres de page : pleine largeur, lignes remplies (pas d'équilibrage) */
+h1 { font-size: var(--fs-h1); line-height: 0.98; letter-spacing: -0.02em; text-wrap: pretty; }
 h2 { font-size: var(--fs-h2); margin-bottom: 1rem; }
 h3 { font-size: var(--fs-h3); margin-bottom: 0.35rem; }
 /* Tous les textes sont justifiés */

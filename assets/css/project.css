@@ -5,7 +5,7 @@
    ========================================================================== */
 
 .project-hero { padding: 4.5rem 0 3rem; }
-.project-hero h1 { max-width: 18ch; }
+.project-hero h1, .project-summary { max-width: none; }
 .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin-top: 1.2rem; }
 .project-summary { margin-top: 2.4rem; }
 
@@ -35,7 +35,7 @@
 
 /* Contenu détaillé : colonne de lecture, intertitres à barre */
 .project-body { padding: 4rem 0 1rem; border-top: 1px solid var(--line); margin-top: 4rem; }
-.project-body section { max-width: 760px; }
+.project-body section, .project-body p { max-width: none; }
 .project-body section + section { margin-top: 3.2rem; }
 .project-body h2 { font-size: 1.9rem; }
 .project-body ul:not([class]) { padding-left: 1.2rem; max-width: var(--max-text); }
