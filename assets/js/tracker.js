@@ -11,10 +11,15 @@
       p: location.pathname,
       r: document.referrer || ''
     });
+    // text/plain plutôt que application/json : reste une requête "simple"
+    // au sens CORS, donc pas de préflight OPTIONS. Avec sendBeacon, un
+    // préflight requis pour une requête keepalive/beacon cross-origin est
+    // peu fiable dans Chrome (le préflight passe, la vraie requête jamais).
+    // Le serveur ne lit pas le content-type, il fait juste JSON.parse(body).
     if (navigator.sendBeacon) {
-      navigator.sendBeacon(ENDPOINT, new Blob([payload], { type: 'application/json' }));
+      navigator.sendBeacon(ENDPOINT, new Blob([payload], { type: 'text/plain' }));
     } else {
-      fetch(ENDPOINT, { method: 'POST', body: payload, keepalive: true, headers: { 'content-type': 'application/json' } }).catch(function () {});
+      fetch(ENDPOINT, { method: 'POST', body: payload, keepalive: true, headers: { 'content-type': 'text/plain' } }).catch(function () {});
     }
   } catch (e) {
     // silencieux : une erreur de tracking ne doit jamais gêner la navigation
