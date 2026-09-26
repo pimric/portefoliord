@@ -177,3 +177,19 @@ main { display: block; overflow-x: clip; }
 .footer-links a { text-decoration: none; color: var(--muted); }
 .footer-links a:hover { color: var(--ink); }
 .colophon { flex-basis: 100%; max-width: none; text-align: left; }
+
+/* Accueil : fond « plans de lieux culturels + nuage de points », à droite */
+.hero-home {
+  background-image: url("../img/hero-bg.svg");
+  background-repeat: no-repeat;
+  background-position: right -40px center;
+  background-size: auto 115%;
+}
+.hero-home .wrap { position: relative; }
+@media (max-width: 900px) {
+  .hero-home { background-position: right -180px top 20px; background-size: auto 80%; }
+}
+@media (max-width: 560px) {
+  .hero-home { background-position: right -260px top 10px; background-size: auto 60%; opacity: 1; }
+}
+@media (min-width: 901px) { .hero-home .lede { max-width: 58%; } }
