@@ -4,8 +4,21 @@
    4. captures (1 à 3)  5. contenu détaillé
    ========================================================================== */
 
-.project-hero { padding: 4.5rem 0 3rem; }
+.project-hero { padding: 4.5rem 0 3rem; position: relative; overflow: hidden; }
 .project-hero h1, .project-summary { max-width: none; }
+
+/* Motifs isométriques abstraits, un par univers projet */
+.project-hero[class*="motif-"] { background-repeat: no-repeat; background-position: right -60px top -40px; background-size: auto 420px; }
+.project-hero.motif-ldvelh { background-image: url("../img/motifs/motif-ldvelh.svg"); }
+.project-hero.motif-donjon { background-image: url("../img/motifs/motif-donjon.svg"); }
+.project-hero.motif-escale { background-image: url("../img/motifs/motif-escale.svg"); }
+.project-hero.motif-islandbomber { background-image: url("../img/motifs/motif-islandbomber.svg"); }
+@media (max-width: 900px) {
+  .project-hero[class*="motif-"] { background-size: auto 280px; background-position: right -30px top -20px; }
+}
+@media (max-width: 560px) {
+  .project-hero[class*="motif-"] { background-image: none; }
+}
 .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin-top: 1.2rem; }
 .project-summary { margin-top: 2.4rem; }
 
