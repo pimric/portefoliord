@@ -70,7 +70,7 @@ main { display: block; overflow-x: clip; }
 .section-head { display: grid; gap: 0.6rem; margin-bottom: 2.5rem; }
 .section-head h2 { margin: 0; justify-self: start; }
 
-.page-hero { padding: 5.5rem 0 4.5rem; }
+.page-hero { padding: 5.5rem 0 4.5rem; position: relative; overflow: hidden; }
 .page-hero .label { margin-top: 0.9rem; display: block; }
 .page-hero h1, .page-hero .lede { max-width: none; }
 .page-hero .lede { margin-top: 2.6rem; }
@@ -193,3 +193,8 @@ main { display: block; overflow-x: clip; }
   .hero-home { background-position: right -260px top 10px; background-size: auto 60%; opacity: 1; }
 }
 @media (min-width: 901px) { .hero-home .lede { max-width: 58%; } }
+
+/* flow. : motif isométrique abstrait (colonnes à largeur variable) */
+.motif-flow { background-image: url("../img/motifs/motif-flow.svg"); background-repeat: no-repeat; background-position: right -60px top -40px; background-size: auto 420px; }
+@media (max-width: 900px) { .motif-flow { background-size: auto 280px; background-position: right -30px top -20px; } }
+@media (max-width: 560px) { .motif-flow { background-image: none; } }
