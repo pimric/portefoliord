@@ -7,14 +7,15 @@
 .project-hero { padding: 4.5rem 0 3rem; position: relative; overflow: hidden; }
 .project-hero h1, .project-summary { max-width: none; }
 
-/* Motifs isométriques abstraits, un par univers projet */
-.project-hero[class*="motif-"] { background-repeat: no-repeat; background-position: right -60px top -40px; background-size: auto 420px; }
+/* Motifs isométriques abstraits, un par univers projet — rapprochés du
+   titre plutôt que plaqués dans l'angle extrême de la page. */
+.project-hero[class*="motif-"] { background-repeat: no-repeat; background-position: right 16px top 64px; background-size: auto 300px; }
 .project-hero.motif-ldvelh { background-image: url("../img/motifs/motif-ldvelh.svg"); }
 .project-hero.motif-donjon { background-image: url("../img/motifs/motif-donjon.svg"); }
 .project-hero.motif-escale { background-image: url("../img/motifs/motif-escale.svg"); }
 .project-hero.motif-islandbomber { background-image: url("../img/motifs/motif-islandbomber.svg"); }
 @media (max-width: 900px) {
-  .project-hero[class*="motif-"] { background-size: auto 280px; background-position: right -30px top -20px; }
+  .project-hero[class*="motif-"] { background-size: auto 210px; background-position: right 10px top 40px; }
 }
 @media (max-width: 560px) {
   .project-hero[class*="motif-"] { background-image: none; }

@@ -195,6 +195,6 @@ main { display: block; overflow-x: clip; }
 @media (min-width: 901px) { .hero-home .lede { max-width: 58%; } }
 
 /* flow. : motif isométrique abstrait (colonnes à largeur variable) */
-.motif-flow { background-image: url("../img/motifs/motif-flow.svg"); background-repeat: no-repeat; background-position: right -60px top -40px; background-size: auto 420px; }
-@media (max-width: 900px) { .motif-flow { background-size: auto 280px; background-position: right -30px top -20px; } }
+.motif-flow { background-image: url("../img/motifs/motif-flow.svg"); background-repeat: no-repeat; background-position: right 16px top 64px; background-size: auto 300px; }
+@media (max-width: 900px) { .motif-flow { background-size: auto 210px; background-position: right 10px top 40px; } }
 @media (max-width: 560px) { .motif-flow { background-image: none; } }
