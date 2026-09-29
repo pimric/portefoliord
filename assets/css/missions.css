@@ -39,3 +39,29 @@
   align-items: start;
 }
 .picker-summary { font-size: 1.15rem; max-width: var(--max-text); }
+
+/* Bloc "En pratique" : cartes à liseré, comme sur les fiches projet */
+.info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 1px;
+  margin: 2.5rem 0 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.info div { position: relative; padding: 1.3rem 1.4rem 1.2rem; background: var(--paper); }
+.info div::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--bar, var(--blue)); }
+.info dt { margin-bottom: 0.5rem; }
+.info dd { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.45; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0; }
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--paper-deep);
+}
