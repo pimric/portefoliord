@@ -34,6 +34,27 @@
 }
 .site-nav a:hover { color: var(--ink); }
 .site-nav a[aria-current] { color: var(--ink); border-color: var(--ink); }
+.site-nav a.parent-active { color: var(--ink); }
+
+/* Sous-menu (À propos > Projets, CV) */
+.site-nav li.has-sub { position: relative; }
+.site-nav .sub-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
+  z-index: 10;
+}
+.site-nav li.has-sub:hover .sub-nav,
+.site-nav li.has-sub:focus-within .sub-nav { display: block; }
+.site-nav .sub-nav a { display: block; padding: 0.6rem 1rem; border-bottom: none; white-space: nowrap; }
 
 .nav-toggle {
   display: none;
@@ -62,6 +83,16 @@
   .site-nav ul { flex-direction: column; gap: 0; padding: 0.25rem var(--gutter) 1rem; }
   .site-nav a { display: block; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
   .site-nav a[aria-current] { border-color: var(--line); color: var(--ink); font-weight: 700; }
+  .site-nav .sub-nav {
+    display: block;
+    position: static;
+    margin: 0 0 0 1rem;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+  .site-nav .sub-nav a { padding: 0.7rem 0; }
 }
 
 /* ---------- Sections ---------- */
