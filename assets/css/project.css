@@ -145,3 +145,16 @@
 /* Texte à énumération dense (noms propres, sigles) : justifier crée des
    espacements irréguliers, on garde un alignement à gauche plus lisible. */
 .align-left { text-align: left; }
+
+/* Chiffres clés : une couleur différente par item pour que le bloc vive */
+.figures-vivid div:nth-child(6n+1) .n { color: var(--blue); }
+.figures-vivid div:nth-child(6n+2) .n { color: var(--green); }
+.figures-vivid div:nth-child(6n+3) .n { color: var(--red); }
+.figures-vivid div:nth-child(6n+4) .n { color: var(--purple); }
+.figures-vivid div:nth-child(6n+5) .n { color: var(--orange); }
+.figures-vivid div:nth-child(6n+6) .n { color: var(--blue); }
+
+/* Groupe de blocs compact : plusieurs sous-sections dans une seule section,
+   sans répéter le padding/bordure de .section à chaque fois. */
+.compact-group .wrap { display: grid; gap: 2.2rem; }
+.compact-group h3.bar { margin-bottom: 0.6rem; }
