@@ -144,40 +144,6 @@
             </div>
           </dl>
         </div>
-        <div>
-          <h3 class="bar">Ce qui différencie le système</h3>
-          <ul>
-            <li><strong>Un chiffre publié est un fichier, pas une estimation.</strong> Chaque unité comptée a sa ligne ;
-            les écarts sont conservés avec leur motif de rejet, jamais lissés.</li>
-            <li><strong>Résolution d'identité multilingue à l'échelle.</strong> Un artiste a un nom coréen, un nom anglais,
-            parfois plusieurs graphies occidentales : le système les relie à une seule fiche plutôt que de laisser des doublons.</li>
-            <li><strong>Traçabilité financière propre à la Corée.</strong> Lecture directe des dépôts DART, croisée aux cours KRX,
-            plutôt que reprise de chiffres déjà interprétés par la presse anglophone.</li>
-            <li><strong>Alerting sur les pannes silencieuses.</strong> Un job qui tourne et ne ramène rien est détecté et
-            remonté, pas seulement un job qui plante.</li>
-            <li><strong>Infrastructure propre, sans vendor.</strong> Serveur dédié, cron natif, base versionnée : aucune
-            plateforme low-code entre la donnée et la publication.</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="bar">Rien n'est publié sans source</h3>
-          <p>
-            L'IA collecte, prépare et signale ; la décision de publier reste humaine. Un chiffre maison n'est publiable
-            que s'il vient d'un fichier ligne par ligne, écarts inclus. Une passe de contrôle automatique bloque tout envoi
-            tant que les sources ne sont pas tracées et les doublons écartés. Chaque pièce chiffrée passe ensuite une
-            double vérification, relecture interne et vérification factuelle externe. Quand deux sources de premier rang
-            se contredisent, seule leur intersection est publiée.
-          </p>
-        </div>
-        <div>
-          <h3 class="bar">Stack</h3>
-          <p>
-            Python 3.12, SQLite en mode WAL, ChromaDB pour la déduplication sémantique, Playwright et BeautifulSoup pour
-            la collecte. Gemini pour l'ingestion, Claude pour la rédaction et la vérification. Un tableau de bord interne
-            en Streamlit, un contrôle distant en Flask, 40 tâches orchestrées par cron natif et services systemd, sur un
-            serveur dédié auto-géré.
-          </p>
-        </div>
       </div>
     </section>
   </main>
