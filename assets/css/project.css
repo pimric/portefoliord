@@ -158,3 +158,9 @@
    sans répéter le padding/bordure de .section à chaque fois. */
 .compact-group .wrap { display: grid; gap: 2.2rem; }
 .compact-group h3.bar { margin-bottom: 0.6rem; }
+
+/* Liste de sources par catégorie : label + puces, plutôt qu'un paragraphe
+   justifié dense en noms propres. */
+.source-list { display: grid; gap: 1.1rem; margin: 0.8rem 0 0; }
+.source-list dt { margin-bottom: 0.5rem; }
+.source-list dd { margin: 0; }
