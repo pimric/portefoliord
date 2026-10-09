@@ -23,13 +23,14 @@
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/base.css?v=44">
-  <link rel="stylesheet" href="../assets/css/layout.css?v=44">
-  <link rel="stylesheet" href="../assets/css/project.css?v=44">
+  <link rel="stylesheet" href="../assets/css/base.css?v=45">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=45">
+  <link rel="stylesheet" href="../assets/css/project.css?v=45">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="149fb954-2dda-40ec-83db-878633a79fa3"></script>
-  <script defer src="../assets/js/nav.js?v=44"></script>
-  <script defer src="../assets/js/fit.js?v=44"></script>
-  <script defer src="../assets/js/tracker.js?v=44"></script>
+  <script defer src="../assets/js/nav.js?v=45"></script>
+  <script defer src="../assets/js/fit.js?v=45"></script>
+  <script defer src="../assets/js/tracker.js?v=45"></script>
+  <script defer src="../assets/js/flow-stats.js?v=45"></script>
 </head>
 <body class="theme-green">
   <header class="site-header">
@@ -94,15 +95,15 @@
           <h2 class="bar green">Le système derrière flow.</h2>
           <p class="lede">Le pipeline qui transforme chaque semaine la presse coréenne et les données de marché en <em>faits sourcés et vérifiables</em>.</p>
         </div>
-        <div class="figures figures-vivid">
-          <div><span class="n">13 921</span><span class="label"><strong>Articles</strong> collectés</span></div>
-          <div><span class="n">17 706</span><span class="label"><strong>Faits</strong> structurés extraits</span></div>
-          <div><span class="n">9 725</span><span class="label"><strong>Entités</strong> résolues</span></div>
-          <div><span class="n">329</span><span class="label"><strong>Alias</strong> multilingues tracés</span></div>
-          <div><span class="n">31</span><span class="label"><strong>Numéros</strong> publiés</span></div>
-          <div><span class="n">40</span><span class="label"><strong>Tâches</strong> automatisées</span></div>
+        <div class="figures figures-vivid" id="flow-stats">
+          <div><span class="n" data-stat="articles_collected">13 921</span><span class="label"><strong>Articles</strong> collectés</span></div>
+          <div><span class="n" data-stat="facts_extracted">17 706</span><span class="label"><strong>Faits</strong> structurés extraits</span></div>
+          <div><span class="n" data-stat="entities_resolved">9 725</span><span class="label"><strong>Entités</strong> résolues</span></div>
+          <div><span class="n" data-stat="aliases_tracked">329</span><span class="label"><strong>Alias</strong> multilingues tracés</span></div>
+          <div><span class="n" data-stat="issues_published">31</span><span class="label"><strong>Numéros</strong> publiés</span></div>
+          <div><span class="n" data-stat="automated_tasks">40</span><span class="label"><strong>Tâches</strong> automatisées</span></div>
         </div>
-        <p class="label" style="margin-top:1rem">Mesuré le 25 septembre 2026, base de production</p>
+        <p class="label" style="margin-top:1rem" id="flow-stats-date">Mesuré le 25 septembre 2026, base de production</p>
       </div>
     </section>
 
