@@ -112,6 +112,12 @@ main { display: block; overflow-x: clip; }
 
 /* ---------- Liens d'action ---------- */
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.4rem; }
+.actions-center { justify-content: center; }
+
+/* Écran "en construction" (temporaire) */
+.maintenance { padding: 9rem 0; text-align: center; }
+.maintenance h1 { margin-bottom: 1.2rem; }
+.maintenance .lede { max-width: 42ch; margin-left: auto; margin-right: auto; }
 .btn {
   display: inline-flex;
   align-items: center;
